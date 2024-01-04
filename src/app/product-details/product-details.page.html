@@ -1,0 +1,154 @@
+<ion-header class="is-header-logo-centered ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      <img src="assets/imgs/logo-dark.png" />
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" name="cart"></ion-icon>
+      </ion-button>
+      <ion-button>
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-slides pager="true" [options]="slideOpts">
+    <ion-slide>
+      <img src="assets/imgs/product-details-1.jpg"/>
+    </ion-slide>
+    <ion-slide>
+      <img src="assets/imgs/product-details-2.jpg"/>
+    </ion-slide>
+  </ion-slides>
+
+  <div class="ion-padding-horizontal is-section-bordered">
+    <h5 class="ion-text-center">Brand</h5>
+    <h3 class="ion-text-center">Short-sleeved Denim Shirt</h3>
+    <ion-grid class="is-price ion-no-padding ion-margin-top ion-margin-bottom">
+      <ion-row class="ion-align-items-center">
+        <ion-col size="4" class="ion-text-start ion-no-padding">
+          <ion-badge color="success">NEW</ion-badge>
+        </ion-col>
+        <ion-col size="4" class="ion-text-center ion-no-padding">
+          <span>$29.99</span>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <div class="is-section-bordered ion-text-center ion-padding">
+    <ion-chip *ngFor="let size of productSizes; let i = index" outline
+              [ngClass]="{'selected': productSizes[i].selected,
+                          'disabled': productSizes[i].disabled}"
+              (click)="toggleSelectedSize(i)">
+      <ion-label>{{size.label}}</ion-label>
+    </ion-chip>
+  </div>
+
+  <div class="is-section-bordered ion-text-center ion-padding">
+    <ion-button class="button-color ion-no-padding"
+                [attr.style]="sanitizer.bypassSecurityTrustStyle('--background: ' + productColors[i].name)"
+                *ngFor="let color of productColors; let i = index"
+                (click)="toggleSelectedColor(i)">
+      <ion-icon *ngIf="color.selected" slot="icon-only" name="checkmark"
+                [style.color]="productColors[i].selectedContrast"></ion-icon>
+    </ion-button>
+  </div>
+
+  <div class="is-section-bordered">
+
+    <ion-list class="ion-no-margin ion-padding">
+      <ion-grid class="ion-no-padding">
+        <ion-row class="ion-align-items-center">
+          <ion-col size="3">
+            <ion-item class="is-select-item">
+              <ion-select interface="popover" value="1">
+                <ion-select-option value="1">1</ion-select-option>
+                <ion-select-option value="2">2</ion-select-option>
+                <ion-select-option value="3">3</ion-select-option>
+                <ion-select-option value="4">4</ion-select-option>
+                <ion-select-option value="5">5</ion-select-option>
+                <ion-select-option value="6">6</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-col>
+          <ion-col class="ion-align-self-center">
+            <ion-button expand="block">Add to Cart</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-list>
+
+    <div class="ion-padding-horizontal ion-margin-bottom">
+      <ion-button expand="block" fill="outline">Save</ion-button>
+    </div>
+
+    <div class="ion-padding-horizontal">
+      <ion-grid class="ion-no-padding ion-margin-top ion-margin-bottom">
+        <ion-row class="is-grid-row-bordered">
+          <ion-col size="8" class="ion-padding-horizontal">
+            <span>
+              <ion-icon name="star" color="warning"></ion-icon>
+              <ion-icon name="star" color="warning"></ion-icon>
+              <ion-icon name="star" color="warning"></ion-icon>
+              <ion-icon name="star" color="warning"></ion-icon>
+              <ion-icon name="star" color="light"></ion-icon>
+            </span>
+            <span class="is-rating-text ion-padding-horizontal">3 reviews</span>
+          </ion-col>
+          <ion-col size="4" class="ion-padding-horizontal">
+            <ion-icon name="share" color="light"></ion-icon>
+            <span class="ion-padding-start">Share</span>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+  </div>
+
+  <ion-segment class="is-segment-clear" value="features">
+    <ion-segment-button value="product">
+      <ion-label>PRODUCT</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="brand">
+      <ion-label>BRAND</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="reviews">
+      <ion-label>REVIEWS (4)</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="features">
+      <ion-label>FEATURES</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <div class="ion-padding-bottom">
+    <ion-grid class="ion-no-padding is-grid-bordered is-product-details-table">
+      <ion-row>
+        <ion-col size="4" class="ion-no-padding ion-padding">Material</ion-col>
+        <ion-col size="8" class="ion-no-padding ion-padding">100% Cotton</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="4" class="ion-no-padding ion-padding">Handle</ion-col>
+        <ion-col size="8" class="ion-no-padding ion-padding">Grab handle</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="4" class="ion-no-padding ion-padding">Straps</ion-col>
+        <ion-col size="8" class="ion-no-padding ion-padding">Adjustable straps</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="4" class="ion-no-padding ion-padding">Back</ion-col>
+        <ion-col size="8" class="ion-no-padding ion-padding">Padded back</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="4" class="ion-no-padding ion-padding">Pocket</ion-col>
+        <ion-col size="8" class="ion-no-padding ion-padding">External pocket</ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

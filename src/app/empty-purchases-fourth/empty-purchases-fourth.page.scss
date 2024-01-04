@@ -1,0 +1,27 @@
+.is-empty-state-content {
+  height: 100%;
+  padding-left: 32px;
+  padding-right: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  img {
+    width: 65%;
+    max-width: 370px;
+    padding-top: 15vh;
+  }
+
+  ion-button {
+    position: absolute;
+    bottom: 15vh;
+  }
+}
+
+.is-empty-state-content.theme-dark {
+  background: black;
+}
+
+.is-empty-state-content.theme-light {
+  background: #F6F9FA;
+}

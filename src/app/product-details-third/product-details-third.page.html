@@ -1,0 +1,130 @@
+<ion-header class="is-header-logo-centered ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      <img src="assets/imgs/logo-dark.png" />
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" name="cart"></ion-icon>
+      </ion-button>
+      <ion-button>
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-grid class="ion-no-padding ion-margin-top">
+    <ion-row class="ion-padding-horizontal ion-padding-bottom">
+      <ion-col size="9" class="ion-align-self-center">
+        <h3 class="ion-no-margin">Short-sleeved Denim Shirt</h3>
+      </ion-col>
+      <ion-col size="3" class="ion-align-self-center">
+        <div class="ion-text-right is-price ion-no-padding">
+          <span>$29.99</span>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-padding-horizontal ion-padding-bottom">
+      <ion-col size="6" class="ion-align-self-center">
+        <h5 class="ion-no-margin">Brand</h5>
+      </ion-col>
+      <ion-col size="6" class="ion-align-self-center ion-text-right">
+        <ion-badge color="danger" class="ion-margin-horizontal">SALE</ion-badge>
+        <div class="ion-text-right is-old-price ion-no-padding">$29.99</div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-slides pager="true" [options]="slideOpts">
+    <ion-slide>
+      <img src="assets/imgs/product-details-1.jpg"/>
+    </ion-slide>
+    <ion-slide>
+      <img src="assets/imgs/product-details-2.jpg"/>
+    </ion-slide>
+  </ion-slides>
+
+  <div class="is-section-bordered ion-padding-bottom">
+    <div class="ion-padding-horizontal">
+      <ion-grid class="ion-no-padding ion-margin-top">
+        <ion-row class="is-grid-row-bordered">
+          <ion-col size="8" class="ion-padding-horizontal">
+            <span>
+              <ion-icon name="star" color="warning"></ion-icon>
+              <ion-icon name="star" color="warning"></ion-icon>
+              <ion-icon name="star" color="warning"></ion-icon>
+              <ion-icon name="star" color="warning"></ion-icon>
+              <ion-icon name="star" color="light"></ion-icon>
+            </span>
+            <span class="is-rating-text ion-padding-horizontal">3 reviews</span>
+          </ion-col>
+          <ion-col size="4" class="ion-padding-horizontal">
+            <ion-icon name="share" color="light"></ion-icon>
+            <span class="ion-padding-start">Share</span>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <ion-list class="ion-no-margin ion-padding is-inline-items">
+      <ion-item class="is-select-item">
+        <ion-select interface="popover" value="Brown">
+          <ion-select-option value="Brown">Brown</ion-select-option>
+          <ion-select-option value="Black">Black</ion-select-option>
+          <ion-select-option value="White">White</ion-select-option>
+          <ion-select-option value="Blue">Blue</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item class="is-select-item">
+        <ion-select interface="popover" value="1">
+          <ion-select-option value="1">1</ion-select-option>
+          <ion-select-option value="2">2</ion-select-option>
+          <ion-select-option value="3">3</ion-select-option>
+          <ion-select-option value="4">4</ion-select-option>
+          <ion-select-option value="5">5</ion-select-option>
+          <ion-select-option value="6">6</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item class="is-select-item">
+        <ion-select interface="popover" value="XXL">
+          <ion-select-option value="XXL">XXL</ion-select-option>
+          <ion-select-option value="XL">XL</ion-select-option>
+          <ion-select-option value="L">L</ion-select-option>
+          <ion-select-option value="M">M</ion-select-option>
+          <ion-select-option value="S">S</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <div class="ion-padding-horizontal">
+      <ion-button class="ion-margin-top" expand="block">Add to Cart</ion-button>
+      <ion-button expand="block">Save</ion-button>
+    </div>
+  </div>
+
+  <ion-segment class="is-segment-clear is-section-bordered" value="features">
+    <ion-segment-button value="product">
+      <ion-label>PRODUCT</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="brand">
+      <ion-label>BRAND</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="reviews">
+      <ion-label>REVIEWS (4)</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="features">
+      <ion-label>FEATURES</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <div class="ion-padding">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis consectetur fuga officiis nemo qui odit vero enim eos dignissimos unde consequuntur illum similique et distinctio fugit, doloribus necessitatibus fugiat eum.</p>
+  </div>
+
+</ion-content>

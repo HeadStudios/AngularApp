@@ -1,0 +1,37 @@
+ion-thumbnail ion-icon {
+  font-size: 32px;
+}
+.is-hero {
+  background-color: var(--ion-color-primary);
+  color: #ffffff;
+  text-align: left;
+  padding-top: 30px;
+  padding-bottom: 5px;
+
+  ion-item {
+    --background: var(--ion-color-primary);
+    --color: #ffffff;
+  }
+
+  ion-grid {
+    ion-icon {
+      font-size: 32px;
+    }
+    p {
+      color: #ffffff;
+      margin: 0;
+      white-space: normal;
+      font-size: 0.8rem;
+    }
+    ion-item {
+      ion-label {
+        margin-right: 0;
+      }
+    }
+  }
+}
+::ng-deep {
+  .swiper-wrapper {
+    align-items: center;
+  }
+}

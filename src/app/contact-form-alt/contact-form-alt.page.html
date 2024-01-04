@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Contact Form Alternative</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label color="primary" position="stacked">Recipient</ion-label>
+      <ion-select [interfaceOptions]="customAlertOptions" interface="alert" multiple="false" value="one">
+        <ion-select-option value="one">Customer Support</ion-select-option>
+        <ion-select-option value="two">Marketing Department</ion-select-option>
+        <ion-select-option value="three">Careers</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary" position="stacked">Title</ion-label>
+      <ion-input type="text" placeholder="Title" #title></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" position="stacked">Message</ion-label>
+      <ion-textarea type="text" placeholder="Message" #message></ion-textarea>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <ion-button fill="solid" expand="full" [disabled]="!(title.value && message.value)" class="ion-no-margin" size="large">
+    Send
+  </ion-button>
+</ion-footer>

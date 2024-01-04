@@ -1,0 +1,93 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Dashboard</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="is-grid is-grid-tiles is-grid-bordered ion-no-padding">
+    <ion-row class="ion-padding">
+      <ion-col size="5">
+        <h3>
+          <span>Total</span>
+          $3 642
+        </h3>
+      </ion-col>
+      <ion-col size="7" class="ion-no-padding">
+        <ion-row>
+          <h3>Views<span class="ion-float-right">8 464</span></h3>
+        </ion-row>
+        <ion-row>
+          <h3>Likes<span class="ion-float-right">267</span></h3>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-list class="ion-padding is-list-colored">
+    <ion-item>
+      <ion-label>
+        <h2>UI Design</h2>
+      </ion-label>
+      <div slot="end">
+        <h3 class="ion-no-margin">38 sales</h3>
+      </div>
+      <div slot="end">
+        <h2 class="ion-no-margin">$1444</h2>
+      </div>
+      <div slot="end" class="is-list-colored-button-group">
+        <ion-button fill="clear" class="ion-no-padding ion-align-self-center">
+          <ion-icon ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+        </ion-button>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <h2>Mobile Template</h2>
+      </ion-label>
+      <div slot="end">
+        <h3 class="ion-no-margin">132 sales</h3>
+      </div>
+      <div slot="end">
+        <h2 class="ion-no-margin">$1742</h2>
+      </div>
+      <div slot="end" class="is-list-colored-button-group">
+        <ion-button fill="clear" class="ion-no-padding ion-align-self-center">
+          <ion-icon ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+        </ion-button>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <h2>Table Templates</h2>
+      </ion-label>
+      <div slot="end">
+        <h3 class="ion-no-margin">24 sales</h3>
+      </div>
+      <div slot="end">
+        <h2 class="ion-no-margin">$456</h2>
+      </div>
+      <div slot="end" class="is-list-colored-button-group">
+        <ion-button fill="clear" class="ion-no-padding ion-align-self-center">
+          <ion-icon ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+        </ion-button>
+      </div>
+    </ion-item>
+  </ion-list>
+
+  <div>
+    <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+  </div>
+
+  <table class="table table-responsive table-condensed">
+    <tr>
+      <th *ngFor="let label of lineChartLabels"></th>
+    </tr>
+    <tr *ngFor="let d of lineChartData">
+      <td *ngFor="let label of lineChartLabels; let j=index"></td>
+    </tr>
+  </table>
+</ion-content>

@@ -1,0 +1,40 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="is-slider-page-toolbar">
+    <ion-buttons slot="end">
+      <ion-button (click)="skip()" color="primary">Skip</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-slides pager="true" [options]="slideOpts" class="is-slider-page">
+    <ion-slide class="ion-justify-content-start">
+      <img *ngIf="env.theme == 'dark'" src="assets/imgs/walkthrough-alt-dark.png"/>
+      <img *ngIf="env.theme == 'light'" src="assets/imgs/walkthrough-alt-light.png"/>
+      <ion-grid>
+        <ion-row class="ion-justify-content-center">
+          <h1 class="ion-padding-top">Charts Helps You Get Full Information</h1>
+        </ion-row>
+        <ion-row class="ion-justify-content-center">
+          <p>
+            Research in advertising is done in order to produce better advertisements that are more efficient in motivating.
+          </p>
+        </ion-row>
+      </ion-grid>
+    </ion-slide>
+    <ion-slide class="ion-justify-content-start">
+      <img *ngIf="env.theme == 'dark'" src="assets/imgs/walkthrough-alt-2-dark.png"/>
+      <img *ngIf="env.theme == 'light'" src="assets/imgs/walkthrough-alt-2-light.png"/>
+      <ion-grid class="ion-align-self-start">
+        <ion-row class="ion-justify-content-center">
+          <h1 class="ion-padding-top">Statistics For Your Payments</h1>
+        </ion-row>
+        <ion-row class="ion-justify-content-center">
+          <p>
+            Payments statistics provide information on the access to and use of different payment services.
+          </p>
+        </ion-row>
+      </ion-grid>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

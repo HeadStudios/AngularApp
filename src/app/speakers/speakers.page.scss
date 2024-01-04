@@ -1,0 +1,35 @@
+ion-header ion-toolbar {
+  &:first-child {
+    --ion-toolbar-border-color: transparent;
+    --border-width: 0px;
+  }
+  ion-searchbar {
+    background-color: transparent;
+  }
+}
+ion-item ion-label p {
+  white-space: normal;
+}
+.is-avatar-container {
+	text-align: center;
+  img {
+    display: block;
+    margin-top: 15px;
+    max-width: 40px;
+  }
+  ion-button {
+    width: 30px;
+    height: 30px;
+    margin: 4px 0;
+    --padding-start: 0;
+    --padding-end: 0;
+  }
+}
+.is-tag {
+  background-color: var(--ion-color-medium);
+  color: #ffffff;
+  font-size: 0.8rem;
+  margin: 2px 4px 2px 0;
+  padding: 3px 5px;
+  display: inline-block;
+}

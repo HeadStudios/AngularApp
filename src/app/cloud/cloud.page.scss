@@ -1,0 +1,10 @@
+ion-list ion-item div[slot=start] {
+  height: 48px;
+  width: 55px;
+  display: flex;
+  padding-right: 8px;
+
+  img {
+    object-fit: contain;
+  }
+}

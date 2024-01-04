@@ -1,0 +1,29 @@
+ion-item {
+  img {
+    border-radius: 100%;
+  }
+  h6 {
+    margin-bottom: 0px;
+    margin-top: 16px;
+    font-size: 16px;
+    white-space: normal;
+  }
+  p {
+    margin-top: 5px;
+    margin-bottom: 15px;
+    white-space: normal;
+  }
+  ion-button {
+    margin-bottom: 20px;
+  }
+}
+::ng-deep {
+  .theme-dark ion-button:not([color]) {
+    --color: #ffffff;
+    --border-color: rgba(255, 255, 255, 0.3);
+  }
+  .theme-light ion-button:not([color]) {
+    --color: var(--ion-color-dark);
+    --border-color: var(--ion-color-light);
+  }
+}

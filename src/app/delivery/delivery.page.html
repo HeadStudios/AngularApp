@@ -1,0 +1,88 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Delivery</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="is-flex ion-justify-content-evenly ion-align-items-center ion-padding-top ion-margin-vertical">
+    <ion-button class="button button-color ion-no-padding" routerLink="/cart" color="is-mute-normal">
+      <ion-icon slot="icon-only" name="cart"></ion-icon>
+    </ion-button>
+    <ion-icon name="arrow-forward"></ion-icon>
+    <ion-button class="button button-color ion-no-padding" routerLink="/delivery" fill="outline">
+      <ion-icon slot="icon-only" name="location-sharp"></ion-icon>
+    </ion-button>
+    <ion-icon name="arrow-forward"></ion-icon>
+    <ion-button class="button button-color ion-no-padding" routerLink="/payment" color="light" fill="outline">
+      <ion-icon slot="icon-only" name="card"></ion-icon>
+    </ion-button>
+    <ion-icon name="arrow-forward"></ion-icon>
+    <ion-button class="button button-color ion-no-padding" routerLink="/confirmation" color="light" fill="outline">
+      <ion-icon slot="icon-only" name="flag"></ion-icon>
+    </ion-button>
+  </div>
+
+  <ion-grid class="ion-padding-horizontal">
+    <ion-row>
+      <ion-col size="6">
+          <ion-button expand="block">Free Delivery</ion-button>
+      </ion-col>
+      <ion-col size="6">
+          <ion-button expand="block" fill="outline">Express $30</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-list class="ion-padding is-list-spaced">
+    <ion-item>
+      <ion-input type="text" placeholder="Full Name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="email" placeholder="Email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="tel" placeholder="Phone"></ion-input>
+    </ion-item>
+    <ion-item class="is-select-item">
+      <ion-select interface="popover" value="United States">
+        <ion-select-option value="United States">United States</ion-select-option>
+        <ion-select-option value="United Kingdom">United Kingdom</ion-select-option>
+        <ion-select-option value="Japan">Japan</ion-select-option>
+        <ion-select-option value="Germany">Germany</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item class="is-select-item">
+      <ion-select interface="popover" value="California">
+        <ion-select-option value="California">California</ion-select-option>
+        <ion-select-option value="Nevada">Nevada</ion-select-option>
+        <ion-select-option value="Texas">Texas</ion-select-option>
+        <ion-select-option value="Washington">Washington</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6">
+          <ion-item>
+            <ion-input type="text" placeholder="Address"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="6">
+          <ion-item>
+            <ion-input type="text" placeholder="Zip code"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-list>
+
+  <div class="ion-padding">
+    <ion-button class="ion-margin-top" expand="block" routerLink="/payment">Payment</ion-button>
+    <ion-button expand="block" fill="outline">Cancel Order</ion-button>
+  </div>
+
+</ion-content>

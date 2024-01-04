@@ -1,0 +1,18 @@
+.is-empty-state-content-background {
+  height: 100%;
+  text-align:center;
+
+  img {
+    width: 80%;
+    max-width: 370px;
+    margin-top: 10%;
+  }
+}
+
+.is-empty-state-content-background.theme-dark {
+  background: black;
+}
+
+.is-empty-state-content-background.theme-light {
+  background: #F6F9FA;
+}

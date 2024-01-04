@@ -1,0 +1,26 @@
+.is-empty-state-content {
+  width: 100%;
+  text-align:center;
+  padding-left: 32px;
+  padding-right: 32px;
+  padding-top: 12vh;
+  height: 100%;
+
+  img {
+    width: 55%;
+    max-width: 300px;
+    margin-bottom: 30px;
+  }
+
+  h3 {
+  	margin-bottom: 30px;
+  }
+}
+
+.theme-light {
+  background: #f0f4f4;
+}
+
+.theme-dark {
+  background: black;
+}

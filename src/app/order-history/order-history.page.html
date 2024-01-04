@@ -1,0 +1,144 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Order History</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item-group>
+    <ion-item-divider>
+      <ion-label>ORDER #123456</ion-label>
+      <div slot="end" class="ion-padding-horizontal"><a routerLink="/order-history">Details</a></div>
+    </ion-item-divider>
+    <ion-item>
+      <ion-grid class="ion-no-padding ion-margin-vertical">
+        <ion-row>
+          <ion-col size="6">
+            <p class="ion-no-margin">Status</p>
+          </ion-col>
+          <ion-col size="4" class="is-vertical-align">
+            <ion-icon name="timer" color="warning"></ion-icon>
+            <span>During</span>
+          </ion-col>
+          <ion-col size="2" class="ion-text-right">
+            <a routerLink="/order-history">Track</a>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+    <ion-item>
+      <ion-grid class="ion-no-padding ion-margin-vertical">
+        <ion-row class="ion-align-items-stretch">
+          <ion-col size="6">
+            <p class="ion-no-margin">Shipped Date</p>
+          </ion-col>
+          <ion-col size="6">
+            <span>01 APR 2019</span>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+    <ion-item>
+      <ion-grid class="ion-no-padding ion-margin-vertical">
+        <ion-row class="ion-align-items-stretch">
+          <ion-col size="6">
+            <p class="ion-no-margin">Order Amount</p>
+          </ion-col>
+          <ion-col size="6">
+            <span>$104.10</span>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-item-group>
+  <ion-item-group>
+    <ion-item-divider>
+      <ion-label>ORDER #223456</ion-label>
+      <div slot="end" class="ion-padding-horizontal"><a routerLink="/order-history">Details</a></div>
+    </ion-item-divider>
+    <ion-item>
+      <ion-grid class="ion-no-padding ion-margin-vertical">
+        <ion-row>
+          <ion-col size="6">
+            <p class="ion-no-margin">Status</p>
+          </ion-col>
+          <ion-col size="6" class="is-vertical-align">
+            <ion-icon name="close-circle-outline" color="danger"></ion-icon>
+            <span>Canceled</span>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+    <ion-item>
+      <ion-grid class="ion-no-padding ion-margin-vertical">
+        <ion-row class="ion-align-items-stretch">
+          <ion-col size="6">
+            <p class="ion-no-margin">Shipped Date</p>
+          </ion-col>
+          <ion-col size="6">
+            <span>04 APR 2016</span>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+    <ion-item>
+      <ion-grid class="ion-no-padding ion-margin-vertical">
+        <ion-row class="ion-align-items-stretch">
+          <ion-col size="6">
+            <p class="ion-no-margin">Order Amount</p>
+          </ion-col>
+          <ion-col size="6">
+            <span>$99.10</span>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-item-group>
+  <ion-item-group>
+    <ion-item-divider>
+      <ion-label>ORDER #323456</ion-label>
+      <div slot="end" class="ion-padding-horizontal"><a routerLink="/order-history">Details</a></div>
+    </ion-item-divider>
+    <ion-item>
+      <ion-grid class="ion-no-padding ion-margin-vertical">
+        <ion-row>
+          <ion-col size="6">
+            <p class="ion-no-margin">Status</p>
+          </ion-col>
+          <ion-col size="6" class="is-vertical-align">
+            <ion-icon name="checkmark-circle-outline" color="success"></ion-icon>
+            <span>Shipped</span>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+    <ion-item>
+      <ion-grid class="ion-no-padding ion-margin-vertical">
+        <ion-row class="ion-align-items-stretch">
+          <ion-col size="6">
+            <p class="ion-no-margin">Shipped Date</p>
+          </ion-col>
+          <ion-col size="6">
+            <span>30 APR 2017</span>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+    <ion-item>
+      <ion-grid class="ion-no-padding ion-margin-vertical">
+        <ion-row class="ion-align-items-stretch">
+          <ion-col size="6">
+            <p class="ion-no-margin">Order Amount</p>
+          </ion-col>
+          <ion-col size="6">
+            <span>$199.99</span>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-item-group>
+</ion-content>

@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Day Overview</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="is-grid is-grid-tiles is-grid-bordered ion-no-padding">
+    <ion-row class="is-grid-title ion-text-center">
+      <ion-col class="is-tile">
+        Wednesday, September 12
+        <ion-icon class="ion-float-right" name="calendar"></ion-icon>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6" class="is-tile">
+        <h3>
+          <span>Total Views</span>
+          8 165
+        </h3>
+      </ion-col>
+      <ion-col size="6" class="is-tile">
+        <h3>
+          <span>Total Likes</span>
+          727
+        </h3>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div class="ion-padding">
+    <canvas baseChart [datasets]="radarChartData" [labels]="radarChartLabels" [chartType]="radarChartType" [colors]="radarChartColors" [legend]="radarChartLegend" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+  </div>
+
+  <ion-list class="is-list-colored">
+    <ion-item routerLink="/dayOverview" detail="false" class="is-item-category-success">
+      <ion-label>
+        <h2>Aware mobile</h2>
+      </ion-label>
+      <div slot="end">
+        <h3 class="ion-no-margin">3490 views</h3>
+      </div>
+      <div slot="end">
+        <h2 class="ion-no-margin">315 likes</h2>
+      </div>
+      <div slot="end" class="is-list-colored-button-group">
+        <ion-button fill="clear" class="ion-no-padding ion-align-self-center">
+          <ion-icon name="arrow-forward"></ion-icon>
+        </ion-button>
+      </div>
+    </ion-item>
+    <ion-item routerLink="/dayOverview" detail="false" class="is-item-category-secondary">
+      <ion-label>
+        <h2>Sked mobile</h2>
+      </ion-label>
+      <div slot="end">
+        <h3 class="ion-no-margin">4675 views</h3>
+      </div>
+      <div slot="end">
+        <h2 class="ion-no-margin">412 likes</h2>
+      </div>
+      <div slot="end" class="is-list-colored-button-group">
+        <ion-button fill="clear" class="ion-no-padding ion-align-self-center">
+          <ion-icon name="arrow-forward"></ion-icon>
+        </ion-button>
+      </div>
+    </ion-item>
+  </ion-list>
+</ion-content>

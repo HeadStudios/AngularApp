@@ -1,0 +1,210 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/dashboard"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Speaker Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="is-hero">
+    <ion-item detail="false" lines="none">
+      <div class="is-avatar-container" slot="start">
+        <img src="assets/imgs/speaker-1.png">
+      </div>
+      <ion-label>
+        <h1>{{ contactData?.name }}</h1>
+        <div class="ion-text-wrap">Founder & CEO at Jermains Biology</div>
+      </ion-label>
+    </ion-item>
+    <ion-grid class="ion-padding-top ion-text-center">
+      <ion-row>
+        <ion-col size="3">
+          <ion-item routerLink="/speaker-details" lines="none" detail="false" class="ion-text-center">
+            <ion-label>
+              <ion-icon name="star"></ion-icon>
+              <p>Bookmark</p>
+            </ion-label>
+          </ion-item>
+        </ion-col>
+        <ion-col size="3">
+          <ion-item routerLink="/speaker-details" lines="none" detail="false" class="ion-text-center">
+            <ion-label>
+              <ion-icon name="chatbox"></ion-icon>
+              <p>Chat</p>
+            </ion-label>
+          </ion-item>
+        </ion-col>
+        <ion-col size="3">
+          <ion-item routerLink="/speaker-details" lines="none" detail="false" class="ion-text-center">
+            <ion-label>
+              <ion-icon name="mail"></ion-icon>
+              <p>Email</p>
+            </ion-label>
+          </ion-item>
+        </ion-col>
+        <ion-col size="3">
+          <ion-item routerLink="/speaker-details" lines="none" detail="false" class="ion-text-center">
+            <ion-label>
+              <ion-icon name="people"></ion-icon>
+              <p>Let's Meet</p>
+            </ion-label>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+
+  <ion-item-group class="is-list-square">
+    <ion-item-divider>
+      <ion-label>Injustices</ion-label>
+    </ion-item-divider>
+    <ion-item *ngFor="let injustice of injustices" button (click)="goToInjusticeDetails(injustice.id)" detail="false" class="is-list-square-has-square">
+      <ion-thumbnail slot="start">
+        <div><ion-icon name="alert-circle"></ion-icon></div>
+      </ion-thumbnail>
+      <ion-label>
+        <p class="is-list-square-title">{{ injustice.title }}</p>
+      </ion-label>
+    </ion-item>
+    <ion-button expand="block" (click)="openAddInjusticeModal()">Add Injustice</ion-button>
+  </ion-item-group>
+
+
+
+  <ion-item-group class="is-list-square">
+    <ion-item-divider>
+      <ion-label>SPEAKING AT</ion-label>
+    </ion-item-divider>
+    <ion-item button (click)="goToSessionDetails()" detail="false" class="is-list-square-has-square">
+      <ion-thumbnail slot="start">
+        <div><span>17:00</span><br><span>18:00</span></div>
+      </ion-thumbnail>
+      <ion-label>
+        <p class="is-list-square-title">Session A3: AI and Machine Learning</p>
+        <p class="is-list-square-note"><ion-icon name="location-sharp"></ion-icon> Room A3 <br> Tue Jan 21, 2020</p>
+      </ion-label>
+      <div slot="end">
+        <ion-button (click)="onIconClick($event)" fill="clear">
+          <ion-icon name="star"></ion-icon>
+        </ion-button>
+      </div>
+    </ion-item>
+    <ion-item button (click)="goToSessionDetails()" detail="false" class="is-list-square-has-square">
+      <ion-thumbnail slot="start">
+        <div><span>17:00</span><br><span>18:00</span></div>
+      </ion-thumbnail>
+      <ion-label>
+        <p class="is-list-square-title">Session A1: Data analysis</p>
+        <p class="is-list-square-note"><ion-icon name="location-sharp"></ion-icon> Room A1 <br> Tue Jan 21, 2020</p>
+      </ion-label>
+      <div slot="end">
+        <ion-button (click)="onIconClick($event)" fill="clear">
+          <ion-icon name="star-outline"></ion-icon>
+        </ion-button>
+      </div>
+    </ion-item>
+    <ion-item button (click)="goToSessionDetails()" detail="false" class="is-list-square-has-square">
+      <ion-thumbnail slot="start">
+        <div><span>17:00</span><br><span>18:00</span></div>
+      </ion-thumbnail>
+      <ion-label>
+        <p class="is-list-square-title">Session A2: Data science</p>
+        <p class="is-list-square-note"><ion-icon name="location-sharp"></ion-icon> Room A2 <br> Tue Jan 21, 2020</p>
+      </ion-label>
+      <div slot="end">
+        <ion-button (click)="onIconClick($event)" fill="clear">
+          <ion-icon name="star-outline"></ion-icon>
+        </ion-button>
+      </div>
+    </ion-item>
+  </ion-item-group>
+  <ion-item-group>
+    <ion-item-divider>
+      <ion-label>BIO</ion-label>
+    </ion-item-divider>
+    <div class="ion-padding">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime non eius optio iusto similique officiis voluptatum fugit quisquam, ratione illum suscipit autem eum possimus iste cupiditate ipsam inventore sed... <a href="#" routerLink="/speaker-details">Read more</a></div>
+  </ion-item-group>
+  <ion-item-group class="is-list-square">
+    <ion-item-divider>
+      <ion-label>AFFILIATIONS</ion-label>
+    </ion-item-divider>
+    <ion-item detail="false" class="is-list-square-has-square">
+      <ion-thumbnail slot="start">
+        <div><ion-icon name="business"></ion-icon></div>
+      </ion-thumbnail>
+      <ion-label>
+        <p class="is-list-square-title">L. O. Smith, Lorem Center ABC</p>
+        <p>Vice President</p>
+      </ion-label>
+    </ion-item>
+  </ion-item-group>
+  <ion-item-group class="is-list-square">
+    <ion-item-divider>
+      <ion-label>EDUCATION</ion-label>
+    </ion-item-divider>
+    <ion-item detail="false" class="is-list-square-has-square">
+      <ion-thumbnail slot="start">
+        <div><ion-icon name="newspaper"></ion-icon></div>
+      </ion-thumbnail>
+      <ion-label>
+        <p class="is-list-square-title">University of Oxford</p>
+        <p>Ph.D., Computer Science <br> 2000 to 2005</p>
+      </ion-label>
+    </ion-item>
+    <ion-item detail="false" class="is-list-square-has-square">
+      <ion-thumbnail slot="start">
+        <div><ion-icon name="newspaper"></ion-icon></div>
+      </ion-thumbnail>
+      <ion-label>
+        <p class="is-list-square-title">University of Oxford</p>
+        <p>M.Sc., Computer Science <br> 2007 to 2009</p>
+      </ion-label>
+    </ion-item>
+  </ion-item-group>
+  <ion-item-group class="is-list-square">
+    <ion-item-divider>
+      <ion-label>WEBSITE</ion-label>
+    </ion-item-divider>
+    <ion-item href="https://www.google.com" detail="false" class="is-list-square-has-square">
+      <ion-thumbnail slot="start">
+        <div><ion-icon name="link"></ion-icon></div>
+      </ion-thumbnail>
+      <ion-label>
+        <p class="is-list-square-title"><a target="_blank" href="https://www.google.com">www.google.com</a></p>
+      </ion-label>
+    </ion-item>
+  </ion-item-group>
+  <ion-item-group class="is-list-square">
+    <ion-item-divider>
+      <ion-label>SOCIAL PROFILES</ion-label>
+    </ion-item-divider>
+    <ion-item href="https://www.linkedin.com/" detail="false" class="is-list-square-has-square">
+      <ion-thumbnail slot="start">
+        <div><ion-icon name="logo-linkedin"></ion-icon></div>
+      </ion-thumbnail>
+      <ion-label>
+        <p class="is-list-square-title"><a target="_blank" href="https://www.linkedin.com/">Linkedin Profile</a></p>
+      </ion-label>
+    </ion-item>
+  </ion-item-group>
+  <ion-item-group class="is-list-square">
+    <ion-item-divider>
+      <ion-label>SPONSORS</ion-label>
+    </ion-item-divider>
+    <ion-slides [options]="slideOpts" pager="true">
+      <ion-slide class="ion-padding">
+        <img src="assets/imgs/sponsor-1.png"/>
+      </ion-slide>
+      <ion-slide class="ion-padding">
+        <img src="assets/imgs/sponsor-2.png"/>
+      </ion-slide>
+      <ion-slide class="ion-padding">
+        <img src="assets/imgs/sponsor-3.png"/>
+      </ion-slide>
+    </ion-slides>
+  </ion-item-group>
+</ion-content>

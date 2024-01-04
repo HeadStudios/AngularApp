@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Payment History</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list lines="none" class="is-list-colored">
+    <div *ngFor="let item of items; let i = index">
+      <ion-item [ngClass]="item.category">
+        <ion-thumbnail slot="start" class="is-icon-thumbnail">
+          <ion-icon name="{{item.icon}}"></ion-icon>
+        </ion-thumbnail>
+        <ion-label>
+          <h2 (click)="itemTapped(i)">{{item.title}} <ion-icon name="arrow-down" *ngIf="!isShown[i]"></ion-icon><ion-icon name="arrow-up" *ngIf="isShown[i]"></ion-icon></h2>
+          <p>{{item.date}}</p>
+        </ion-label>
+        <div slot="end" class="is-list-colored-button-group">
+          <h3>{{item.amount}}</h3>
+        </div>
+      </ion-item>
+      <div class="ion-padding-horizontal">
+        <ion-grid [class.is-hide]="!isShown[i] || false" class="ion-no-padding">
+          <ion-row>
+            <ion-col>
+              Transaction number
+            </ion-col>
+            <ion-col class="ion-text-right">
+              {{item.transaction}}
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              Profile ID
+            </ion-col>
+            <ion-col class="ion-text-right">
+              {{item.profileId}}
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              E-mail
+            </ion-col>
+            <ion-col class="is-color-primary ion-text-right">
+              {{item.email}}
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-button fill="outline">New Payment</ion-button>
+            <ion-button fill="outline" color="is-mute-normal">Cancel</ion-button>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </div>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Finish</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="is-flex ion-justify-content-evenly ion-align-items-center ion-padding-vertical ion-margin-vertical">
+    <ion-button class="button button-color ion-no-padding" routerLink="/cart" color="is-mute-normal">
+      <ion-icon slot="icon-only" name="cart"></ion-icon>
+    </ion-button>
+    <ion-icon name="arrow-forward"></ion-icon>
+    <ion-button class="button button-color ion-no-padding" routerLink="/delivery" color="is-mute-normal">
+      <ion-icon slot="icon-only" name="location-sharp"></ion-icon>
+    </ion-button>
+    <ion-icon name="arrow-forward"></ion-icon>
+    <ion-button class="button button-color ion-no-padding" routerLink="/payment" color="is-mute-normal">
+      <ion-icon slot="icon-only" name="card"></ion-icon>
+    </ion-button>
+    <ion-icon name="arrow-forward"></ion-icon>
+    <ion-button class="button button-color ion-no-padding" routerLink="/confirmation" color="is-mute-normal">
+      <ion-icon slot="icon-only" name="flag"></ion-icon>
+    </ion-button>
+  </div>
+
+  <div class="ion-margin ion-text-center is-solid-circle-icon is-icon-xl">
+    <ion-icon slot="icon-only" name="checkmark"></ion-icon>
+  </div>
+
+  <div class="ion-padding ion-text-center">
+    <h2>Congratulations Your Order is Accepted</h2>
+    <p>Character may be manifested in the great moments, but it is made in the small ones.</p>
+  </div>
+
+  <div class="ion-padding">
+    <ion-button class="ion-margin-top" expand="block">Track Order</ion-button>
+    <ion-button expand="block" fill="outline">View Account</ion-button>
+  </div>
+
+</ion-content>

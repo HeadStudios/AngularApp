@@ -1,0 +1,21 @@
+.is-empty-state-content-background {
+  background-image: url("assets/imgs/empty-inbox-3.png");
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+
+  .is-empty-state-text{
+    width: 100%;
+    text-align:center;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+ion-fab-button {
+  --background: transparent;
+  --color: var(--ion-color-primary);
+  --box-shadow: 0;
+  --height: 32px;
+  --width: 32px;
+}

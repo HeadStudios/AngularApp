@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Home
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding ion-text-left is-hero">
+    <h1 class="ion-no-margin">Hello! Log in and Get More Info</h1>
+
+    <p>
+      There is such a lot of talk going around about branding, but what exactly is your brand and how do you use.
+    </p>
+  </div>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" class="is-tile is-tile-colored ion-text-center">
+        <ion-item routerLink="/home" detail="false" lines="none" class="ion-text-center ion-no-padding">
+          <ion-label class="ion-no-margin">
+            <div class="is-background-dark ion-padding">
+              <ion-icon name="home"></ion-icon>
+              <h6 class="is-tile-text">
+                Mailbox
+              </h6>
+              <p class="is-tile-text">
+                Every large design company whether it’s a multi-national.
+              </p>
+            </div>
+          </ion-label>
+        </ion-item>
+      </ion-col>
+      <ion-col size="6" class="is-tile is-tile-colored ion-text-center">
+        <ion-item routerLink="/home" detail="false" lines="none" class="ion-text-center ion-no-padding">
+          <ion-label class="ion-no-margin">
+            <div class="is-background-success ion-padding">
+              <ion-icon name="card"></ion-icon>
+              <h6 class="is-tile-text">
+                Money
+              </h6>
+              <p class="is-tile-text">
+                Keep track of your expense and income in simple steps.
+              </p>
+            </div>
+          </ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+  <p class="ion-padding-horizontal">
+    Login with
+  </p>
+
+  <ion-list class="is-list-buttons ion-padding ion-no-margin">
+    <ion-item button detail="false">
+      <ion-icon slot="end" name="logo-facebook" color="is-facebook-icon"></ion-icon>
+      <ion-label>Facebook</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-list class="is-list-buttons ion-padding ion-no-margin">
+    <ion-item button detail="false">
+      <ion-icon slot="end" name="logo-twitter" color="is-twitter-icon"></ion-icon>
+      <ion-label>Twitter</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,99 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Wallet Alternative</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="is-grid is-grid-tiles is-grid-bordered ion-no-padding">
+    <ion-row class="ion-padding">
+      <ion-col size="5">
+        <h3>
+          <span>Balance</span>
+          $2 389
+        </h3>
+      </ion-col>
+      <ion-col size="7" class="ion-no-padding">
+        <ion-row>
+          <h3>Income<span class="is-color-success ion-float-right">+$5 600</span></h3>
+        </ion-row>
+        <ion-row>
+          <h3>Expense<span class="is-color-danger ion-float-right">-$3 900</span></h3>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div>
+    <canvas baseChart
+      [datasets]="lineChartData"
+      [labels]="lineChartLabels"
+      [options]="lineChartOptions"
+      [colors]="lineChartColors"
+      [legend]="lineChartLegend"
+      [chartType]="lineChartType"
+      (chartHover)="chartHovered($event)"
+      (chartClick)="chartClicked($event)">
+    </canvas>
+  </div>
+
+  <table class="table table-responsive table-condensed">
+    <tr>
+      <th *ngFor="let label of lineChartLabels"></th>
+    </tr>
+    <tr *ngFor="let d of lineChartData">
+      <td *ngFor="let label of lineChartLabels; let j=index"></td>
+    </tr>
+  </table>
+
+  <ion-item-group>
+    <ion-item-divider>
+      <ion-label>Today</ion-label>
+    </ion-item-divider>
+    <ion-item>
+      <ion-label>
+        <ion-note>Food • 09:02 PM</ion-note>
+        <div class="is-title-with-info">
+          <h2>Espresso & Iced Coffee with Milk</h2>
+          <h3 class="is-color-danger">- $12</h3>
+        </div>
+        <ion-button fill="outline" shape="round">Starbucks</ion-button>
+        <ion-button fill="outline" shape="round">Coffee</ion-button>
+        <ion-button fill="outline" shape="round">Milk</ion-button>
+      </ion-label>
+    </ion-item>
+  </ion-item-group>
+
+  <ion-item-group>
+    <ion-item-divider>
+      <ion-label>Yesterday</ion-label>
+    </ion-item-divider>
+    <ion-item>
+      <ion-label>
+        <ion-note>Work • 06:34 PM </ion-note>
+        <div class="is-title-with-info">
+          <h2>Payment for Ecommerce Project</h2>
+          <h3 class="is-color-success">+ $1850</h3>
+        </div>
+        <ion-button fill="outline" shape="round">App</ion-button>
+        <ion-button fill="outline" shape="round">Ecommerce</ion-button>
+        <ion-button fill="outline" shape="round">Web Design</ion-button>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <ion-note>Food • 09:02 PM</ion-note>
+        <div class="is-title-with-info">
+          <h2>Espresso & Iced Coffee with Milk</h2>
+          <h3 class="is-color-danger">- $12</h3>
+        </div>
+        <ion-button fill="outline" shape="round">Starbucks</ion-button>
+        <ion-button fill="outline" shape="round">Coffee</ion-button>
+        <ion-button fill="outline" shape="round">Milk</ion-button>
+      </ion-label>
+    </ion-item>
+  </ion-item-group>
+</ion-content>

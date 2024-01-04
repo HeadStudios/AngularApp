@@ -1,0 +1,83 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Expense Overview</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="ion-no-padding">
+    <ion-row>
+      <ion-col size="7" class="ion-no-padding">
+        <ion-list class="ion-padding ion-no-margin">
+          <ion-list-header>
+            <ion-label>Choose Date: From</ion-label>
+          </ion-list-header>
+          <ion-item>
+            <ion-icon name="calendar" slot="end"></ion-icon>
+            <ion-label>
+              <h2>April 20, 2017</h2>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+
+        <ion-list class="ion-padding ion-no-margin">
+          <ion-list-header>
+            <ion-label>Choose Date: To</ion-label>
+          </ion-list-header>
+          <ion-item>
+            <ion-icon name="calendar" slot="end"></ion-icon>
+            <ion-label>
+              <h2>Today</h2>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+
+        <ion-grid class="is-grid is-grid-tiles ion-no-padding">
+          <ion-row>
+            <ion-col size="6" class="is-tile">
+              <h3>
+                <span>Total Expense</span>
+                $1 630
+              </h3>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-col>
+      <ion-col size="5" class="ion-no-padding">
+        <canvas baseChart style="height: 100%; width: 100%; padding-top: 16px; padding-bottom:16px;"
+          [data]="doughnutChartData"
+          [labels]="doughnutChartLabels"
+          [chartType]="doughnutChartType"
+          [options]="doughnutChartOptions"
+          [colors]="doughnutChartColors"
+          [legend]="doughnutChartLegend"
+          (chartHover)="chartHovered($event)"
+          (chartClick)="chartClicked($event)">
+        </canvas>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-item-group class="is-collapsible-list-with-divider" *ngFor="let item of items; let i = index">
+    <ion-item-divider>
+      <ion-label>
+        <ion-col size="8" class="ion-no-padding">
+          <h2 (click)="itemTapped(i)">{{item.divider.title}}<ion-icon name="arrow-down" *ngIf="!isShown[i]"></ion-icon><ion-icon name="arrow-up" *ngIf="isShown[i]"></ion-icon></h2>
+        </ion-col>
+      </ion-label>
+      <ion-col size="4" slot="end" class="ion-no-padding">
+        <ion-row class="ion-justify-content-between"><span>{{item.divider.percentage}}</span><span>{{item.divider.amount}}</span></ion-row>
+      </ion-col>
+    </ion-item-divider>
+    <ion-item [class.is-hide]="!isShown[i] || false" *ngFor="let subitem of item.subitems">
+      <ion-label>
+        <h2>{{subitem.title}}</h2>
+        <p>{{subitem.description}}</p>
+      </ion-label>
+      <ion-note class="ion-align-self-start" slot="end">{{subitem.amount}}</ion-note>
+    </ion-item>
+  </ion-item-group>
+</ion-content>

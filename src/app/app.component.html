@@ -1,0 +1,267 @@
+<ion-app class="theme-{{env.theme}}">
+  <ion-split-pane contentId="main-content">
+    <ion-menu contentId="main-content">
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Menu</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list>
+          <ion-item-divider>
+            <ion-label>Intro</ion-label>
+          </ion-item-divider>
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of walletPages">
+            <ion-item
+              [routerDirection]="'root'"
+              [routerLink]="[p.url]"
+              routerLinkActive="selected-menu-item">
+              <ion-icon slot="start" [name]="p.icon"></ion-icon>
+              <ion-label>
+                {{p.title}}
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <!--<ion-item-divider>
+            <ion-label>Organizers</ion-label>
+          </ion-item-divider>
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of organizerPages">
+            <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
+              <ion-icon slot="start" [name]="p.icon"></ion-icon>
+              <ion-label>
+                {{p.title}}
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>-->
+
+          <ion-item-divider>
+            <ion-label>Intro and Login</ion-label>
+          </ion-item-divider>
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of introPages">
+            <ion-item
+              [routerDirection]="'root'"
+              [routerLink]="[p.url]"
+              routerLinkActive="selected-menu-item">
+              <ion-icon slot="start" [name]="p.icon"></ion-icon>
+              <ion-label>
+                {{p.title}}
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-item-divider>
+            <ion-label>Walkthroughs</ion-label>
+          </ion-item-divider>
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of walkthroughPages">
+            <ion-item
+              [routerDirection]="'root'"
+              [routerLink]="[p.url]"
+              routerLinkActive="selected-menu-item">
+              <ion-icon slot="start" [name]="p.icon"></ion-icon>
+              <ion-label>
+                {{p.title}}
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-item-divider>
+            <ion-label>Profile</ion-label>
+          </ion-item-divider>
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of profilePages">
+            <ion-item
+              [routerDirection]="'root'"
+              [routerLink]="[p.url]"
+              routerLinkActive="selected-menu-item">
+              <ion-icon slot="start" [name]="p.icon"></ion-icon>
+              <ion-label>
+                {{p.title}}
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-item-divider>
+            <ion-label>Account</ion-label>
+          </ion-item-divider>
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of accountPages">
+            <ion-item
+              [routerDirection]="'root'"
+              [routerLink]="[p.url]"
+              routerLinkActive="selected-menu-item">
+              <ion-icon slot="start" [name]="p.icon"></ion-icon>
+              <ion-label>
+                {{p.title}}
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-item-divider>
+            <ion-label>Forms</ion-label>
+          </ion-item-divider>
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of formPages">
+            <ion-item
+              [routerDirection]="'root'"
+              [routerLink]="[p.url]"
+              routerLinkActive="selected-menu-item">
+              <ion-icon slot="start" [name]="p.icon"></ion-icon>
+              <ion-label>
+                {{p.title}}
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-item-divider>
+            <ion-label>Cloud</ion-label>
+          </ion-item-divider>
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of cloudPages">
+            <ion-item
+              [routerDirection]="'root'"
+              [routerLink]="[p.url]"
+              routerLinkActive="selected-menu-item">
+              <ion-icon slot="start" [name]="p.icon"></ion-icon>
+              <ion-label>
+                {{p.title}}
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-item-divider>
+            <ion-label>Events</ion-label>
+          </ion-item-divider>
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of eventPages">
+            <ion-item
+              [routerDirection]="'root'"
+              [routerLink]="[p.url]"
+              routerLinkActive="selected-menu-item">
+              <ion-icon slot="start" [name]="p.icon"></ion-icon>
+              <ion-label>
+                {{p.title}}
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-item-divider>
+            <ion-label>Commerce</ion-label>
+          </ion-item-divider>
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of commercePages">
+            <ion-item
+              [routerDirection]="'root'"
+              [routerLink]="[p.url]"
+              routerLinkActive="selected-menu-item">
+              <ion-icon slot="start" [name]="p.icon"></ion-icon>
+              <ion-label>
+                {{p.title}}
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-item-divider>
+            <ion-label>Conference</ion-label>
+          </ion-item-divider>
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of conference">
+            <ion-item
+              [routerDirection]="'root'"
+              [routerLink]="[p.url]"
+              routerLinkActive="selected-menu-item">
+              <ion-icon slot="start" [name]="p.icon"></ion-icon>
+              <ion-label>
+                {{p.title}}
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-item-divider>
+            <ion-label>Social</ion-label>
+          </ion-item-divider>
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of socialPages">
+            <ion-item
+              [routerDirection]="'root'"
+              [routerLink]="[p.url]"
+              routerLinkActive="selected-menu-item">
+              <ion-icon slot="start" [name]="p.icon"></ion-icon>
+              <ion-label>
+                {{p.title}}
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-item-divider>
+            <ion-label>Food</ion-label>
+          </ion-item-divider>
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of food">
+            <ion-item
+              [routerDirection]="'root'"
+              [routerLink]="[p.url]"
+              routerLinkActive="selected-menu-item">
+              <ion-icon slot="start" [name]="p.icon"></ion-icon>
+              <ion-label>
+                {{p.title}}
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-item-divider>
+            <ion-label>Empty States</ion-label>
+          </ion-item-divider>
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of emptyStatePages">
+            <ion-item
+              [routerDirection]="'root'"
+              [routerLink]="[p.url]"
+              routerLinkActive="selected-menu-item">
+              <ion-icon slot="start" [name]="p.icon"></ion-icon>
+              <ion-label>
+                {{p.title}}
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-item-divider>
+            <ion-label>Components</ion-label>
+          </ion-item-divider>
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of componentPages">
+            <ion-item
+              [routerDirection]="'root'"
+              [routerLink]="[p.url]"
+              routerLinkActive="selected-menu-item">
+              <ion-icon slot="start" [name]="p.icon"></ion-icon>
+              <ion-label>
+                {{p.title}}
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-item-divider>
+            <ion-label>Enhanced Lists</ion-label>
+          </ion-item-divider>
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of enhancedListPages">
+            <ion-item
+              [routerDirection]="'root'"
+              [routerLink]="[p.url]"
+              routerLinkActive="selected-menu-item">
+              <ion-icon slot="start" [name]="p.icon"></ion-icon>
+              <ion-label>
+                {{p.title}}
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-item-divider>
+            <ion-label>Ionic Lists</ion-label>
+          </ion-item-divider>
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of ionicListPages">
+            <ion-item
+              [routerDirection]="'root'"
+              [routerLink]="[p.url]"
+              routerLinkActive="selected-menu-item">
+              <ion-icon slot="start" [name]="p.icon"></ion-icon>
+              <ion-label>
+                {{p.title}}
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

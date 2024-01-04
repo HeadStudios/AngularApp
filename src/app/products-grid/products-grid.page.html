@@ -1,0 +1,91 @@
+<ion-header class="is-header-logo-centered ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      <img src="assets/imgs/logo-dark.png" />
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" name="cart"></ion-icon>
+      </ion-button>
+      <ion-button>
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-segment class="is-segment-bordered" mode="md" value="grid">
+    <ion-segment-button mode="md" value="options">
+      <ion-icon name="options"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button mode="md" value="funnel">
+      <ion-icon name="funnel"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button mode="md" value="reorder">
+      <ion-icon name="reorder-three"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button mode="md" value="grid">
+      <ion-icon name="grid"></ion-icon>
+    </ion-segment-button>
+  </ion-segment>
+
+  <ion-grid class="is-grid-bordered ion-no-padding">
+    <ion-row class="ion-text-center">
+      <ion-col size="6" class="ion-no-padding">
+        <ion-item lines="none" class="ion-text-center" detail="false" routerLink="/products-grid">
+          <ion-label>
+            <h2 class="ion-padding-horizontal">{{ "Beats by Dr. Dre - Solo2 Wireless Headphones" | slice:0:21 }}...</h2>
+            <img class="is-rounded-image" src="assets/imgs/prod1.png">
+            <div class="is-product-info ion-justify-content-center ion-align-items-center">
+              <ion-badge color="warning">HIT</ion-badge>
+              <p class="is-product-price">$204</p>
+            </div>
+          </ion-label>
+        </ion-item>
+      </ion-col>
+      <ion-col size="6" class="ion-no-padding">
+        <ion-item lines="none" class="ion-text-center" detail="false" routerLink="/products-grid">
+          <ion-label>
+            <h2 class="ion-padding-horizontal">{{ "Sony - MDR XB650BT Over-the-Ear" | slice:0:21 }}...</h2>
+            <img class="is-rounded-image" src="assets/imgs/prod2.png">
+            <div class="is-product-info ion-justify-content-center ion-align-items-center">
+              <ion-badge color="danger">SALE</ion-badge>
+              <p class="is-product-price">$79</p>
+              <p class="is-product-price-old">$99</p>
+            </div>
+          </ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-text-center">
+      <ion-col size="6" class="ion-no-padding">
+        <ion-item lines="none" class="ion-text-center" detail="false" routerLink="/products-grid">
+          <ion-label>
+            <h2 class="ion-padding-horizontal">{{ "GoPro - HERO4 Black 4K Action Camera" | slice:0:21 }}...</h2>
+            <img class="is-rounded-image" src="assets/imgs/prod3.png">
+            <div class="is-product-info ion-justify-content-center ion-align-items-center">
+              <ion-badge color="success">NEW</ion-badge>
+              <p class="is-product-price">$449.99</p>
+            </div>
+          </ion-label>
+        </ion-item>
+      </ion-col>
+      <ion-col size="6" class="ion-no-padding">
+        <ion-item lines="none" class="ion-text-center" detail="false" routerLink="/products-grid">
+          <ion-label>
+            <h2 class="ion-padding-horizontal">{{ "Sony - HDR-AS50 HD Action Camera - Black" | slice:0:21 }}...</h2>
+            <img class="is-rounded-image" src="assets/imgs/prod4.png">
+            <div class="is-product-info ion-justify-content-center ion-align-items-center">
+              <p class="is-product-price">$149.99</p>
+            </div>
+          </ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

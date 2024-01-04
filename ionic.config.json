@@ -1,0 +1,8 @@
+{
+  "name": "ionic-stencil-essential",
+  "integrations": {
+    "cordova": {},
+    "capacitor": {}
+  },
+  "type": "angular"
+}

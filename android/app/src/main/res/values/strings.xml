@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Sunlight Quest</string>
+    <string name="title_activity_main">Sunlight Quest</string>
+    <string name="package_name">monster.rrdevours.app</string>
+    <string name="custom_url_scheme">monster.rrdevours.app</string>
+</resources>

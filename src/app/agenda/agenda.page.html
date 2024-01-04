@@ -1,0 +1,231 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Agenda</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-segment class="is-segment-bordered" mode="md" value="agenda">
+    <ion-segment-button mode="md" value="agenda">
+      <ion-label>Agenda</ion-label>
+    </ion-segment-button>
+    <ion-segment-button mode="md" value="myagenda">
+      <ion-label>My Agenda</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  <ion-segment class="is-segment-clear" mode="md" scrollable="true" value="t-shirt">
+    <ion-segment-button mode="md" value="t-shirt">
+      <ion-label>14 Nov</ion-label>
+    </ion-segment-button>
+    <ion-segment-button mode="md" value="bags">
+      <ion-label>15 Nov</ion-label>
+    </ion-segment-button>
+    <ion-segment-button mode="md" value="accessories">
+      <ion-label>16 Nov</ion-label>
+    </ion-segment-button>
+    <ion-segment-button mode="md" value="shoes">
+      <ion-label>17 Nov</ion-label>
+    </ion-segment-button>
+    <ion-segment-button mode="md" value="jeans">
+      <ion-label>18 Nov</ion-label>
+    </ion-segment-button>
+    <ion-segment-button mode="md" value="trousers">
+      <ion-label>19 Nov</ion-label>
+    </ion-segment-button>
+    <ion-segment-button mode="md" value="other">
+      <ion-label>20 Nov</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <ion-item-group class="is-list-square is-list-colored">
+    <ion-item-divider sticky="true">
+      <ion-label>14:35 PM</ion-label>
+    </ion-item-divider>
+    <ion-item routerLink="/agenda" detail="false" class="is-list-square-has-square is-item-category-success ion-no-padding">
+      <ion-thumbnail slot="start">
+        <div><span>14:35</span><br><span>15:35</span></div>
+      </ion-thumbnail>
+      <ion-label>
+        <p class="is-list-square-title">Lunch Break</p>
+        <p class="is-list-square-note"><ion-icon name="location-sharp"></ion-icon> Room A1</p>
+      </ion-label>
+      <div slot="end">
+        <ion-button (click)="onIconClick($event)" fill="clear">
+          <ion-icon name="star-outline"></ion-icon>
+        </ion-button>
+      </div>
+    </ion-item>
+  </ion-item-group>
+  <ion-item-group class="is-list-square is-list-colored">
+    <ion-item-divider sticky="true">
+      <ion-label>17:00 PM</ion-label>
+    </ion-item-divider>
+    <ion-item button (click)="goToSessionDetails()" detail="false" class="is-list-square-has-square is-item-category-success ion-no-padding">
+      <ion-thumbnail slot="start">
+        <div><span>17:00</span><br><span>18:00</span></div>
+      </ion-thumbnail>
+      <ion-label>
+        <p class="is-list-square-title">Session A3: AI and Machine Learning</p>
+        <p class="is-list-square-note"><ion-icon name="location-sharp"></ion-icon> Room A3</p>
+      </ion-label>
+      <div slot="end">
+        <ion-button (click)="onIconClick($event)" fill="clear">
+          <ion-icon name="star"></ion-icon>
+        </ion-button>
+      </div>
+    </ion-item>
+    <ion-item button (click)="goToSessionDetails()" detail="false" class="is-list-square-has-square is-item-category-primary ion-no-padding">
+      <ion-thumbnail slot="start">
+        <div><span>17:00</span><br><span>18:00</span></div>
+      </ion-thumbnail>
+      <ion-label>
+        <p class="is-list-square-title">Session A1: Data analysis</p>
+        <p class="is-list-square-note"><ion-icon name="location-sharp"></ion-icon> Room A1</p>
+      </ion-label>
+      <div slot="end">
+        <ion-button (click)="onIconClick($event)" fill="clear">
+          <ion-icon name="star-outline"></ion-icon>
+        </ion-button>
+      </div>
+    </ion-item>
+    <ion-item button (click)="goToSessionDetails()" detail="false" class="is-list-square-has-square is-item-category-success ion-no-padding">
+      <ion-thumbnail slot="start">
+        <div><span>17:00</span><br><span>18:00</span></div>
+      </ion-thumbnail>
+      <ion-label>
+        <p class="is-list-square-title">Session A2: Data science</p>
+        <p class="is-list-square-note"><ion-icon name="location-sharp"></ion-icon> Room A2</p>
+      </ion-label>
+      <div slot="end">
+        <ion-button (click)="onIconClick($event)" fill="clear">
+          <ion-icon name="star-outline"></ion-icon>
+        </ion-button>
+      </div>
+    </ion-item>
+    <ion-item button (click)="goToSessionDetails()" detail="false" class="is-list-square-has-square is-item-category-primary ion-no-padding">
+      <ion-thumbnail slot="start">
+        <div><span>17:00</span><br><span>19:00</span></div>
+      </ion-thumbnail>
+      <ion-label>
+        <p class="is-list-square-title">Session A8: Social Network Algorithms</p>
+        <p class="is-list-square-note"><ion-icon name="location-sharp"></ion-icon> Room A8</p>
+      </ion-label>
+      <div slot="end">
+        <ion-button (click)="onIconClick($event)" fill="clear">
+          <ion-icon name="star"></ion-icon>
+        </ion-button>
+      </div>
+    </ion-item>
+  </ion-item-group>
+  <ion-item-group class="is-list-square is-list-colored">
+    <ion-item-divider sticky="true">
+      <ion-label>18:00 PM</ion-label>
+    </ion-item-divider>
+    <ion-item button (click)="goToSessionDetails()" detail="false" class="is-list-square-has-square is-item-category-primary ion-no-padding">
+      <ion-thumbnail slot="start">
+        <div><span>18:00</span><br><span>19:00</span></div>
+      </ion-thumbnail>
+      <ion-label>
+        <p class="is-list-square-title">Session B5: 5G and Mobility</p>
+        <p class="is-list-square-note"><ion-icon name="location-sharp"></ion-icon> Room B5</p>
+      </ion-label>
+      <div slot="end">
+        <ion-button (click)="onIconClick($event)" fill="clear">
+          <ion-icon name="star"></ion-icon>
+        </ion-button>
+      </div>
+    </ion-item>
+    <ion-item button (click)="goToSessionDetails()" detail="false" class="is-list-square-has-square is-item-category-primary ion-no-padding">
+      <ion-thumbnail slot="start">
+        <div><span>18:00</span><br><span>19:00</span></div>
+      </ion-thumbnail>
+      <ion-label>
+        <p class="is-list-square-title">Session B4: Internet of Things</p>
+        <p class="is-list-square-note"><ion-icon name="location-sharp"></ion-icon> Room B4</p>
+      </ion-label>
+      <div slot="end">
+        <ion-button (click)="onIconClick($event)" fill="clear">
+          <ion-icon name="star-outline"></ion-icon>
+        </ion-button>
+      </div>
+    </ion-item>
+    <ion-item button (click)="goToSessionDetails()" detail="false" class="is-list-square-has-square is-item-category-secondary ion-no-padding">
+      <ion-thumbnail slot="start">
+        <div><span>18:00</span><br><span>19:00</span></div>
+      </ion-thumbnail>
+      <ion-label>
+        <p class="is-list-square-title">Session B2: Artificial Intelligence</p>
+        <p class="is-list-square-note"><ion-icon name="location-sharp"></ion-icon> Room B2</p>
+      </ion-label>
+      <div slot="end">
+        <ion-button (click)="onIconClick($event)" fill="clear">
+          <ion-icon name="star"></ion-icon>
+        </ion-button>
+      </div>
+    </ion-item>
+    <ion-item button (click)="goToSessionDetails()" detail="false" class="is-list-square-has-square is-item-category-primary ion-no-padding">
+      <ion-thumbnail slot="start">
+        <div><span>18:00</span><br><span>19:00</span></div>
+      </ion-thumbnail>
+      <ion-label>
+        <p class="is-list-square-title">Session B1: Smart Home</p>
+        <p class="is-list-square-note"><ion-icon name="location-sharp"></ion-icon> Room B1</p>
+      </ion-label>
+      <div slot="end">
+        <ion-button (click)="onIconClick($event)" fill="clear">
+          <ion-icon name="star-outline"></ion-icon>
+        </ion-button>
+      </div>
+    </ion-item>
+  </ion-item-group>
+  <ion-item-group class="is-list-square is-list-colored">
+    <ion-item-divider sticky="true">
+      <ion-label>19:00 PM</ion-label>
+    </ion-item-divider>
+    <ion-item button (click)="goToSessionDetails()" detail="false" class="is-list-square-has-square is-item-category-secondary ion-no-padding">
+      <ion-thumbnail slot="start">
+        <div><span>19:00</span><br><span>20:00</span></div>
+      </ion-thumbnail>
+      <ion-label>
+        <p class="is-list-square-title">Session C5: Security</p>
+        <p class="is-list-square-note"><ion-icon name="location-sharp"></ion-icon> Room C5</p>
+      </ion-label>
+      <div slot="end">
+        <ion-button (click)="onIconClick($event)" fill="clear">
+          <ion-icon name="star"></ion-icon>
+        </ion-button>
+      </div>
+    </ion-item>
+    <ion-item button (click)="goToSessionDetails()" detail="false" class="is-list-square-has-square is-item-category-secondary ion-no-padding">
+      <ion-thumbnail slot="start">
+        <div><span>19:00</span><br><span>20:00</span></div>
+      </ion-thumbnail>
+      <ion-label>
+        <p class="is-list-square-title">Session C4: Product management challenges</p>
+        <p class="is-list-square-note"><ion-icon name="location-sharp"></ion-icon> Room C4</p>
+      </ion-label>
+      <div slot="end">
+        <ion-button (click)="onIconClick($event)" fill="clear">
+          <ion-icon name="star-outline"></ion-icon>
+        </ion-button>
+      </div>
+    </ion-item>
+    <ion-item button (click)="goToSessionDetails()" detail="false" class="is-list-square-has-square is-item-category-secondary ion-no-padding">
+      <ion-thumbnail slot="start">
+        <div><span>19:00</span><br><span>20:00</span></div>
+      </ion-thumbnail>
+      <ion-label>
+        <p class="is-list-square-title">Session C2: Resource management</p>
+        <p class="is-list-square-note"><ion-icon name="location-sharp"></ion-icon> Room C2</p>
+      </ion-label>
+      <div slot="end">
+        <ion-button (click)="onIconClick($event)" fill="clear">
+          <ion-icon name="star-outline"></ion-icon>
+        </ion-button>
+      </div>
+    </ion-item>
+  </ion-item-group>
+</ion-content>

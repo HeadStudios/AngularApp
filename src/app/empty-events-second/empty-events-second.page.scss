@@ -1,0 +1,14 @@
+.is-empty-state-content-background {
+  background-image: url("assets/imgs/empty-events-2.png");
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+  display: flex;
+
+  .is-empty-state-text{
+    text-align:center;
+    flex-grow: 1;
+    align-self: flex-end;
+    margin-bottom: 20%;
+  }
+}

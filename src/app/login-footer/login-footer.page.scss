@@ -1,0 +1,30 @@
+ion-content {
+  background-image: url("assets/imgs/login-background.png");
+  background-size: cover;
+  background-position: center;
+  --background: transparent;
+}
+
+ion-content::before {
+  position: absolute;
+  top:0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  content: ' ';
+  background: rgba(0,0,0, 0.3);
+}
+
+.is-hero .is-image-container img {
+  width: 200px;
+}
+
+ion-button.is-forgot {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  --color: white;
+}

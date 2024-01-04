@@ -1,0 +1,96 @@
+<ion-header class="is-header-logo-centered ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      <img src="assets/imgs/logo-dark.png" />
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" name="cart"></ion-icon>
+      </ion-button>
+      <ion-button>
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-segment class="is-segment-clear" mode="md" scrollable="true" value="t-shirt">
+    <ion-segment-button mode="md" value="t-shirt">
+      <ion-label>T-SHIRTS</ion-label>
+    </ion-segment-button>
+    <ion-segment-button mode="md" value="bags">
+      <ion-label>BAGS</ion-label>
+    </ion-segment-button>
+    <ion-segment-button mode="md" value="accessories">
+      <ion-label>ACCESSORIES</ion-label>
+    </ion-segment-button>
+    <ion-segment-button mode="md" value="shoes">
+      <ion-label>SHOES</ion-label>
+    </ion-segment-button>
+    <ion-segment-button mode="md" value="jeans">
+      <ion-label>JEANS</ion-label>
+    </ion-segment-button>
+    <ion-segment-button mode="md" value="trousers">
+      <ion-label>TROUSERS</ion-label>
+    </ion-segment-button>
+    <ion-segment-button mode="md" value="other">
+      <ion-label>OTHER</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <ion-segment class="is-segment-bordered" mode="md" value="grid">
+    <ion-segment-button mode="md" value="options">
+      <ion-icon name="options"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button mode="md" value="funnel">
+      <ion-icon name="funnel"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button mode="md" value="reorder">
+      <ion-icon name="reorder-three"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button mode="md" value="grid">
+      <ion-icon name="grid"></ion-icon>
+    </ion-segment-button>
+  </ion-segment>
+  <ion-list class="ion-no-padding">
+    <ion-item detail="false" routerLink="/products-list" class="ion-text-center">
+      <ion-label class="ion-padding-top ion-padding-bottom">
+        <h2>Beats by Dr. Dre - Solo2 Wireless Headphones</h2>
+        <img src="assets/imgs/prod1.png">
+        <ion-grid>
+          <ion-row class="ion-align-items-center">
+            <ion-col class="ion-padding-horizontal ion-text-start" size="4">
+              <ion-badge color="warning">HIT</ion-badge>
+            </ion-col>
+            <ion-col size="4" class="ion-text-center">
+              <p class="is-product-price">$204</p>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-label>
+    </ion-item>
+    <ion-item detail="false" routerLink="/products-list" class="ion-text-center">
+      <ion-label class="ion-padding-top ion-padding-bottom">
+        <h2>Mony - MTR BB850BZ Over-the-Ear Lorem Ipsum</h2>
+        <img src="assets/imgs/prod2.png">
+        <ion-grid>
+          <ion-row class="ion-align-items-center">
+            <ion-col class="ion-padding-horizontal" size="4" class="ion-text-start">
+              <ion-badge color="danger">SALE</ion-badge>
+            </ion-col>
+            <ion-col size="4" class="ion-text-center">
+              <p class="is-product-price">$79</p>
+            </ion-col>
+            <ion-col class="ion-padding-horizontal" size="4" class="ion-text-end">
+              <p class="is-product-price-old">$99</p>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,143 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Inputs</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list class="ion-padding">
+    <ion-list-header>
+      <ion-label>Placeholders Only</ion-label>
+    </ion-list-header>
+    <ion-item>
+      <ion-input type="text" placeholder="Default"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" placeholder="Active" autofocus="true"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" placeholder="Disabled" disabled></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" value="Readonly" readonly></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-list class="ion-padding">
+    <ion-list-header>
+      <ion-label>Floating Labels</ion-label>
+    </ion-list-header>
+    <ion-item>
+      <ion-label position="floating">Default</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Disabled</ion-label>
+      <ion-input type="text" disabled></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Label</ion-label>
+      <ion-input type="text" value="Readonly" readonly></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-list class="ion-padding">
+    <ion-list-header>
+      <ion-label>Fixed Labels</ion-label>
+    </ion-list-header>
+    <ion-item>
+      <ion-label position="fixed">Default</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Disabled</ion-label>
+      <ion-input type="text" disabled></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Label</ion-label>
+      <ion-input type="text" value="Readonly" readonly></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-list class="ion-padding">
+    <ion-list-header>
+      <ion-label>Stacked Labels</ion-label>
+    </ion-list-header>
+    <ion-item>
+      <ion-label position="stacked">Default</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Disabled</ion-label>
+      <ion-input type="text" placeholder="Disabled with placeholder" disabled></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Label</ion-label>
+      <ion-input type="text" value="Readonly" readonly></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-list class="ion-padding">
+    <ion-list-header>
+      <ion-label>States</ion-label>
+    </ion-list-header>
+    <ion-item>
+      <ion-label position="stacked">Full Name</ion-label>
+      <ion-input type="text" value="Sophia Miller"></ion-input>
+      <ion-icon name="checkmark" slot="end" size="small" color="success"></ion-icon>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Email</ion-label>
+      <ion-input type="text" value="email@email.com" color="danger"></ion-input>
+      <ion-icon name="close" slot="end" size="small" color="danger"></ion-icon>
+    </ion-item>
+    <ion-item class="is-item-hint">
+      <ion-label class="ion-text-wrap" color="danger">
+        <p>Email is not registered</p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Full Name</ion-label>
+      <ion-input type="text" value="Sophia Miller"></ion-input>
+      <ion-icon name="alert-circle" size="small" slot="end" color="light"></ion-icon>
+    </ion-item>
+    <ion-item class="is-item-hint">
+      <ion-label class="ion-text-wrap">
+        <p>Make sure your name is written exactly as it appears on your card.</p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Phone number</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+    <ion-item class="is-item-hint">
+      <ion-label class="ion-text-wrap">
+        <p>Your phone number is used to verify the account. Check your phone to get a verification code which will be valid for 3 hours.</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-list class="ion-padding">
+    <ion-list-header>
+      <ion-label>Icons</ion-label>
+    </ion-list-header>
+    <ion-item>
+      <ion-label position="stacked">First Name</ion-label>
+      <ion-input type="text" placeholder="Default"></ion-input>
+      <ion-icon name="person" size="small" slot="end"></ion-icon>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">First Name</ion-label>
+      <ion-input type="text" placeholder="Disabled" disabled></ion-input>
+      <ion-icon name="person" size="small" slot="end"></ion-icon>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">First Name</ion-label>
+      <ion-input type="text" value="Readonly" readonly></ion-input>
+      <ion-icon name="person" size="small" slot="end"></ion-icon>
+    </ion-item>
+  </ion-list>
+</ion-content>

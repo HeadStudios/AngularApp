@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Home Alternative</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="is-hero">
+    <div class="is-image-container">
+      <img src="assets/imgs/home-alt.png" />
+      <h1 class="ion-text-center">What is Ionic?</h1>
+      <ion-fab slot="fixed" horizontal="center" vertical="center">
+        <ion-fab-button>
+          <ion-icon name="play"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+    </div>
+
+    <p class="ion-padding-horizontal ion-padding-bottom">
+      When I was just starting 6th grade I got my first job. Paperboy! Boy, was I excited. At that time I had spent.
+    </p>
+  </div>
+
+  <ion-list class="ion-padding ion-no-margin is-list-buttons">
+    <ion-item button detail="false" >
+      <ion-icon slot="end" name="logo-facebook" color="is-facebook-icon" class="ion-no-margin"></ion-icon>
+      <ion-label>Login with Facebook</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-list class="ion-padding ion-no-margin is-list-buttons">
+    <ion-item button detail="true">
+      <ion-label>Sign Up with E-mail</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <p class="ion-text-center">Have an account? <a routerLink="/login">Log in</a></p>
+</ion-content>

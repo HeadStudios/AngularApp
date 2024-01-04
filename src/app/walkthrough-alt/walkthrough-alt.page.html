@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Walkthrough Alternative</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-slides pager="true" [options]="slideOpts">
+    <ion-slide class="ion-padding-top">
+      <img *ngIf="env.theme == 'dark'" src="assets/imgs/walkthrough-alt-dark.png"/>
+      <img *ngIf="env.theme == 'light'" src="assets/imgs/walkthrough-alt-light.png"/>
+    </ion-slide>
+    <ion-slide class="ion-padding-top">
+      <img *ngIf="env.theme == 'dark'" src="assets/imgs/walkthrough-alt-2-dark.png"/>
+      <img *ngIf="env.theme == 'light'" src="assets/imgs/walkthrough-alt-2-light.png"/>
+    </ion-slide>
+  </ion-slides>
+
+  <div class="ion-padding">
+    <h1 class="ion-padding-top">Charts Helps You Get Full Information</h1>
+
+    <p>
+      Research in advertising is done in order to produce better advertisements that are more efficient in motivating.
+    </p>
+  </div>
+</ion-content>

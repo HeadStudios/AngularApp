@@ -1,0 +1,183 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Confirmation</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="is-flex ion-justify-content-evenly ion-align-items-center ion-padding-top ion-margin-vertical">
+    <ion-button class="button button-color ion-no-padding" routerLink="/cart" color="is-mute-normal">
+      <ion-icon slot="icon-only" name="cart"></ion-icon>
+    </ion-button>
+    <ion-icon name="arrow-forward"></ion-icon>
+    <ion-button class="button button-color ion-no-padding" routerLink="/delivery" color="is-mute-normal">
+      <ion-icon slot="icon-only" name="location-sharp"></ion-icon>
+    </ion-button>
+    <ion-icon name="arrow-forward"></ion-icon>
+    <ion-button class="button button-color ion-no-padding" routerLink="/payment" color="is-mute-normal">
+      <ion-icon slot="icon-only" name="card"></ion-icon>
+    </ion-button>
+    <ion-icon name="arrow-forward"></ion-icon>
+    <ion-button class="button button-color ion-no-padding" routerLink="/confirmation" fill="outline">
+      <ion-icon slot="icon-only" name="flag"></ion-icon>
+    </ion-button>
+  </div>
+
+  <ion-item-group>
+    <ion-item-divider>
+      <ion-label>CART</ion-label>
+      <div slot="end" class="ion-padding-horizontal"><a routerLink="/confirmation-page">Edit</a></div>
+    </ion-item-divider>
+    <ion-item>
+      <ion-grid class="ion-no-padding ion-margin-vertical">
+        <ion-row class="ion-align-items-stretch">
+          <ion-col size="9" class="ion-text-left">
+            <span>Short-sleeved Denim Shirt</span>
+          </ion-col>
+          <ion-col size="3" class="ion-text-right">
+            <div class="is-price ion-no-padding">
+              <span>$29.99</span>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <p class="ion-no-margin">Pcs: 1 Size: Small</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+    <ion-item>
+      <ion-grid class="ion-no-padding ion-margin-vertical">
+        <ion-row class="ion-align-items-stretch">
+          <ion-col size="9" class="ion-text-left">
+            <span>Lorem dolor sit amet</span>
+          </ion-col>
+          <ion-col size="3" class="ion-text-right">
+            <div class="is-price ion-no-padding">
+              <span>$39.99</span>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <p class="ion-no-margin">Pcs: 1 Size: XL</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+    <ion-item>
+      <ion-grid class="ion-no-padding ion-margin-vertical">
+        <ion-row class="ion-align-items-stretch">
+          <ion-col size="9" class="ion-text-left">
+            <span>Labore et dolore magna aliqua</span>
+          </ion-col>
+          <ion-col size="3" class="ion-text-right">
+            <div class="is-price ion-no-padding">
+              <span>$59.99</span>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <p class="ion-no-margin">Pcs: 1 Size: -</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+    <ion-item>
+      <ion-grid class="ion-no-padding ion-margin-vertical">
+        <ion-row class="ion-align-items-stretch">
+          <ion-col size="9" class="ion-text-left">
+            <span>Excepteur sint occaecat cupidatat</span>
+          </ion-col>
+          <ion-col size="3" class="ion-text-right">
+            <div class="is-price ion-no-padding">
+              <span>$99.99</span>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <p class="ion-no-margin">Pcs: 2 Size: Large</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-item-group>
+
+  <ion-item-group>
+    <ion-item-divider>
+      <ion-label>DELIVERY INFORMATION</ion-label>
+      <div slot="end" class="ion-padding-horizontal"><a routerLink="/confirmation-page">Edit</a></div>
+    </ion-item-divider>
+    <ion-item>
+      <ion-grid class="ion-no-padding ion-margin-vertical">
+        <ion-row class="ion-align-items-stretch">
+          <ion-col size="9" class="ion-text-left">
+            <span>Express delivery</span>
+          </ion-col>
+          <ion-col size="3" class="ion-text-right">
+            <div class="is-price ion-no-padding">
+              <span>$30.00</span>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <p class="ion-no-margin">7-8 Days</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+    <ion-item>
+      <ion-grid class="ion-no-padding ion-margin-vertical">
+        <ion-row class="ion-align-items-stretch">
+          <ion-col size="12" class="ion-text-left">
+            <span>Address No 11111, City, Country</span>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-item-group>
+
+  <ion-item-group>
+    <ion-item-divider>
+      <ion-label>PAYMENT</ion-label>
+      <div slot="end" class="ion-padding-horizontal"><a routerLink="/confirmation-page">Edit</a></div>
+    </ion-item-divider>
+    <ion-item>
+      <ion-grid class="ion-no-padding ion-margin-vertical">
+        <ion-row class="ion-align-items-stretch">
+          <ion-col size="9" class="ion-text-left">
+            <span>xxxx-xxxx-xxxx-9701</span>
+          </ion-col>
+          <ion-col size="3" class="ion-text-right">
+            <div class="ion-no-padding">
+              <div class="ion-no-padding">
+                <span>VISA</span>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-item-group>
+
+  <ion-item-group>
+    <ion-item-divider>
+      <ion-label>TOTAL</ion-label>
+      <div class="is-price ion-padding-horizontal" slot="end"><span>$199.00</span></div>
+    </ion-item-divider>
+  </ion-item-group>
+
+  <div class="ion-padding">
+    <ion-button class="ion-margin-top" expand="block" routerLink="/order-finish">Order Now</ion-button>
+    <ion-button expand="block" fill="outline" routerLink="/delivery">Cancel</ion-button>
+  </div>
+
+</ion-content>

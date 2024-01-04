@@ -1,0 +1,11 @@
+ion-button.button-color {
+  width: 50px;
+  height: 50px !important;
+  --border-color: var(--ion-color-is-mute-light);
+  --border-style: solid;
+  --border-width: 2px;
+}
+.is-solid-circle-icon {
+  margin-left: auto;
+  margin-right: auto;
+}

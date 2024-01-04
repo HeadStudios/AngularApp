@@ -1,0 +1,113 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Products</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="is-hero-product-category-info ion-padding">
+    <ion-row>
+      <ion-col>
+        <h6>Audio</h6>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="8">
+        <h1>Great Wireless Headphones</h1>
+
+        <p>
+          When television was young, there was a hugely popular show.
+        </p>
+        <ion-button size="small">View More</ion-button>
+      </ion-col>
+      <ion-col size="4">
+        <div class="ion-float-right">
+          <ion-icon name="headset"></ion-icon>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid class="is-tiles is-image-center">
+    <ion-row>
+      <ion-col size="6" class="ion-no-padding">
+        <ion-card>
+          <ion-item detail="false" routerLink="/products" lines="none">
+            <ion-label>
+              <img src="assets/imgs/prod1.png">
+              <ion-card-content>
+                <p>
+                  {{ "Beats by Dr. Dre - Solo2 Wireless Headphones" | slice:0:33 }}...
+                </p>
+                <h2>$204</h2>
+              </ion-card-content>
+            </ion-label>
+          </ion-item>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6" class="ion-no-padding">
+        <ion-card>
+          <ion-item detail="false" routerLink="/products" lines="none">
+            <ion-label>
+              <img src="assets/imgs/prod2.png">
+              <ion-card-content>
+                <p>
+                  {{ "Sony - MDR XB650BT Over-the-Ear" | slice:0:33 }}...
+                </p>
+                <h2>$79</h2>
+              </ion-card-content>
+            </ion-label>
+          </ion-item>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div class="ion-padding-top ion-padding-horizontal">
+    <h2>
+      Popular
+      <ion-button size="small" fill="clear" class="ion-float-right" color="is-text-dark">
+        See all
+        <ion-icon name="arrow-forward" slot="end"></ion-icon>
+      </ion-button>
+    </h2>
+  </div>
+
+  <ion-grid class="is-tiles is-image-center">
+    <ion-row>
+      <ion-col size="6" class="ion-no-padding">
+        <ion-card>
+          <ion-item detail="false" routerLink="/products" lines="none">
+            <ion-label>
+              <img src="assets/imgs/prod3.png">
+              <ion-card-content>
+                <p>
+                  {{ "GoPro - HERO4 Black 4K Action Camera" | slice:0:33 }}...
+                </p>
+                <h2>$449.99</h2>
+              </ion-card-content>
+            </ion-label>
+          </ion-item>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6" class="ion-no-padding">
+        <ion-card>
+          <ion-item detail="false" routerLink="/products" lines="none">
+            <ion-label>
+              <img src="assets/imgs/prod4.png">
+              <ion-card-content>
+                <p>
+                  {{ "Sony - HDR-AS50 HD Action Camera - Black" | slice:0:33 }}...
+                </p>
+                <h2>$149.99</h2>
+              </ion-card-content>
+            </ion-label>
+          </ion-item>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

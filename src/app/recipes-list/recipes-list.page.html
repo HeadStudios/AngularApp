@@ -1,0 +1,109 @@
+<ion-header class="is-header-logo-centered">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      <img src="assets/imgs/logo-dark.png" />
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" name="person"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-segment class="is-segment-bordered" mode="md" value="reorder">
+    <ion-segment-button mode="md" value="options">
+      <ion-icon name="options"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button mode="md" value="funnel">
+      <ion-icon name="funnel"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button mode="md" value="reorder">
+      <ion-icon name="reorder-three"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button mode="md" value="grid">
+      <ion-icon name="grid"></ion-icon>
+    </ion-segment-button>
+  </ion-segment>
+
+  <ion-item class="ion-no-padding"s routerLink="/recipes-list" lines="none" detail="false" >
+    <ion-label class="ion-text-wrap ion-no-margin">
+      <div class="is-image-wrapper">
+        <img src="assets/imgs/recipe-1.jpg">
+        <div class="is-caption-wrapper">
+          <h6>Chicken Italiano with Garlic Bread</h6>
+          <p>by Ann Gordon</p>
+          <ion-row class="ion-no-padding"s>
+            <ion-col size="4">
+              <ion-icon name="people"></ion-icon>
+              <span>4</span>
+            </ion-col>
+            <ion-col size="8">
+              <ion-icon name="time"></ion-icon>
+              <span>1h 20m</span>
+            </ion-col>
+          </ion-row>
+        </div>
+        <div class="is-rating-wrapper">
+          <span class="is-rating-text">32</span>
+          <ion-icon name="star" color="warning"></ion-icon>
+          <ion-icon name="star" color="warning"></ion-icon>
+          <ion-icon name="star" color="warning"></ion-icon>
+          <ion-icon name="star" color="warning"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+        </div>
+      </div>
+      <ion-fab vertical="top" horizontal="end" slot="fixed">
+        <ion-fab-button>
+          <ion-icon name="share"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button>
+          <ion-icon name="heart"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+    </ion-label>
+  </ion-item>
+
+  <ion-item class="ion-no-padding"s routerLink="/recipes-list" lines="none" detail="false" >
+    <ion-label class="ion-text-wrap ion-no-margin">
+      <div class="is-image-wrapper">
+        <img src="assets/imgs/recipe-2.jpg">
+        <div class="is-caption-wrapper">
+          <h6>Chicken with Apricots and Dried Plums</h6>
+          <p>by Alice Wayne</p>
+          <ion-row class="ion-no-padding"s>
+            <ion-col size="4">
+              <ion-icon name="people"></ion-icon>
+              <span>3</span>
+            </ion-col>
+            <ion-col size="8">
+              <ion-icon name="time"></ion-icon>
+              <span>2h 20m</span>
+            </ion-col>
+          </ion-row>
+        </div>
+        <div class="is-rating-wrapper">
+          <span class="is-rating-text">24</span>
+          <ion-icon name="star" color="warning"></ion-icon>
+          <ion-icon name="star" color="warning"></ion-icon>
+          <ion-icon name="star" color="warning"></ion-icon>
+          <ion-icon name="star" color="warning"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+        </div>
+      </div>
+      <ion-fab vertical="top" horizontal="end" slot="fixed">
+        <ion-fab-button>
+          <ion-icon name="share"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button>
+          <ion-icon name="heart"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+    </ion-label>
+  </ion-item>
+
+</ion-content>

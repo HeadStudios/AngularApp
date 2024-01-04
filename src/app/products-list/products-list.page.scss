@@ -1,0 +1,39 @@
+ion-header.header-ios ion-toolbar:first-child {
+  --border-width: 0.55px;
+}
+ion-list {
+  h2 {
+    margin-top: 1em;
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--ion-color-is-text-dark);
+    padding: 0 1em;
+    white-space: normal;
+  }
+  .is-product-price {
+    font-size: 18px;
+  }
+  ion-badge {
+    font-size: 10px;
+  }
+  .is-product-price-old {
+    text-decoration: line-through;
+    color: var(--ion-color-is-mute-dark);
+    font-size: 14px;
+  }
+}
+ion-segment:not([color]).is-segment-clear ion-segment-button {
+  --color-checked: var(--ion-color-is-text-dark);
+}
+.is-segment-clear {
+  ion-segment-button {
+    height: 50px;
+    font-weight: 300;
+    font-size: 0.9rem;
+  }
+}
+.is-segment-bordered {
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: var(--ion-color-is-mute-light);
+}

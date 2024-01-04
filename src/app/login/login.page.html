@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding-horizontal">
+    <h1>Welcome to Ionic Stencil Essential</h1>
+
+    <p>
+      Create a list with all possible keywords that fit to your product, service or business field. The more the better.
+    </p>
+  </div>
+
+  <ion-list class="ion-padding">
+    <ion-item>
+      <ion-input type="text" placeholder="Login" [(ngModel)]="username"></ion-input>
+    </ion-item>
+
+    <ion-item class="is-password-field">
+      <ion-input [type]="passwordType || 'password'" placeholder="Password" [(ngModel)]="password"></ion-input>
+      <ion-button fill="clear" size="default" slot="end" (click)="togglePasswordType()">
+        <ion-icon [name]="(passwordType === 'text') ? 'eye-off' : 'eye'"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+  <ion-list lines="none" class="ion-padding ion-no-margin is-list-buttons">
+    <ion-item (click)="login()" color="secondary" button detail="true">
+      <ion-label>Login to Account</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <div class="ion-padding-horizontal">
+    <p>
+      Forgot password? <a routerLink="/login">Restore</a>
+    </p>
+
+    <p class="ion-padding-top ion-no-margin">
+      Login with
+    </p>
+
+    <ion-grid class="is-grid ion-no-padding">
+      <ion-row>
+        <ion-col size="6" class="ion-no-padding">
+          <ion-button expand="block" fill="outline" size="large">
+            <ion-icon name='logo-facebook' color="is-facebook-icon"></ion-icon>
+          </ion-button>
+        </ion-col>
+        <ion-col size="6" class="ion-no-padding">
+          <ion-button expand="block" fill="outline" size="large">
+            <ion-icon name='logo-twitter' color="is-twitter-icon"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <ion-list class="is-list-buttons ion-padding ion-no-margin">
+    <ion-item button detail="true">
+      <ion-label>Sign Up with E-mail</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

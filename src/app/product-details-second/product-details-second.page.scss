@@ -1,0 +1,92 @@
+.is-section-bordered {
+  border-bottom: 1px solid var(--ion-color-is-mute-light);
+}
+
+h5 {
+  font-weight: 300;
+  font-size: 1.0rem;
+}
+
+.is-price {
+
+  text-align: center;
+
+  span {
+    font-size: 1.0rem;
+  }
+}
+
+ion-button.button-color {
+  width: 34px;
+  height: 34px !important;
+  --border-color: var(--ion-color-is-mute-light);
+  --border-style: solid;
+  --border-width: 1px;
+}
+
+ion-select {
+  width: 100%;
+  max-width: initial;
+  --padding-start: 0;
+}
+
+.is-rating-text {
+  font-size: 0.9rem;
+}
+
+.is-grid-row-bordered {
+  border-radius: 25px;
+  height: 35px;
+
+  ion-col {
+    display: flex;
+    align-items: center;
+  }
+
+  ion-col:first-child {
+    border-right: 1px solid var(--ion-color-is-mute-light);
+  }
+}
+
+ion-segment:not([color]).is-segment-clear ion-segment-button {
+  --color-checked: var(--ion-color-is-text-dark);
+}
+
+.is-segment-clear {
+  ion-segment-button {
+    height: 50px;
+    font-weight: 300;
+    font-size: 0.9rem;
+  }
+}
+
+.is-select-item {
+  --min-height: 35px;
+}
+
+.is-comment {
+  font-size: 16px;
+}
+
+.is-date {
+  font-size: 13px;
+}
+
+.is-review-form ion-icon {
+  font-size: 18px;
+}
+
+.is-review-input {
+  --border-width: 2px;
+  --border-radius: 3px;
+  --highlight-height: 0;
+}
+
+.is-review-input.item-interactive {
+  --border-width: 2px;
+  --border-radius: 3px;
+}
+
+.is-review-input.item-has-focus {
+  --border-color: var(--ion-color-primary);
+}

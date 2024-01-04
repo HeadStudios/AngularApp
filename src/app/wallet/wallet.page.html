@@ -1,0 +1,85 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Wallet</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="is-grid is-grid-tiles is-grid-bordered ion-no-padding">
+    <ion-row class="is-grid-title ion-text-center">
+      <ion-col class="is-tile">
+        Today, Friday, October 7
+        <ion-icon class="ion-float-right" name="calendar"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div class="ion-text-center">
+    <p>Your Balance</p>
+    <h1>$4 800</h1>
+  </div>
+
+  <div>
+    <canvas baseChart
+      [datasets]="lineChartData"
+      [labels]="lineChartLabels"
+      [options]="lineChartOptions"
+      [colors]="lineChartColors"
+      [legend]="lineChartLegend"
+      [chartType]="lineChartType"
+      (chartHover)="chartHovered($event)"
+      (chartClick)="chartClicked($event)">
+    </canvas>
+  </div>
+
+  <table class="table table-responsive table-condensed">
+    <tr>
+      <th *ngFor="let label of lineChartLabels"></th>
+    </tr>
+    <tr *ngFor="let d of lineChartData">
+      <td *ngFor="let label of lineChartLabels; let j=index"></td>
+    </tr>
+  </table>
+
+  <ion-list lines="none" class="is-list-colored">
+    <ion-item class="is-item-category-success">
+      <ion-thumbnail slot="start" class="is-icon-thumbnail">
+        <ion-icon name="arrow-down"></ion-icon>
+      </ion-thumbnail>
+      <ion-label>
+        <h2>Thomas Myers</h2>
+        <p>04:19 PM • September 12, 2016</p>
+      </ion-label>
+      <div slot="end" class="is-list-colored-button-group">
+        <h3>+ $1800</h3>
+      </div>
+    </ion-item>
+    <ion-item class="is-item-category-danger">
+      <ion-thumbnail slot="start" class="is-icon-thumbnail">
+        <ion-icon name="arrow-up"></ion-icon>
+      </ion-thumbnail>
+      <ion-label>
+        <h2>Playstation Network</h2>
+        <p>01:24 PM • September 12, 2016</p>
+      </ion-label>
+      <div slot="end" class="is-list-colored-button-group">
+        <h3>- $12</h3>
+      </div>
+    </ion-item>
+    <ion-item class="is-item-category-success">
+      <ion-thumbnail slot="start" class="is-icon-thumbnail">
+        <ion-icon name="arrow-down"></ion-icon>
+      </ion-thumbnail>
+      <ion-label>
+        <h2>Gumroad Inc.</h2>
+        <p>08:40 PM • September 12, 2016</p>
+      </ion-label>
+      <div slot="end" class="is-list-colored-button-group">
+        <h3>+ $240</h3>
+      </div>
+    </ion-item>
+  </ion-list>
+</ion-content>

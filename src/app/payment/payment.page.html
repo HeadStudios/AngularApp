@@ -1,0 +1,94 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Payment</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="is-flex ion-justify-content-evenly ion-align-items-center ion-padding-top ion-margin-vertical">
+    <ion-button class="button button-color ion-no-padding" routerLink="/cart" color="is-mute-normal">
+      <ion-icon slot="icon-only" name="cart"></ion-icon>
+    </ion-button>
+    <ion-icon name="arrow-forward"></ion-icon>
+    <ion-button class="button button-color ion-no-padding" routerLink="/delivery" color="is-mute-normal">
+      <ion-icon slot="icon-only" name="location-sharp"></ion-icon>
+    </ion-button>
+    <ion-icon name="arrow-forward"></ion-icon>
+    <ion-button class="button button-color ion-no-padding" routerLink="/payment" fill="outline">
+      <ion-icon slot="icon-only" name="card"></ion-icon>
+    </ion-button>
+    <ion-icon name="arrow-forward"></ion-icon>
+    <ion-button class="button button-color ion-no-padding" routerLink="/confirmation" color="light" fill="outline">
+      <ion-icon slot="icon-only" name="flag"></ion-icon>
+    </ion-button>
+  </div>
+
+  <ion-grid class="is-grid is-grid-tiles ion-padding-vertical">
+    <ion-row>
+      <ion-col size="4" class="is-tile">
+        <ion-item class="ion-text-center" routerLink="/payment-page" lines="none" detail="false">
+          <img src="assets/imgs/mastercard.png" alt=""/>
+        </ion-item>
+      </ion-col>
+      <ion-col size="4" class="ion-text-center is-tile">
+        <ion-item routerLink="/payment-page" lines="none" detail="false" class="is-selected ion-text-center">
+          <img src="assets/imgs/visa.png" alt=""/>
+        </ion-item>
+      </ion-col>
+      <ion-col size="4" class="ion-text-center is-tile">
+        <ion-item class="ion-text-center" routerLink="/payment-page" lines="none" detail="false">
+          <img src="assets/imgs/paypal.png" alt=""/>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div class="ion-padding">
+    <ion-button expand="block" fill="outline">Save</ion-button>
+  </div>
+  <div class="ion-text-center">
+    <p>or</p>
+  </div>
+
+  <ion-list class="ion-padding is-list-spaced">
+    <ion-item>
+      <ion-input type="text" placeholder="Full Name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="number" placeholder="Card Number"></ion-input>
+    </ion-item>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="4">
+          <ion-item class="is-select-item">
+            <ion-datetime displayFormat="YYYY" value="2019"></ion-datetime>
+          </ion-item>
+        </ion-col>
+        <ion-col size="4">
+          <ion-item class="is-select-item">
+            <ion-datetime displayFormat="MM" value="01"></ion-datetime>
+          </ion-item>
+        </ion-col>
+        <ion-col size="4">
+          <ion-item>
+            <ion-input placeholder="CVV"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-item lines="none">
+      <ion-label>Save Credit card information</ion-label>
+      <ion-checkbox slot="start" color="primary"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+
+  <div class="ion-padding">
+    <ion-button class="ion-margin-top" expand="block" routerLink="/confirmation">Next Step</ion-button>
+    <ion-button expand="block" fill="outline" routerLink="/delivery">Back</ion-button>
+  </div>
+
+</ion-content>

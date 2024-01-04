@@ -1,0 +1,26 @@
+.is-empty-state-content {
+  height: 100%;
+  text-align:center;
+  padding-left: 32px;
+  padding-right: 32px;
+  position: relative;
+
+  ion-button {
+    position: absolute;
+    right: 0;
+  }
+
+  img {
+    width: 65%;
+    max-width: 370px;
+    padding-top: 20vh;
+  }
+}
+
+.is-empty-state-content.theme-dark {
+  background: black;
+}
+
+.is-empty-state-content.theme-light {
+  background: #F6F9FA;
+}

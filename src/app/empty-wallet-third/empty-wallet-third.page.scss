@@ -1,0 +1,22 @@
+.is-empty-state-content {
+  height: 100%;
+  text-align:center;
+  position: relative;
+
+  ion-button {
+    position: absolute;
+    right: 0;
+  }
+
+  img {
+    max-height: 80vh;
+  }
+}
+
+.is-empty-state-content.theme-dark {
+  background: black;
+}
+
+.is-empty-state-content.theme-light {
+  background: #F6F9FA;
+}

@@ -1,0 +1,22 @@
+ion-item-group {
+  ion-grid {
+    .is-vertical-align {
+      display: flex;
+      align-self: center !important;
+    }
+  }
+  ion-item-divider {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+  p {
+    font-size: 1rem;
+  }
+  a {
+    text-decoration: none;
+  }
+  ion-icon {
+    padding-right: 8px;
+    font-size: 18px;
+  }
+}

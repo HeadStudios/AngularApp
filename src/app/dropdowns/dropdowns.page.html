@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Dropdowns</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-list-header>
+      <ion-label>
+        Options
+      </ion-label>
+    </ion-list-header>
+
+    <ion-item>
+      <ion-label>Hair color</ion-label>
+      <ion-select [interfaceOptions]="customAlertOptions" interface="alert" multiple="false" placeholder="Select One" value="brown">
+        <ion-select-option value="brown">Brown</ion-select-option>
+        <ion-select-option value="blonde">Blonde</ion-select-option>
+        <ion-select-option value="black">Black</ion-select-option>
+        <ion-select-option value="red">Red</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Topping</ion-label>
+      <ion-select [interfaceOptions]="customPopoverOptions" interface="popover" placeholder="Select One" value="bacon">
+        <ion-select-option value="bacon">Bacon</ion-select-option>
+        <ion-select-option value="olives">Black Olives</ion-select-option>
+        <ion-select-option value="xcheese">Extra Cheese</ion-select-option>
+        <ion-select-option value="peppers">Green Peppers</ion-select-option>
+        <ion-select-option value="mushrooms">Mushrooms</ion-select-option>
+        <ion-select-option value="onions">Onions</ion-select-option>
+        <ion-select-option value="pepperoni">Pepperoni</ion-select-option>
+        <ion-select-option value="pineapple">Pineapple</ion-select-option>
+        <ion-select-option value="sausage">Sausage</ion-select-option>
+        <ion-select-option value="Spinach">Spinach</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Favorite color</ion-label>
+      <ion-select [interfaceOptions]="customActionSheetOptions" interface="action-sheet" placeholder="Select One" value="red">
+        <ion-select-option value="red">Red</ion-select-option>
+        <ion-select-option value="purple">Purple</ion-select-option>
+        <ion-select-option value="yellow">Yellow</ion-select-option>
+        <ion-select-option value="orange">Orange</ion-select-option>
+        <ion-select-option value="green">Green</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+  </ion-list>
+</ion-content>

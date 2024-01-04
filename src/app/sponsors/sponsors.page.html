@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Sponsors</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item-group class="is-collapsible-list-with-divider" *ngFor="let item of items; let i = index">
+    <ion-item-divider>
+      <ion-label>
+        <h2 (click)="itemTapped(i)">{{item.divider.title}}<ion-icon name="arrow-down" *ngIf="!isShown[i]"></ion-icon><ion-icon name="arrow-up" *ngIf="isShown[i]"></ion-icon></h2>
+      </ion-label>
+    </ion-item-divider>
+    <ion-row [class.is-hide]="!isShown[i] || false">
+      <ion-col *ngFor="let subitem of item.subitems" size="{{subitem.col_size}}" [class.is-platinum-sponsors]="i === 0">
+        <ion-item class="ion-text-center" lines="none" detail="false" routerLink="{{subitem.target_link}}">
+          <ion-label>
+            <img src="{{subitem.image}}">
+          </ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-item-group>
+</ion-content>

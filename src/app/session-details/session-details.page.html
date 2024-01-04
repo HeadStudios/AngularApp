@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Session Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="is-hero ion-padding-horizontal">
+    <h1>Session A3: AI and Machine Learning</h1>
+    <div>Andrew Woody, Alex Buzz Lightyear</div>
+    <div class="ion-padding-bottom"><ion-icon name="time"></ion-icon><span>Jan 7, 13:50 - 14:50</span></div>
+  </div>
+  <ion-item-group>
+    <ion-item-divider>
+      <ion-label>DESCRIPTION</ion-label>
+    </ion-item-divider>
+		<div class="ion-padding">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime non eius optio iusto similique officiis voluptatum fugit quisquam, ratione illum suscipit autem eum possimus iste cupiditate ipsam inventore sed. Odio.</div>
+  </ion-item-group>
+
+  <ion-item-group>
+    <ion-item-divider>
+      <ion-label>SPEAKERS</ion-label>
+    </ion-item-divider>
+    <ion-item detail="false" routerLink="/session-details">
+      <ion-avatar slot="start">
+        <img src="assets/imgs/speaker-1.png">
+      </ion-avatar>
+      <ion-label>
+        <h2>Andrew Woody</h2>
+        <p>Founder & CEO at Jermains Biology</p>
+      </ion-label>
+      <ion-buttons slot="end">
+        <ion-button fill="clear">
+          <ion-icon name="chatbox"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-item>
+
+    <ion-item detail="false" routerLink="/session-details">
+      <ion-avatar slot="start">
+        <img src="assets/imgs/speaker-2.png">
+      </ion-avatar>
+      <ion-label>
+        <h2>Alex Buzz Lightyear</h2>
+        <p>Counselor at Research For All</p>
+      </ion-label>
+      <ion-buttons slot="end">
+        <ion-button fill="clear">
+          <ion-icon name="chatbox"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-item>
+  </ion-item-group>
+
+  <ion-item-group>
+    <ion-item-divider>
+      <ion-label>LOCATION</ion-label>
+    </ion-item-divider>
+    <div class="ion-padding clearfix"><ion-icon name="location-sharp"></ion-icon> Centre stage <p class="ion-float-right ion-no-margin"><a routerLink="/session-details">Show Map</a></p></div>
+  </ion-item-group>
+
+</ion-content>

@@ -1,0 +1,137 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Cards</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <ion-slides pager="true" class="is-payment-cards is-card-unbordered" [options]="slideOpts">
+      <ion-slide class="ion-padding">
+        <ion-card>
+          <ion-item>
+            <ion-thumbnail slot="start">
+              <img src="assets/imgs/mastercard.png">
+            </ion-thumbnail>
+            <ion-label></ion-label>
+            <div slot="end" class="ion-align-self-start">
+              <ion-icon ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+            </div>
+          </ion-item>
+
+          <ion-card-content class="ion-no-padding">
+            <p class="ion-padding-horizontal ion-text-start">**** **** **** 3989</p>
+          </ion-card-content>
+
+          <ion-row class="ion-padding ion-text-start">
+            <ion-col size="8">
+              <ion-note>
+                Cardholder Name
+              </ion-note>
+              <p class="ion-no-margin">Komol Kuchkarov</p>
+            </ion-col>
+            <ion-col size="4">
+              <ion-note>
+                Expiry
+              </ion-note>
+              <p class="ion-no-margin">09/2022</p>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+      </ion-slide>
+      <ion-slide class="ion-padding">
+        <ion-card>
+          <ion-item>
+            <ion-thumbnail slot="start">
+              <img src="assets/imgs/mastercard.png">
+            </ion-thumbnail>
+            <ion-label></ion-label>
+            <div slot="end" class="ion-align-self-start">
+              <ion-icon ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+            </div>
+          </ion-item>
+
+          <ion-card-content class="ion-no-padding">
+            <p class="ion-padding-horizontal ion-text-start">**** **** **** 5710</p>
+          </ion-card-content>
+
+          <ion-row class="ion-padding ion-text-start">
+            <ion-col size="8">
+              <ion-note>
+                Cardholder Name
+              </ion-note>
+              <p class="ion-no-margin">Komol Kuchkarov</p>
+            </ion-col>
+            <ion-col size="4">
+              <ion-note>
+                Expiry
+              </ion-note>
+              <p class="ion-no-margin">05/2023</p>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+      </ion-slide>
+    </ion-slides>
+  </div>
+
+  <ion-grid class="is-grid is-grid-tiles is-grid-bordered ion-no-padding">
+    <ion-row class="ion-padding">
+      <ion-col size="5">
+        <h3>
+          <span>Balance</span>
+          $2 389
+        </h3>
+      </ion-col>
+      <ion-col size="7" class="ion-no-padding">
+        <ion-row>
+          <h3>Income<span class="is-color-success ion-float-right">+$5 600</span></h3>
+        </ion-row>
+        <ion-row>
+          <h3>Expense<span class="is-color-danger ion-float-right">-$3 900</span></h3>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-list>
+    <ion-item class="is-item-thumb-bordered">
+      <ion-thumbnail slot="start" class="is-icon-thumbnail">
+        <ion-icon name="game-controller" class="is-icon-no-color"></ion-icon>
+      </ion-thumbnail>
+      <ion-label class="ion-align-self-stretch ion-no-margin ion-padding-top">
+        <h2>Playstation Network</h2>
+        <p>Games  •  09:02 PM  •  April 20, 2016</p>
+      </ion-label>
+      <div slot="end" class="is-color-danger ion-padding-top ion-align-self-start ion-no-margin">
+        <h3 class="ion-no-margin">- $12</h3>
+      </div>
+    </ion-item>
+    <ion-item class="is-item-thumb-bordered">
+      <ion-thumbnail slot="start" class="is-icon-thumbnail">
+        <ion-icon name="card" class="is-icon-no-color"></ion-icon>
+      </ion-thumbnail>
+      <ion-label class="ion-no-margin ion-padding-top ion-align-self-stretch">
+        <h2>Bank Transfer</h2>
+        <p>Salary  •  03:56 PM  •  April 4, 2016</p>
+      </ion-label>
+      <div slot="end" class="is-color-success ion-padding-top ion-align-self-start ion-no-margin">
+        <h3 class="ion-no-margin">+ $1450</h3>
+      </div>
+    </ion-item>
+    <ion-item class="is-item-thumb-bordered">
+      <ion-thumbnail slot="start" class="is-icon-thumbnail">
+        <ion-icon name="cart" class="is-icon-no-color"></ion-icon>
+      </ion-thumbnail>
+      <ion-label class="ion-align-self-stretch ion-no-margin ion-padding-top">
+        <h2>iPad Pro 9,7 inch 128gb</h2>
+        <p>Electronics  •  02:11 PM  •  April 4, 2016</p>
+      </ion-label>
+      <div slot="end" class="is-color-danger ion-padding-top ion-align-self-start ion-no-margin">
+        <h3 class="ion-no-margin">- $749</h3>
+      </div>
+    </ion-item>
+  </ion-list>
+</ion-content>

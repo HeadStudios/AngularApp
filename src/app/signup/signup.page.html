@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Sign Up</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list class="ion-padding">
+    <ion-item>
+      <ion-input type="text" placeholder="Name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" placeholder="Email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" placeholder="Phone"></ion-input>
+    </ion-item>
+    <ion-item class="is-item-hint">
+      <ion-label class="ion-text-wrap">
+        <p>Your phone number is used to verify the account. Check your phone to get a verification code which will be valid for 3 hours.</p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-input type="password" placeholder="Password"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="password" placeholder="Repeat Password"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-list class="ion-padding">
+    <ion-item>
+      <ion-icon name="calendar" slot="end"></ion-icon>
+      <ion-label>Birthday</ion-label>
+      <ion-datetime displayFormat="MMM DD, YYYY" min="1940-01-01" max="2017-12-31"></ion-datetime>
+    </ion-item>
+  </ion-list>
+
+  <ion-list class="ion-padding">
+    <ion-list-header>
+      <ion-label>Action</ion-label>
+    </ion-list-header>
+    <ion-item>
+      <ion-label>Country</ion-label>
+      <ion-select interface="popover" value="unitedkingdom">
+        <ion-select-option value="unitedkingdom">United Kingdom</ion-select-option>
+        <ion-select-option value="canada">Canada</ion-select-option>
+        <ion-select-option value="france">France</ion-select-option>
+        <ion-select-option value="genesis">Italy</ion-select-option>
+        <ion-select-option value="greece">Greece</ion-select-option>
+        <ion-select-option value="spain">Spain</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>City</ion-label>
+      <ion-select interface="popover" value="city1">
+        <ion-select-option value="city1">City 1</ion-select-option>
+        <ion-select-option value="city2">City 2</ion-select-option>
+        <ion-select-option value="city3">City 3</ion-select-option>
+        <ion-select-option value="city4">City 4</ion-select-option>
+        <ion-select-option value="city5">City 5</ion-select-option>
+        <ion-select-option value="city6">City 6</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <ion-list lines="none">
+    <ion-item>
+      <ion-label>I agree with <a href="">terms and conditions</a></ion-label>
+      <ion-checkbox color="dark" checked="false" slot="start"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+
+  <ion-list lines="none" class="ion-padding ion-no-margin is-list-buttons">
+    <ion-item color="light" button detail="true">
+      Sign Up
+    </ion-item>
+  </ion-list>
+</ion-content>

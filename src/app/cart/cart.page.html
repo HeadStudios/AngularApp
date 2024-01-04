@@ -1,0 +1,167 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Cart</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="is-flex ion-justify-content-evenly ion-align-items-center ion-padding-top ion-margin-vertical">
+    <ion-button class="button button-color ion-no-padding" routerLink="/cart" fill="outline">
+      <ion-icon slot="icon-only" name="cart"></ion-icon>
+    </ion-button>
+    <ion-icon name="arrow-forward"></ion-icon>
+    <ion-button class="button button-color ion-no-padding" routerLink="/delivery" color="light" fill="outline">
+      <ion-icon slot="icon-only" name="location-sharp"></ion-icon>
+    </ion-button>
+    <ion-icon name="arrow-forward"></ion-icon>
+    <ion-button class="button button-color ion-no-padding" routerLink="/payment" color="light" fill="outline">
+      <ion-icon slot="icon-only" name="card"></ion-icon>
+    </ion-button>
+    <ion-icon name="arrow-forward"></ion-icon>
+    <ion-button class="button button-color ion-no-padding" routerLink="/confirmation" color="light" fill="outline">
+      <ion-icon slot="icon-only" name="flag"></ion-icon>
+    </ion-button>
+  </div>
+
+  <ion-list>
+    <ion-item-sliding>
+      <ion-item button detail="false">
+        <ion-thumbnail slot="start" class="is-icon-thumbnail is-background-light ion-align-self-center">
+          <img class="is-rounded-image" src="assets/imgs/prod1.png" alt="">
+        </ion-thumbnail>
+        <ion-grid class="ion-no-padding">
+          <ion-row class="ion-align-items-center">
+            <ion-col size="7" class="ion-text-left">
+              <span class="is-item-title">Short-sleeved Denim Shirt</span>
+              <p class="ion-no-margin">Pcs: 1 Size: XL</p>
+            </ion-col>
+            <ion-col size="3" class="ion-text-right">
+              <div class="is-price ion-no-padding">
+                <span>$39.99</span>
+              </div>
+            </ion-col>
+            <ion-col size="2" class="ion-text-center">
+              <div class="quantity-widget">
+                <ion-button fill="clear"><ion-icon name="remove-outline"></ion-icon></ion-button>
+                <ion-input type="number" value="1" inputmode="numeric"></ion-input>
+                <ion-button fill="clear"><ion-icon name="add-outline"></ion-icon></ion-button>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option color="danger"><ion-icon slot="icon-only" name="heart"></ion-icon></ion-item-option>
+        <ion-item-option color="light"><ion-icon slot="icon-only" name="close"></ion-icon></ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+    <ion-item-sliding>
+      <ion-item button detail="false">
+        <ion-thumbnail slot="start" class="is-icon-thumbnail is-background-light ion-align-self-center">
+          <img class="is-rounded-image" src="assets/imgs/prod2.png" alt="">
+        </ion-thumbnail>
+        <ion-grid class="ion-no-padding">
+          <ion-row class="ion-align-items-center">
+            <ion-col size="7" class="ion-text-left">
+              <span class="is-item-title">Lorem dolor sit amet</span>
+              <p class="ion-no-margin">Pcs: 1 Size: XL</p>
+            </ion-col>
+            <ion-col size="3" class="ion-text-right">
+              <div class="is-price ion-no-padding">
+                <span>$39.99</span>
+              </div>
+            </ion-col>
+            <ion-col size="2" class="ion-text-center">
+              <div class="quantity-widget">
+                <ion-button fill="clear"><ion-icon name="remove-outline"></ion-icon></ion-button>
+                <ion-input type="number" value="1" inputmode="numeric"></ion-input>
+                <ion-button fill="clear"><ion-icon name="add-outline"></ion-icon></ion-button>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option color="danger"><ion-icon slot="icon-only" name="heart"></ion-icon></ion-item-option>
+        <ion-item-option color="light"><ion-icon slot="icon-only" name="close"></ion-icon></ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+    <ion-item-sliding>
+      <ion-item button detail="false">
+        <ion-thumbnail slot="start" class="is-icon-thumbnail is-background-light ion-align-self-center">
+          <img class="is-rounded-image" src="assets/imgs/prod3.png" alt="">
+        </ion-thumbnail>
+        <ion-grid class="ion-no-padding">
+          <ion-row class="ion-align-items-center">
+            <ion-col size="7" class="ion-text-left">
+              <span class="is-item-title">Labore et dolore magna aliqua</span>
+              <p class="ion-no-margin">Pcs: 1 Size: -</p>
+            </ion-col>
+            <ion-col size="3" class="ion-text-right">
+              <div class="is-price ion-no-padding">
+                <span>$59.99</span>
+              </div>
+            </ion-col>
+            <ion-col size="2" class="ion-text-center">
+              <div class="quantity-widget">
+                <ion-button fill="clear"><ion-icon name="remove-outline"></ion-icon></ion-button>
+                <ion-input type="number" value="1" inputmode="numeric"></ion-input>
+                <ion-button fill="clear"><ion-icon name="add-outline"></ion-icon></ion-button>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option color="danger"><ion-icon slot="icon-only" name="heart"></ion-icon></ion-item-option>
+        <ion-item-option color="light"><ion-icon slot="icon-only" name="close"></ion-icon></ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+    <ion-item-sliding>
+      <ion-item button detail="false">
+        <ion-thumbnail slot="start" class="is-icon-thumbnail is-background-light ion-align-self-center">
+          <img class="is-rounded-image" src="assets/imgs/prod4.png" alt="">
+        </ion-thumbnail>
+        <ion-grid class="ion-no-padding">
+          <ion-row class="ion-align-items-center">
+            <ion-col size="7" class="ion-text-left">
+              <span class="is-item-title">Excepteur sint occaecat cupidatat</span>
+              <p class="ion-no-margin">Pcs: 3 Size: Large</p>
+            </ion-col>
+            <ion-col size="3" class="ion-text-right">
+              <div class="is-price ion-no-padding">
+                <span>$99.99</span>
+              </div>
+            </ion-col>
+            <ion-col size="2" class="ion-text-center">
+              <div class="quantity-widget">
+                <ion-button fill="clear"><ion-icon name="remove-outline"></ion-icon></ion-button>
+                <ion-input type="number" value="1" inputmode="numeric"></ion-input>
+                <ion-button fill="clear"><ion-icon name="add-outline"></ion-icon></ion-button>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option color="danger"><ion-icon slot="icon-only" name="heart"></ion-icon></ion-item-option>
+        <ion-item-option color="light"><ion-icon slot="icon-only" name="close"></ion-icon></ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+    <ion-item>
+      <ion-label>SUBTOTAL</ion-label>
+      <div class="is-price ion-padding-horizontal" slot="end"><span>$199.00</span></div>
+    </ion-item>
+  </ion-list>
+
+  <div class="ion-padding">
+    <ion-button class="ion-margin-top" expand="block" routerLink="/delivery">Check Out</ion-button>
+    <ion-button expand="block" fill="outline">Save Items</ion-button>
+  </div>
+
+</ion-content>

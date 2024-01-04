@@ -1,0 +1,47 @@
+h5 {
+  font-weight: 300;
+  font-size: 1.0rem;
+}
+
+.is-price {
+  span {
+    font-size: 1.0rem;
+  }
+}
+
+ion-slide {
+  ion-grid {
+    width: 100%;
+  }
+}
+
+ion-button.button-color {
+  width: 34px;
+  height: 34px !important;
+  --border-color: var(--ion-color-is-mute-light);
+  --border-style: solid;
+  --border-width: 1px;
+
+  &.ios {
+    width: 44px;
+    height: 44px !important;
+  }
+
+  ion-icon {
+    font-size: 18px;
+  }
+}
+
+ion-select {
+  width: 100%;
+  max-width: initial;
+  --padding-start: 0;
+}
+
+.is-select-item {
+  --min-height: 35px;
+  border-left: 1px solid var(--ion-color-is-mute-light);
+  border-right: 1px solid var(--ion-color-is-mute-light);
+  border-radius: 5px;
+  --border-radius: 5px;
+}
