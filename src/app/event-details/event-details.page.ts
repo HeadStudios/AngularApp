@@ -4,6 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { ToastController } from '@ionic/angular';
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
+import { File as IonicFile } from '@ionic-native/file/ngx';
+
 
 @Component({
   selector: 'app-event-details',
@@ -22,7 +24,7 @@ export class EventDetailsPage implements OnInit {
 
 
 
-  constructor(private imagePicker: ImagePicker, private http: HttpClient, private route: ActivatedRoute, private toastController: ToastController) { }
+  constructor(private imagePicker: ImagePicker, private http: HttpClient, private route: ActivatedRoute, private toastController: ToastController,  private file: File, private ionicFile: IonicFile) { }
 
   ngOnInit() {
     this.injusticeId = Number(this.route.snapshot.paramMap.get('id'));
@@ -206,18 +208,28 @@ export class EventDetailsPage implements OnInit {
   
   uriToBlob(uri: string): Promise<Blob> {
     return new Promise((resolve, reject) => {
-      const xhr = new XMLHttpRequest();
-      xhr.onload = () => {
-        this.presentToast('URI converted to blob');
-        resolve(xhr.response);
-      };
-      xhr.onerror = () => {
-        this.presentToast('Error converting URI to blob');
-        reject(xhr.response);
-      };
-      xhr.responseType = 'blob';
-      xhr.open('GET', uri, true);
-      xhr.send();
+      this.ionicFile
+        .resolveLocalFilesystemUrl(uri)
+        .then((fileEntry) => {
+          const { name, nativeURL } = fileEntry;
+
+          // get the path..
+          const path = nativeURL.substring(0, nativeURL.lastIndexOf("/"));
+          console.log("path", path);
+          console.log("fileName", name);
+
+          // we are provided the name, so now read the file into
+          // a buffer
+          return this.ionicFile.readAsArrayBuffer(path, name);
+        })
+     .then(buffer => {
+          // get the buffer and make a blob to be saved
+          const imageBlob = new Blob([buffer], {
+            type: "image/jpeg"
+          });
+          resolve(imageBlob);
+        })
+        .catch((e) => reject(e));
     });
-  }
+}
 }

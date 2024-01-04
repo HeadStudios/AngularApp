@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
+import { File as IonicFile } from '@ionic-native/file/ngx'; // Import IonicFile
 
 import { EventDetailsPage } from './event-details.page';
 
@@ -21,6 +22,7 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [EventDetailsPage]
+  declarations: [EventDetailsPage],
+  providers: [IonicFile]
 })
 export class EventDetailsPageModule {}
