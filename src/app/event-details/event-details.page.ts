@@ -24,7 +24,7 @@ export class EventDetailsPage implements OnInit {
 
 
 
-  constructor(private imagePicker: ImagePicker, private http: HttpClient, private route: ActivatedRoute, private toastController: ToastController,  private file: File, private ionicFile: IonicFile) { }
+  constructor(private imagePicker: ImagePicker, private http: HttpClient, private route: ActivatedRoute, private toastController: ToastController,  private file: IonicFile) { }
 
   ngOnInit() {
     this.injusticeId = Number(this.route.snapshot.paramMap.get('id'));
@@ -208,7 +208,7 @@ export class EventDetailsPage implements OnInit {
   
   uriToBlob(uri: string): Promise<Blob> {
     return new Promise((resolve, reject) => {
-      this.ionicFile
+      this.file
         .resolveLocalFilesystemUrl(uri)
         .then((fileEntry) => {
           const { name, nativeURL } = fileEntry;
@@ -220,7 +220,7 @@ export class EventDetailsPage implements OnInit {
 
           // we are provided the name, so now read the file into
           // a buffer
-          return this.ionicFile.readAsArrayBuffer(path, name);
+          return this.file.readAsArrayBuffer(path, name);
         })
      .then(buffer => {
           // get the buffer and make a blob to be saved
