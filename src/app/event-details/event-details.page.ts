@@ -169,6 +169,9 @@ export class EventDetailsPage implements OnInit {
 
     const uploadUrl = `https://staging.rrdevours.monster/api/injustices/${this.injusticeId}/upload`;
 
+    console.log("file", file);
+    console.log("data", formData);
+
     this.http.post(uploadUrl, formData).subscribe(
       (response: any) => {
         console.log('File uploaded successfully', response);
