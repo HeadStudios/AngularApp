@@ -1,33 +1,36 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environments/environment';
-import { ToastController } from '@ionic/angular';
-import { ImagePicker } from '@ionic-native/image-picker/ngx';
-import { File as IonicFile } from '@ionic-native/file/ngx';
-
+import { Component, OnInit } from "@angular/core";
+import { Capacitor } from "@capacitor/core";
+import { ActivatedRoute } from "@angular/router";
+import { HttpClient } from "@angular/common/http";
+import { environment } from "../../environments/environment";
+import { ToastController } from "@ionic/angular";
+import { ImagePicker } from "@ionic-native/image-picker/ngx";
+import { FileEntry, File as IonicFile } from "@ionic-native/file/ngx";
 
 @Component({
-  selector: 'app-event-details',
-  templateUrl: './event-details.page.html',
-  styleUrls: ['./event-details.page.scss'],
+  selector: "app-event-details",
+  templateUrl: "./event-details.page.html",
+  styleUrls: ["./event-details.page.scss"],
 })
 export class EventDetailsPage implements OnInit {
-
   injusticeId: number;
   injusticeDetails: any = {};
   awsBaseUrl = environment.awsBaseUrl;
   selectedFiles: FileList;
   notes: any[] = [];
-  newNoteText: string = '';
-  selectedImageUri: string = '';
+  newNoteText: string = "";
+  selectedImageUri: string = "";
 
-
-
-  constructor(private imagePicker: ImagePicker, private http: HttpClient, private route: ActivatedRoute, private toastController: ToastController,  private file: IonicFile) { }
+  constructor(
+    private imagePicker: ImagePicker,
+    private http: HttpClient,
+    private route: ActivatedRoute,
+    private toastController: ToastController,
+    private file: IonicFile
+  ) {}
 
   ngOnInit() {
-    this.injusticeId = Number(this.route.snapshot.paramMap.get('id'));
+    this.injusticeId = Number(this.route.snapshot.paramMap.get("id"));
     this.fetchInjusticeDetails();
     this.fetchNotes();
   }
@@ -37,109 +40,137 @@ export class EventDetailsPage implements OnInit {
       maximumImagesCount: 1,
       // other options as needed
     };
-  
-    this.imagePicker.getPictures(options).then((results) => {
-      if (results.length > 0) {
-        this.selectedImageUri = results[0]; // Store the first selected image URI
-        this.presentToast('Image URI: ' + this.selectedImageUri);
-        this.uploadSelectedImage();
-      } else {
-        this.presentToast('No image selected');
+
+    this.imagePicker.getPictures(options).then(
+      (results) => {
+        if (results.length > 0) {
+          this.selectedImageUri = results[0]; // Store the first selected image URI
+          this.presentToast("Image URI: " + this.selectedImageUri);
+          this.uploadSelectedImage();
+        } else {
+          this.presentToast("No image selected");
+        }
+      },
+      (err) => {
+        console.error(err);
+        this.presentToast("Error selecting image: " + err);
       }
-    }, (err) => { 
-      console.error(err); 
-      this.presentToast('Error selecting image: ' + err);
-    });
+    );
   }
 
   // Go
 
   getFileCategory(fileName: string): string {
-    const extension = fileName.split('.').pop().toLowerCase();
-    if (['png', 'jpg', 'jpeg', 'gif'].includes(extension)) {
-      return 'image';
-    } else if (['pdf', 'doc', 'docx'].includes(extension)) {
-      return 'document';
-    } else if (['mp4', 'avi', 'mov'].includes(extension)) {
-      return 'video';
+    const extension = fileName.split(".").pop().toLowerCase();
+    if (["png", "jpg", "jpeg", "gif"].includes(extension)) {
+      return "image";
+    } else if (["pdf", "doc", "docx"].includes(extension)) {
+      return "document";
+    } else if (["mp4", "avi", "mov"].includes(extension)) {
+      return "video";
     } else {
-      return 'other';
+      return "other";
     }
   }
 
   async presentToast(message: string) {
     const toast = await this.toastController.create({
       message: message,
-      duration: 2000
+      duration: 2000,
     });
     toast.present();
   }
 
   fetchInjusticeDetails() {
-    this.http.get(`https://rrdevours.monster/api/injustices/${this.injusticeId}`)
-      .subscribe(data => {
-        this.injusticeDetails = data;
-      }, error => {
-        console.error('Error fetching injustice details!', error);
-      });
+    this.http
+      .get(`https://rrdevours.monster/api/injustices/${this.injusticeId}`)
+      .subscribe(
+        (data) => {
+          this.injusticeDetails = data;
+        },
+        (error) => {
+          console.error("Error fetching injustice details!", error);
+        }
+      );
   }
 
   fetchNotes() {
-    this.http.get(`https://staging.rrdevours.monster/api/injustices/${this.injusticeId}/notes`)
-      .subscribe((data: any) => {
-        this.notes = data;
-      }, error => {
-        console.error('Error fetching notes!', error);
-      });
+    this.http
+      .get(
+        `https://staging.rrdevours.monster/api/injustices/${this.injusticeId}/notes`
+      )
+      .subscribe(
+        (data: any) => {
+          this.notes = data;
+        },
+        (error) => {
+          console.error("Error fetching notes!", error);
+        }
+      );
   }
 
   addNote() {
     if (!this.newNoteText.trim()) return;
 
-    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    const user = JSON.parse(localStorage.getItem("user") || "{}");
     const userId = user.id; // Make sure this is the correct property for the user's ID
 
     const newNote = {
       text: this.newNoteText,
       notable_id: this.injusticeId,
-      notable_type: 'App\\Models\\Injustice', // Make sure this matches your backend model
+      notable_type: "App\\Models\\Injustice", // Make sure this matches your backend model
       system: 0,
-      created_by: userId
+      created_by: userId,
     };
 
-    this.http.post(`https://staging.rrdevours.monster/api/injustices/${this.injusticeId}/notes`, newNote)
-      .subscribe(response => {
-        this.notes.push(newNote); // Add the new note to the list
-        this.newNoteText = ''; // Clear the input field
-        this.presentToast('Note added successfully');
-      }, error => {
-        console.error('Error adding note!', error);
-        this.presentToast('Error adding note');
-      });
+    this.http
+      .post(
+        `https://staging.rrdevours.monster/api/injustices/${this.injusticeId}/notes`,
+        newNote
+      )
+      .subscribe(
+        (response) => {
+          this.notes.push(newNote); // Add the new note to the list
+          this.newNoteText = ""; // Clear the input field
+          this.presentToast("Note added successfully");
+        },
+        (error) => {
+          console.error("Error adding note!", error);
+          this.presentToast("Error adding note");
+        }
+      );
   }
 
   hasImages(): boolean {
-    return this.injusticeDetails.media.some(item => item.layout === 'image');
+    return this.injusticeDetails.media.some((item) => item.layout === "image");
   }
-  
+
   hasVideos(): boolean {
-    return this.injusticeDetails.media.some(item => item.layout === 'video');
+    return this.injusticeDetails.media.some((item) => item.layout === "video");
   }
-  
+
   hasDocuments(): boolean {
-    return this.injusticeDetails.media.some(item => item.layout === 'document');
+    return this.injusticeDetails.media.some(
+      (item) => item.layout === "document"
+    );
   }
-  
+
   getImageMedia() {
-    return this.injusticeDetails.media.filter(item => item.layout === 'image');
+    return this.injusticeDetails.media.filter(
+      (item) => item.layout === "image"
+    );
   }
-  
+
   getVideoMedia() {
-    return this.injusticeDetails.media.filter(item => item.layout === 'video');
+    return this.injusticeDetails.media.filter(
+      (item) => item.layout === "video"
+    );
   }
-  
+
   getDocumentMedia() {
-    return this.injusticeDetails.media.filter(item => item.layout === 'document');
+    return this.injusticeDetails.media.filter(
+      (item) => item.layout === "document"
+    );
   }
 
   onFileSelected(event) {
@@ -157,15 +188,15 @@ export class EventDetailsPage implements OnInit {
     }
   }
 
-  uploadFile(file: File) {
+  uploadFile(file: File, fileName?: string) {
     const formData = new FormData();
-    formData.append('file', file);
-    formData.append('id', this.injusticeId.toString());
+    formData.append("file", file);
+    formData.append("id", this.injusticeId.toString());
 
-    const fileCategory = this.getFileCategory(file.name);
-    formData.append('category', fileCategory);
+    const fileCategory = this.getFileCategory(fileName);
+    formData.append("category", fileCategory);
 
-    this.presentToast('Uploading file with name: ' + file.name);
+    this.presentToast("Uploading file with name: " + fileName);
 
     //const uploadUrl = `https://staging.rrdevours.monster/api/injustices/${this.injusticeId}/upload`;
     // use a temp webhook.site URL to troubleshoot lack of POST requests - you can view requests in: https://webhook.site/#!/5181ba22-f5a8-4734-907b-eca1c65f8855
@@ -176,65 +207,61 @@ export class EventDetailsPage implements OnInit {
 
     this.http.post(uploadUrl, formData).subscribe(
       (response: any) => {
-        console.log('File uploaded successfully', response);
+        console.log("File uploaded successfully", response);
         const fileUrl = response.url;
         this.presentToast(`File uploaded successfully: ${fileUrl}`);
         this.fetchInjusticeDetails();
       },
-      error => {
-        console.error('Error uploading file', error);
-        this.presentToast('Error uploading file');
+      (error) => {
+        console.error("Error uploading file", error);
+        this.presentToast("Error uploading file");
       }
     );
   }
 
   getFileNameFromUrl(url: string): string {
-    return url.split('/').pop(); // This will get the part of the URL after the last '/'
+    return url.split("/").pop(); // This will get the part of the URL after the last '/'
   }
 
   uploadSelectedImage() {
     if (!this.selectedImageUri) {
-      this.presentToast('No image selected');
+      this.presentToast("No image selected");
       return;
     }
-  
+
     // Convert the image URI to a Blob or File object
-    this.uriToBlob(this.selectedImageUri).then(blob => {
-      // Create a File object from the Blob
-      const file = new File([blob], 'image.jpg', { type: 'image/jpeg' });
-  
-      // Call the existing uploadFile method with this File object
-      this.uploadFile(file);
-    }).catch(err => {
-      console.error('Error converting URI to blob', err);
-      this.presentToast('Error uploading image: ' + JSON.stringify(err));
-    });
+    this.uriToBlob(this.selectedImageUri)
+      .then((blob) => {
+        const fileName = "image.jpg";
+
+        // Create a File object from the Blob
+        const file = new File([blob], fileName, { type: "image/jpeg" });
+
+        // Call the existing uploadFile method with this File object
+        this.uploadFile(file, fileName);
+      })
+      .catch((err) => {
+        console.error("Error converting URI to blob", err);
+        this.presentToast("Error uploading image: " + JSON.stringify(err));
+      });
   }
-  
+
   uriToBlob(uri: string): Promise<Blob> {
     return new Promise((resolve, reject) => {
       this.file
         .resolveLocalFilesystemUrl(uri)
-        .then((fileEntry) => {
-          const { name, nativeURL } = fileEntry;
+        .then(async (entry: FileEntry) => {
+          // retrieve the image
+          const response = await fetch(
+            Capacitor.convertFileSrc(entry.nativeURL)
+          );
 
-          // get the path..
-          const path = nativeURL.substring(0, nativeURL.lastIndexOf("/"));
-          console.log("path", path);
-          console.log("fileName", name);
+          // convert to a Blob
+          const blob = await response.blob();
 
-          // we are provided the name, so now read the file into
-          // a buffer
-          return this.file.readAsArrayBuffer(path, name);
-        })
-     .then(buffer => {
-          // get the buffer and make a blob to be saved
-          const imageBlob = new Blob([buffer], {
-            type: "image/jpeg"
-          });
-          resolve(imageBlob);
+          resolve(blob);
         })
         .catch((e) => reject(e));
     });
-}
+  }
 }
