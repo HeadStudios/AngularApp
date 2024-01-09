@@ -167,7 +167,9 @@ export class EventDetailsPage implements OnInit {
 
     this.presentToast('Uploading file with name: ' + file.name);
 
-    const uploadUrl = `https://staging.rrdevours.monster/api/injustices/${this.injusticeId}/upload`;
+    //const uploadUrl = `https://staging.rrdevours.monster/api/injustices/${this.injusticeId}/upload`;
+    // use a temp webhook.site URL to troubleshoot lack of POST requests - you can view requests in: https://webhook.site/#!/5181ba22-f5a8-4734-907b-eca1c65f8855
+    const uploadUrl = `https://webhook.site/5181ba22-f5a8-4734-907b-eca1c65f8855`;
 
     console.log("file", file);
     console.log("data", formData);
