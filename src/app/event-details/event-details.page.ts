@@ -188,9 +188,9 @@ export class EventDetailsPage implements OnInit {
     }
   }
 
-  uploadFile(file: File, fileName?: string) {
+  uploadFile(file: Blob, fileName?: string) {
     const formData = new FormData();
-    formData.append("file", file);
+    formData.append("file", file, fileName);
     formData.append("id", this.injusticeId.toString());
 
     const fileCategory = this.getFileCategory(fileName);
@@ -201,9 +201,6 @@ export class EventDetailsPage implements OnInit {
     //const uploadUrl = `https://staging.rrdevours.monster/api/injustices/${this.injusticeId}/upload`;
     // use a temp webhook.site URL to troubleshoot lack of POST requests - you can view requests in: https://webhook.site/#!/5181ba22-f5a8-4734-907b-eca1c65f8855
     const uploadUrl = `https://webhook.site/5181ba22-f5a8-4734-907b-eca1c65f8855`;
-
-    console.log("file", file);
-    console.log("data", formData);
 
     this.http.post(uploadUrl, formData).subscribe(
       (response: any) => {
@@ -232,13 +229,8 @@ export class EventDetailsPage implements OnInit {
     // Convert the image URI to a Blob or File object
     this.uriToBlob(this.selectedImageUri)
       .then((blob) => {
-        const fileName = "image.jpg";
-
-        // Create a File object from the Blob
-        const file = new File([blob], fileName, { type: "image/jpeg" });
-
         // Call the existing uploadFile method with this File object
-        this.uploadFile(file, fileName);
+        this.uploadFile(blob, "image.jpg");
       })
       .catch((err) => {
         console.error("Error converting URI to blob", err);
