@@ -1,6 +1,6 @@
 <ion-app class="theme-{{env.theme}}">
-  <ion-split-pane contentId="main-content">
-    <ion-menu contentId="main-content">
+  <ion-split-pane when="false" contentId="main-content">
+    <ion-menu contentId="main-content" type="overlay">
       <ion-header>
         <ion-toolbar>
           <ion-title>Menu</ion-title>
@@ -13,8 +13,8 @@
           </ion-item-divider>
           <ion-menu-toggle auto-hide="false" *ngFor="let p of walletPages">
             <ion-item
-              [routerDirection]="'root'"
-              [routerLink]="[p.url]"
+              [routerDirection]="root"
+              [routerLink]="p.url"
               routerLinkActive="selected-menu-item">
               <ion-icon slot="start" [name]="p.icon"></ion-icon>
               <ion-label>
@@ -27,7 +27,7 @@
             <ion-label>Organizers</ion-label>
           </ion-item-divider>
           <ion-menu-toggle auto-hide="false" *ngFor="let p of organizerPages">
-            <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
+            <ion-item [routerDirection]="root" [routerLink]="p.url">
               <ion-icon slot="start" [name]="p.icon"></ion-icon>
               <ion-label>
                 {{p.title}}
@@ -40,8 +40,8 @@
           </ion-item-divider>
           <ion-menu-toggle auto-hide="false" *ngFor="let p of introPages">
             <ion-item
-              [routerDirection]="'root'"
-              [routerLink]="[p.url]"
+              [routerDirection]="root"
+              [routerLink]="p.url"
               routerLinkActive="selected-menu-item">
               <ion-icon slot="start" [name]="p.icon"></ion-icon>
               <ion-label>
@@ -55,8 +55,8 @@
           </ion-item-divider>
           <ion-menu-toggle auto-hide="false" *ngFor="let p of walkthroughPages">
             <ion-item
-              [routerDirection]="'root'"
-              [routerLink]="[p.url]"
+              [routerDirection]="root"
+              [routerLink]="p.url"
               routerLinkActive="selected-menu-item">
               <ion-icon slot="start" [name]="p.icon"></ion-icon>
               <ion-label>
@@ -70,8 +70,8 @@
           </ion-item-divider>
           <ion-menu-toggle auto-hide="false" *ngFor="let p of profilePages">
             <ion-item
-              [routerDirection]="'root'"
-              [routerLink]="[p.url]"
+              [routerDirection]="root"
+              [routerLink]="p.url"
               routerLinkActive="selected-menu-item">
               <ion-icon slot="start" [name]="p.icon"></ion-icon>
               <ion-label>
@@ -85,8 +85,8 @@
           </ion-item-divider>
           <ion-menu-toggle auto-hide="false" *ngFor="let p of accountPages">
             <ion-item
-              [routerDirection]="'root'"
-              [routerLink]="[p.url]"
+              [routerDirection]="root"
+              [routerLink]="p.url"
               routerLinkActive="selected-menu-item">
               <ion-icon slot="start" [name]="p.icon"></ion-icon>
               <ion-label>
@@ -100,8 +100,8 @@
           </ion-item-divider>
           <ion-menu-toggle auto-hide="false" *ngFor="let p of formPages">
             <ion-item
-              [routerDirection]="'root'"
-              [routerLink]="[p.url]"
+              [routerDirection]="root"
+              [routerLink]="p.url"
               routerLinkActive="selected-menu-item">
               <ion-icon slot="start" [name]="p.icon"></ion-icon>
               <ion-label>
@@ -115,8 +115,8 @@
           </ion-item-divider>
           <ion-menu-toggle auto-hide="false" *ngFor="let p of cloudPages">
             <ion-item
-              [routerDirection]="'root'"
-              [routerLink]="[p.url]"
+              [routerDirection]="root"
+              [routerLink]="p.url"
               routerLinkActive="selected-menu-item">
               <ion-icon slot="start" [name]="p.icon"></ion-icon>
               <ion-label>
@@ -130,8 +130,8 @@
           </ion-item-divider>
           <ion-menu-toggle auto-hide="false" *ngFor="let p of eventPages">
             <ion-item
-              [routerDirection]="'root'"
-              [routerLink]="[p.url]"
+              [routerDirection]="root"
+              [routerLink]="p.url"
               routerLinkActive="selected-menu-item">
               <ion-icon slot="start" [name]="p.icon"></ion-icon>
               <ion-label>
@@ -145,8 +145,8 @@
           </ion-item-divider>
           <ion-menu-toggle auto-hide="false" *ngFor="let p of commercePages">
             <ion-item
-              [routerDirection]="'root'"
-              [routerLink]="[p.url]"
+              [routerDirection]="root"
+              [routerLink]="p.url"
               routerLinkActive="selected-menu-item">
               <ion-icon slot="start" [name]="p.icon"></ion-icon>
               <ion-label>
@@ -160,8 +160,8 @@
           </ion-item-divider>
           <ion-menu-toggle auto-hide="false" *ngFor="let p of conference">
             <ion-item
-              [routerDirection]="'root'"
-              [routerLink]="[p.url]"
+              [routerDirection]="root"
+              [routerLink]="p.url"
               routerLinkActive="selected-menu-item">
               <ion-icon slot="start" [name]="p.icon"></ion-icon>
               <ion-label>
@@ -175,8 +175,8 @@
           </ion-item-divider>
           <ion-menu-toggle auto-hide="false" *ngFor="let p of socialPages">
             <ion-item
-              [routerDirection]="'root'"
-              [routerLink]="[p.url]"
+              [routerDirection]="root"
+              [routerLink]="p.url"
               routerLinkActive="selected-menu-item">
               <ion-icon slot="start" [name]="p.icon"></ion-icon>
               <ion-label>
@@ -190,8 +190,8 @@
           </ion-item-divider>
           <ion-menu-toggle auto-hide="false" *ngFor="let p of food">
             <ion-item
-              [routerDirection]="'root'"
-              [routerLink]="[p.url]"
+              [routerDirection]="root"
+              [routerLink]="p.url"
               routerLinkActive="selected-menu-item">
               <ion-icon slot="start" [name]="p.icon"></ion-icon>
               <ion-label>
@@ -205,8 +205,8 @@
           </ion-item-divider>
           <ion-menu-toggle auto-hide="false" *ngFor="let p of emptyStatePages">
             <ion-item
-              [routerDirection]="'root'"
-              [routerLink]="[p.url]"
+              [routerDirection]="root"
+              [routerLink]="p.url"
               routerLinkActive="selected-menu-item">
               <ion-icon slot="start" [name]="p.icon"></ion-icon>
               <ion-label>
@@ -220,8 +220,8 @@
           </ion-item-divider>
           <ion-menu-toggle auto-hide="false" *ngFor="let p of componentPages">
             <ion-item
-              [routerDirection]="'root'"
-              [routerLink]="[p.url]"
+              [routerDirection]="root"
+              [routerLink]="p.url"
               routerLinkActive="selected-menu-item">
               <ion-icon slot="start" [name]="p.icon"></ion-icon>
               <ion-label>
@@ -235,8 +235,8 @@
           </ion-item-divider>
           <ion-menu-toggle auto-hide="false" *ngFor="let p of enhancedListPages">
             <ion-item
-              [routerDirection]="'root'"
-              [routerLink]="[p.url]"
+              [routerDirection]="root"
+              [routerLink]="p.url"
               routerLinkActive="selected-menu-item">
               <ion-icon slot="start" [name]="p.icon"></ion-icon>
               <ion-label>
@@ -250,8 +250,8 @@
           </ion-item-divider>
           <ion-menu-toggle auto-hide="false" *ngFor="let p of ionicListPages">
             <ion-item
-              [routerDirection]="'root'"
-              [routerLink]="[p.url]"
+              [routerDirection]="root"
+              [routerLink]="p.url"
               routerLinkActive="selected-menu-item">
               <ion-icon slot="start" [name]="p.icon"></ion-icon>
               <ion-label>
