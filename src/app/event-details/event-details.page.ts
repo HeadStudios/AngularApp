@@ -20,6 +20,8 @@ export class EventDetailsPage implements OnInit {
   notes: any[] = [];
   newNoteText: string = "";
   selectedImageUri: string = "";
+  customFileName: string = '';
+
 
   constructor(
     private imagePicker: ImagePicker,
@@ -200,7 +202,7 @@ export class EventDetailsPage implements OnInit {
 
     //const uploadUrl = `https://staging.rrdevours.monster/api/injustices/${this.injusticeId}/upload`;
     // use a temp webhook.site URL to troubleshoot lack of POST requests - you can view requests in: https://webhook.site/#!/5181ba22-f5a8-4734-907b-eca1c65f8855
-    const uploadUrl = `https://webhook.site/5181ba22-f5a8-4734-907b-eca1c65f8855`;
+    const uploadUrl = `https://staging.rrdevours.monster/api/injustices/${this.injusticeId}/upload`;
 
     this.http.post(uploadUrl, formData).subscribe(
       (response: any) => {
@@ -229,8 +231,9 @@ export class EventDetailsPage implements OnInit {
     // Convert the image URI to a Blob or File object
     this.uriToBlob(this.selectedImageUri)
       .then((blob) => {
+        const fileName = this.customFileName || "image.jpg";
         // Call the existing uploadFile method with this File object
-        this.uploadFile(blob, "image.jpg");
+        this.uploadFile(blob, fileName);
       })
       .catch((err) => {
         console.error("Error converting URI to blob", err);

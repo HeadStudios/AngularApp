@@ -37,10 +37,6 @@ export class AppComponent {
     
   ];
 
-  public introPages = [
-    
-  ];
-
   public walkthroughPages = [
     {
       title: 'Walkthrough',
@@ -681,7 +677,7 @@ export class AppComponent {
       icon: 'list'
     }
   ];
-
+*/
   public introPages = [
     {
       title: 'Home',
@@ -709,7 +705,7 @@ export class AppComponent {
       icon: 'list'
     }
   ];
-
+/*
   public walkthroughPages = [
     {
       title: 'Walkthrough',
