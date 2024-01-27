@@ -27,7 +27,8 @@ export class ContactFormPage implements OnInit {
     name: '',
     email: '',
     mobile: '',
-    injustice: ''
+    bio: '',
+    contactListIds: []
   };
   contactLists: any[] = [];
 
@@ -52,6 +53,14 @@ export class ContactFormPage implements OnInit {
   async submitForm(form: NgForm) {
     console.log('Submit Form Called', form.value);
     if (form.valid) {
+        // Add selected contact list IDs to formData
+      this.formData.contactListIds = this.contactLists
+      .filter(cl => cl.selected)
+      .map(cl => cl.id);
+
+      // Log formData to debug
+      console.log('formData before submitting:', this.formData);
+      
       const selectedContactListIds = this.contactLists
         .filter(cl => cl.selected)
         .map(cl => cl.id);

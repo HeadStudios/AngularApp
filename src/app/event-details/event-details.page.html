@@ -3,10 +3,16 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button> <!-- Add this line -->
     </ion-buttons>
-    <ion-title>Event Details</ion-title>
+    <ion-title>Injustice Details</ion-title>
   </ion-toolbar>
 </ion-header>
 
+<div *ngIf="injusticeUrl">
+  <p>Public URL: {{ injusticeUrl }}</p>
+  <ion-button (click)="copyToClipboard(injusticeUrl)">
+    <ion-icon name="copy"></ion-icon> Copy
+  </ion-button>
+</div>
 <ion-content>
   <div class="ion-padding-horizontal">
     <h2>{{ injusticeDetails.title }}</h2>
@@ -101,7 +107,7 @@
 </ion-list>
 
   </div>
-    <ion-list-header>
+    <!--<ion-list-header>
       <ion-label>Media</ion-label>
     </ion-list-header>
 
@@ -123,9 +129,9 @@
       </ion-label>
       <span class="is-event-details-span" slot="end">Rome</span>
     </ion-item>
-  </ion-list>
+  </ion-list>-->
 
-  <ion-list>
+  <!--<ion-list>
     <ion-list-header>
       <ion-label>Speakers</ion-label>
     </ion-list-header>
@@ -138,9 +144,9 @@
         <p>john@doe.com</p>
       </ion-label>
     </ion-item>
-  </ion-list>
+  </ion-list>-->
 
-  <ion-list>
+  <!--<ion-list>
     <ion-list-header>
       <ion-label>Content</ion-label>
     </ion-list-header>
@@ -176,9 +182,10 @@
         </ion-button>
       </span>
     </ion-item>
-  </ion-list>
+  </ion-list>-->
 
-  <div class="ion-padding-horizontal">
+  <!--
+    <div class="ion-padding-horizontal">
     <ion-grid class="is-grid ion-no-padding">
       <ion-row>
         <ion-col size="6" class="ion-text-center">
@@ -188,12 +195,6 @@
               Favorites
             </p>
           </ion-button>
-          <!-- <button ion-button block outline icon-start>
-            <ion-icon name="bookmark"></ion-icon>
-            <p>
-              Remove from My Agenda
-            </p>
-          </button>    -->
         </ion-col>
         <ion-col size="6" class="ion-text-center">
           <ion-button expand="block" fill="outline">
@@ -205,7 +206,7 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-  </div>
+  </div> -->
 
   <!-- File Upload Section -->
   <ion-item>
@@ -216,3 +217,13 @@
 
 
 </ion-content>
+
+<style>
+  ion-item ion-label h2 {
+  white-space: normal;
+  text-overflow: clip;
+  overflow: hidden;
+  word-wrap: break-word;
+  line-height: 1.4;
+}
+</style>

@@ -7,10 +7,6 @@ import { ModalController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
 
 
-
-
-
-
 @Component({
   selector: 'app-speaker-details',
   templateUrl: './speaker-details.page.html',
@@ -144,6 +140,20 @@ export class SpeakerDetailsPage implements OnInit {
       duration: 2000
     }); // hello
     toast.present();
+  }
+
+  sendSMS(mobileNumber: string) {
+    if (mobileNumber) {
+      // You can use a plugin to open the SMS app with the number pre-filled
+      window.open(`sms:${mobileNumber}`, '_system');
+    }
+  }
+
+  makeCall(mobileNumber: string) {
+    if (mobileNumber) {
+      // Use the 'tel' scheme to initiate a call
+      window.open(`tel:${mobileNumber}`, '_system');
+    }
   }
 
 }

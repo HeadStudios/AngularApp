@@ -20,6 +20,10 @@ export class LoginPage implements OnInit {
   constructor(private router: Router, private http: HttpClient) { }
 
   ngOnInit() {
+    const user = localStorage.getItem('user');
+    if (user) {
+      this.router.navigate(['/basicList']);
+    }
   }
 
   togglePasswordType() {
@@ -34,9 +38,14 @@ export class LoginPage implements OnInit {
         password: this.password
       };
 
-      this.http.post(this.loginUrl, userData).subscribe(
+      this.http.post(this.loginUrl, { email: this.username, password: this.password }).subscribe(
         success => {
-          // Handle successful login
+          localStorage.setItem('user', JSON.stringify(success));
+          // Navigate to basicList after successful login
+          this.router.navigate(['/basicList']);
+        },
+        error => {
+        /*  // Handle successful login
           localStorage.setItem('user', JSON.stringify(success));
           console.log("User in check the charts bro: ");
           console.log(success);
@@ -46,7 +55,7 @@ export class LoginPage implements OnInit {
           console.log("Do you see the user id?");
           this.router.navigate(['/basicList']);
         },
-        error => {
+        error => { */
           // Handle login error
           // For example, show an alert or a message to the user
         }

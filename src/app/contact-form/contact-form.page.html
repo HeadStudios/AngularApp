@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Contact Form </ion-title>
+    <ion-title>Add a Peep</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -29,11 +29,11 @@
         <ion-input type="tel" placeholder="Mobile" [(ngModel)]="formData.mobile" name="mobile"></ion-input>
       </ion-item>
 
-      <!-- Injustice -->
-      <ion-item>
-        <ion-label color="primary" position="stacked">Injustice</ion-label>
-        <ion-textarea placeholder="Injustice" [(ngModel)]="formData.injustice" name="injustice"></ion-textarea>
-      </ion-item>
+      <!-- Bio -->
+    <ion-item>
+      <ion-label color="primary" position="stacked">Bio</ion-label>
+      <ion-textarea placeholder="Bio" [(ngModel)]="formData.bio" name="bio"></ion-textarea>
+    </ion-item>
 
     </ion-list>
   </form>

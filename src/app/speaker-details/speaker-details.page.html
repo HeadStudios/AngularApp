@@ -16,12 +16,12 @@
       </div>
       <ion-label>
         <h1>{{ contactData?.name }}</h1>
-        <div class="ion-text-wrap">Founder & CEO at Jermains Biology</div>
+        <div class="ion-text-wrap"></div>
       </ion-label>
     </ion-item>
     <ion-grid class="ion-padding-top ion-text-center">
       <ion-row>
-        <ion-col size="3">
+        <!--<ion-col size="3">
           <ion-item routerLink="/speaker-details" lines="none" detail="false" class="ion-text-center">
             <ion-label>
               <ion-icon name="star"></ion-icon>
@@ -44,12 +44,20 @@
               <p>Email</p>
             </ion-label>
           </ion-item>
+        </ion-col>-->
+        <ion-col size="3">
+          <ion-item (click)="makeCall(contactData?.mobile)" lines="none" detail="false" class="ion-text-center">
+            <ion-label>
+              <ion-icon name="call"></ion-icon>
+              <p>Call</p>
+            </ion-label>
+          </ion-item>
         </ion-col>
         <ion-col size="3">
-          <ion-item routerLink="/speaker-details" lines="none" detail="false" class="ion-text-center">
+          <ion-item (click)="sendSMS(contactData?.mobile)" lines="none" detail="false" class="ion-text-center">
             <ion-label>
-              <ion-icon name="people"></ion-icon>
-              <p>Let's Meet</p>
+              <ion-icon name="chatbubble"></ion-icon>
+              <p>Send SMS</p>
             </ion-label>
           </ion-item>
         </ion-col>
@@ -75,7 +83,7 @@
 
 
 
-  <ion-item-group class="is-list-square">
+  <!--<ion-item-group class="is-list-square">
     <ion-item-divider>
       <ion-label>SPEAKING AT</ion-label>
     </ion-item-divider>
@@ -121,14 +129,14 @@
         </ion-button>
       </div>
     </ion-item>
-  </ion-item-group>
+  </ion-item-group>-->
   <ion-item-group>
     <ion-item-divider>
       <ion-label>BIO</ion-label>
     </ion-item-divider>
     <div class="ion-padding">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime non eius optio iusto similique officiis voluptatum fugit quisquam, ratione illum suscipit autem eum possimus iste cupiditate ipsam inventore sed... <a href="#" routerLink="/speaker-details">Read more</a></div>
   </ion-item-group>
-  <ion-item-group class="is-list-square">
+  <!--<ion-item-group class="is-list-square">
     <ion-item-divider>
       <ion-label>AFFILIATIONS</ion-label>
     </ion-item-divider>
@@ -141,8 +149,8 @@
         <p>Vice President</p>
       </ion-label>
     </ion-item>
-  </ion-item-group>
-  <ion-item-group class="is-list-square">
+  </ion-item-group>-->
+  <!--<ion-item-group class="is-list-square">
     <ion-item-divider>
       <ion-label>EDUCATION</ion-label>
     </ion-item-divider>
@@ -164,8 +172,8 @@
         <p>M.Sc., Computer Science <br> 2007 to 2009</p>
       </ion-label>
     </ion-item>
-  </ion-item-group>
-  <ion-item-group class="is-list-square">
+  </ion-item-group>-->
+  <!--<ion-item-group class="is-list-square">
     <ion-item-divider>
       <ion-label>WEBSITE</ion-label>
     </ion-item-divider>
@@ -177,8 +185,8 @@
         <p class="is-list-square-title"><a target="_blank" href="https://www.google.com">www.google.com</a></p>
       </ion-label>
     </ion-item>
-  </ion-item-group>
-  <ion-item-group class="is-list-square">
+  </ion-item-group>-->
+  <!--<ion-item-group class="is-list-square">
     <ion-item-divider>
       <ion-label>SOCIAL PROFILES</ion-label>
     </ion-item-divider>
@@ -190,8 +198,8 @@
         <p class="is-list-square-title"><a target="_blank" href="https://www.linkedin.com/">Linkedin Profile</a></p>
       </ion-label>
     </ion-item>
-  </ion-item-group>
-  <ion-item-group class="is-list-square">
+  </ion-item-group>-->
+  <!--<ion-item-group class="is-list-square">
     <ion-item-divider>
       <ion-label>SPONSORS</ion-label>
     </ion-item-divider>
@@ -206,5 +214,5 @@
         <img src="assets/imgs/sponsor-3.png"/>
       </ion-slide>
     </ion-slides>
-  </ion-item-group>
+  </ion-item-group>-->
 </ion-content>

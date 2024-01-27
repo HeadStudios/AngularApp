@@ -21,6 +21,8 @@ export class EventDetailsPage implements OnInit {
   newNoteText: string = "";
   selectedImageUri: string = "";
   customFileName: string = '';
+  public injusticeUrl: string;
+
 
 
   constructor(
@@ -35,6 +37,7 @@ export class EventDetailsPage implements OnInit {
     this.injusticeId = Number(this.route.snapshot.paramMap.get("id"));
     this.fetchInjusticeDetails();
     this.fetchNotes();
+    this.fetchInjusticeUrl();
   }
 
   openGallery() {
@@ -258,5 +261,30 @@ export class EventDetailsPage implements OnInit {
         })
         .catch((e) => reject(e));
     });
+  }
+
+  fetchInjusticeUrl() {
+    this.http.get(`https://sunlight.quest/api/injustice/${this.injusticeId}/generate-url`)
+      .subscribe(
+        (response: any) => {
+          this.injusticeUrl = response.url;
+        },
+        (error) => {
+          console.error("Error fetching URL!", error);
+        }
+      );
+  }
+
+  copyToClipboard(url: string) {
+    navigator.clipboard.writeText(url).then(
+      () => {
+        // Handle success, e.g., show a toast notification
+        console.log("URL copied to clipboard");
+      },
+      () => {
+        // Handle failure
+        console.error("Failed to copy URL");
+      }
+    );
   }
 }

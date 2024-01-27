@@ -16,7 +16,7 @@ export class AppComponent {
 
   public walletPages = [
     {
-      title: 'Basic List',
+      title: 'Peeps',
       url: '/basicList',
       icon: 'list'
     },
