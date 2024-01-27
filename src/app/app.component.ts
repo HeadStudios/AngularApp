@@ -574,6 +574,7 @@ export class AppComponent {
   ];
 
   public ionicListPages = [
+    /*
     {
       title: 'Avatar List',
       url: '/avatarList',
@@ -589,13 +590,13 @@ export class AppComponent {
       title: 'Headers List',
       url: '/headersList',
       icon: 'list'
-    },
+    },*/
     {
       title: 'Icon List',
       url: '/iconList',
       icon: 'list'
-    },
-    {
+    }
+    /*{
       title: 'Inset List',
       url: '/insetList',
       icon: 'list'
@@ -619,7 +620,7 @@ export class AppComponent {
       title: 'Thumbnail List',
       url: '/altThumbnailList',
       icon: 'list'
-    }
+    }*/
   ];
 
   /* public walletPages = [
