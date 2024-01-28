@@ -6,6 +6,8 @@ import { environment } from "../../environments/environment";
 import { ToastController } from "@ionic/angular";
 import { ImagePicker } from "@ionic-native/image-picker/ngx";
 import { FileEntry, File as IonicFile } from "@ionic-native/file/ngx";
+import { Filesystem, Directory } from '@capacitor/filesystem'; 
+
 
 @Component({
   selector: "app-event-details",
@@ -22,6 +24,8 @@ export class EventDetailsPage implements OnInit {
   selectedImageUri: string = "";
   customFileName: string = '';
   public injusticeUrl: string;
+  customFileUploadName: string = '';
+
 
 
 
@@ -179,7 +183,12 @@ export class EventDetailsPage implements OnInit {
   }
 
   onFileSelected(event) {
-    this.selectedFiles = event.target.files;
+    const file = event.target.files[0];
+    if (file) {
+      this.uploadFile(file, file.name);
+    } else {
+      this.presentToast("No file selected");
+    }
   }
 
   uploadFiles() {

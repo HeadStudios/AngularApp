@@ -215,6 +215,11 @@
   </ion-item>
   <ion-button (click)="openGallery()">Select Image</ion-button>
 
+  <!-- File Upload Section -->
+  <ion-item>
+    <input type="file" (change)="onFileSelected($event)" accept=".pdf" hidden #fileInput>
+    <ion-button (click)="fileInput.click()">Select PDF File</ion-button>
+  </ion-item>
 
 </ion-content>
 
