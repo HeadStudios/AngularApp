@@ -25,6 +25,8 @@ export class EventDetailsPage implements OnInit {
   customFileName: string = '';
   public injusticeUrl: string;
   customFileUploadName: string = '';
+  customVideoName: string = '';
+
 
 
 
@@ -183,12 +185,7 @@ export class EventDetailsPage implements OnInit {
   }
 
   onFileSelected(event) {
-    const file = event.target.files[0];
-    if (file) {
-      this.uploadFile(file, file.name);
-    } else {
-      this.presentToast("No file selected");
-    }
+    this.selectedFiles = event.target.files;
   }
 
   uploadFiles() {
@@ -295,5 +292,14 @@ export class EventDetailsPage implements OnInit {
         console.error("Failed to copy URL");
       }
     );
+  }
+
+  onVideoSelected(event) {
+    const videoFile = event.target.files[0];
+    if (videoFile) {
+      this.uploadFile(videoFile, this.customVideoName || videoFile.name);
+    } else {
+      this.presentToast("No video selected");
+    }
   }
 }

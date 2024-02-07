@@ -221,6 +221,14 @@
     <ion-button (click)="fileInput.click()">Select PDF File</ion-button>
   </ion-item>
 
+  <!-- New Video Upload Section -->
+<ion-item>
+  <ion-label position="stacked">Custom Video Name</ion-label>
+  <ion-input [(ngModel)]="customVideoName"></ion-input>
+</ion-item>
+<input type="file" accept="video/*" (change)="onVideoSelected($event)" hidden #videoInput>
+<ion-button (click)="videoInput.click()">Select Video</ion-button>
+
 </ion-content>
 
 <style>
