@@ -186,6 +186,11 @@ export class EventDetailsPage implements OnInit {
 
   onFileSelected(event) {
     this.selectedFiles = event.target.files;
+    if (this.selectedFiles.length > 0) {
+      // For simplicity, assuming only one file is selected
+      const file = this.selectedFiles[0];
+      this.uploadFile(file, this.customFileUploadName || file.name);
+    }
   }
 
   uploadFiles() {

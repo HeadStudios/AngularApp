@@ -22,7 +22,7 @@ export class LoginPage implements OnInit {
   ngOnInit() {
     const user = localStorage.getItem('user');
     if (user) {
-      this.router.navigate(['/basicList']);
+      this.router.navigate(['/iconList']);
     }
   }
 
@@ -42,7 +42,7 @@ export class LoginPage implements OnInit {
         success => {
           localStorage.setItem('user', JSON.stringify(success));
           // Navigate to basicList after successful login
-          this.router.navigate(['/basicList']);
+          this.router.navigate(['/iconList']);
         },
         error => {
         /*  // Handle successful login
@@ -65,5 +65,7 @@ export class LoginPage implements OnInit {
       // For example, show an alert or a message to the user
     }
   }
+
+  
 
 }

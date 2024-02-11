@@ -12,7 +12,7 @@
   <div class="is-hero">
     <ion-item detail="false" lines="none">
       <div class="is-avatar-container" slot="start">
-        <img src="assets/imgs/speaker-1.png">
+        <img [src]="contactData?.profile_photo ? contactData.profile_photo : 'assets/imgs/speaker-1.png'" width="200" height="200" class="profile-photo">
       </div>
       <ion-label>
         <h1>{{ contactData?.name }}</h1>
@@ -216,3 +216,20 @@
     </ion-slides>
   </ion-item-group>-->
 </ion-content>
+
+<style>
+  .profile-photo {
+  width: 100px; /* Default width */
+  height: 100px; /* Default height */
+  object-fit: cover; /* Ensures the image covers the set area */
+  border-radius: 10px; /* Rounded corners for smaller screens */
+}
+
+@media (min-width: 768px) {
+  .profile-photo {
+    width: 200px; /* Larger width for wider screens */
+    height: 200px; /* Larger height for wider screens */
+    border-radius: 20px; /* More pronounced rounded corners for larger images */
+  }
+}
+</style>

@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-  import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEventType, HttpResponse } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { AddInjusticeModalComponent } from '../add-injustice-modal/add-injustice-modal.component';
 import { ModalController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -153,6 +154,36 @@ export class SpeakerDetailsPage implements OnInit {
     if (mobileNumber) {
       // Use the 'tel' scheme to initiate a call
       window.open(`tel:${mobileNumber}`, '_system');
+    }
+  }
+
+  uploadContactPhoto(contactId: number, photoFile: File): Observable<any> {
+    const formData = new FormData();
+    formData.append('photo', photoFile);
+  
+    return this.http.post(`https://yourapi.com/contacts/${contactId}/photo`, formData, {
+      reportProgress: true,
+      observe: 'events'
+    });
+  }
+
+  onPhotoSelected(event): void {
+    if (event.target.files && event.target.files[0]) {
+      const photo = event.target.files[0];
+  
+      this.uploadContactPhoto(this.contactData.id, photo).subscribe({
+        next: (event) => {
+          if (event.type === HttpEventType.UploadProgress) {
+            // You can use this to display upload progress
+          } else if (event instanceof HttpResponse) {
+            // Handle success
+            this.contactData.profile_photo = event.body.path;
+          }
+        },
+        error: (err) => {
+          console.error('Upload error:', err);
+        }
+      });
     }
   }
 
