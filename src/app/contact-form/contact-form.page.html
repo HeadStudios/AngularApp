@@ -1,15 +1,25 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+      <ion-menu-toggle>
+        <ion-button>
+          <ion-icon name="menu" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-menu-toggle>
     </ion-buttons>
-    <ion-title>Add a Peep</ion-title>
+    <ion-title>Add Contact Hot Reloada</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <form #contactForm="ngForm" (ngSubmit)="submitForm(contactForm)">
     <ion-list class="ion-padding">
+
+      <ion-item>
+        <ion-label position="stacked">Profile Photo (optional)</ion-label>
+        <input type="file" (change)="onImageSelected($event)" accept="image/*" hidden #photoInput>
+        <ion-button (click)="photoInput.click()">Select Photo</ion-button>
+      </ion-item>
       
       <!-- Name -->
       <ion-item>
@@ -52,5 +62,4 @@
   <ion-button fill="solid" expand="full" [disabled]="!contactForm.valid" class="ion-no-margin" size="large" (click)="submitForm(contactForm)">
     Submit
   </ion-button>
-  <ion-button (click)="testFunction()">Test Function</ion-button>
 </ion-footer>

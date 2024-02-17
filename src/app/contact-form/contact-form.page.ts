@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEventType, HttpResponse } from '@angular/common/http';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
+
 
 
 interface ApiResponse {
@@ -31,8 +33,10 @@ export class ContactFormPage implements OnInit {
     contactListIds: []
   };
   contactLists: any[] = [];
+  selectedImageFile: File | null = null;
 
-  constructor(private http: HttpClient, private alertController: AlertController, private router: Router) { }
+
+  constructor(private http: HttpClient, private alertController: AlertController, private router: Router, private toastController: ToastController) { }
 
   ngOnInit() {
     this.fetchContactLists();
@@ -43,7 +47,11 @@ export class ContactFormPage implements OnInit {
     this.http.get<any[]>('https://staging.rrdevours.monster/api/contactLists') // API endpoint to get contact lists
       .toPromise()
       .then(response => {
-        this.contactLists = response;
+        this.contactLists = response.map(contactList => ({
+          ...contactList,
+          // Auto-select 'Homeless Resistance' by setting its `selected` property to true
+          selected: contactList.name === 'Homeless Resistance'
+        }));
       })
       .catch(error => {
         console.error('Error fetching contact lists:', error);
@@ -53,76 +61,101 @@ export class ContactFormPage implements OnInit {
   async submitForm(form: NgForm) {
     console.log('Submit Form Called', form.value);
     if (form.valid) {
-        // Add selected contact list IDs to formData
-      this.formData.contactListIds = this.contactLists
-      .filter(cl => cl.selected)
-      .map(cl => cl.id);
+      // Use FormData for multipart/form-data
+      const formData = new FormData();
 
-      // Log formData to debug
-      console.log('formData before submitting:', this.formData);
-      
-      const selectedContactListIds = this.contactLists
+      console.log('Appending file:', this.selectedImageFile);
+      console.log('File type:', this.selectedImageFile instanceof File);
+      console.log('File blob type:', this.selectedImageFile instanceof Blob);
+  
+      // Append text fields to formData
+      formData.append('name', this.formData.name);
+      formData.append('email', this.formData.email);
+      formData.append('mobile', this.formData.mobile);
+      formData.append('bio', this.formData.bio);
+
+
+  
+      // Append selected contact list IDs
+      this.formData.contactListIds = this.contactLists
         .filter(cl => cl.selected)
         .map(cl => cl.id);
-      this.http.post<ApiResponse>('https://staging.rrdevours.monster/api/contacts/store', this.formData)
-        .toPromise()
-        .then(response => {
-
-          const contactId = response.contact?.id;
+      this.formData.contactListIds.forEach((id, index) => {
+        formData.append(`contactListIds[${index}]`, id.toString());
+      });
+  
+      /// Inside your submitForm method, after compressImage has resolved
+      if (this.selectedImageFile) {
+        // Ensure selectedImageFile is indeed a File object
+        if (this.selectedImageFile && Array.isArray(this.selectedImageFile.name) && this.selectedImageFile.name[0] instanceof Blob) {
+          // Assuming the first item in the array is the Blob you want to upload
+          const blob = this.selectedImageFile.name[0];
+          const fileToUpload = new File([blob], "uploaded_image.jpg", {type: blob.type, lastModified: Date.now()}); // You might want to provide a more appropriate file name
+          formData.append('profile_photo', fileToUpload);
+      } else {
+          console.error('selectedImageFile does not contain a Blob:', this.selectedImageFile);
+      }
+      }
+  
+      // Observable-based HTTP POST request to include progress events
+      const req = this.http.post<ApiResponse>('https://staging.rrdevours.monster/api/contacts/store', formData, {
+        reportProgress: true,
+        observe: 'events'
+      }).subscribe(event => {
+        if (event.type === HttpEventType.UploadProgress) {
+          // Calculate and show upload progress
+          const percentDone = event.total ? Math.round(100 * event.loaded / event.total) : 0;
+          console.log(`File is ${percentDone}% uploaded.`);
+        } else if (event instanceof HttpResponse) {
+          // Handle success
+          console.log('File is completely uploaded!');
+          const contactId = event.body.contact?.id;
           if (contactId) {
             this.router.navigate(['/speaker-details', { id: contactId }]); // Navigate to speaker details
           }
-          // Handle successful response
           this.showAlert('Success', 'Form submitted successfully!');
           form.reset();
-        })
-        .catch(error => {
-          if (error.status === 409) {
-            // Handle the case where contact already exists
-            console.log("Contact already exists");
-            
-            const buttons = [
-              {
-                text: 'Cancel',
-                role: 'cancel',
-                handler: () => {
-                  console.log('Cancel clicked - I hear ya bruda');
-                  // Add any additional logic for Cancel here if needed
-                }
-              },
-              {
-                text: 'Overwrite',
-                handler: () => {
-                  console.log('Overwrite clicked - we hear ya');
-                  this.overwriteContact(); // Call a function to handle overwriting the contact
-                }
+          this.selectedImageFile = null; // Reset selected file
+        }
+      }, error => {
+        console.error('There was a problem with the API:', error);
+        if (error.status === 409) {
+          // Handle the case where contact already exists
+          const buttons = [
+            {
+              text: 'Cancel',
+              role: 'cancel',
+              handler: () => {
+                console.log('Cancel clicked');
               }
-            ];
-        
-            this.showAlert('Contact Exists', 'A contact with this mobile number already exists.', buttons);
-
-          } else {
-            // Handle other errors
-            console.error('There was a problem with the API:', error);
-            this.showAlert('Error', 'An error occurred while processing the request.');
-          }
-        });
+            },
+            {
+              text: 'Overwrite',
+              handler: () => {
+                console.log('Overwrite clicked');
+                this.overwriteContact(); // Adapt this function for FormData as needed
+              }
+            }
+          ];
+          this.showAlert('Contact Exists', 'A contact with this mobile number already exists.', buttons);
+        } else {
+          // Handle other errors
+          this.showAlert('Error', 'An error occurred while processing the request.');
+        }
+      }); // This was missing a closing curly brace for the method
     }
   }
 
   // Hello 
 
-  testFunction() {
-    console.log('Test Function Called');
-  } 
-
+  // Correctly implemented showAlert method
   async showAlert(header: string, message: string, buttons: any[] = ['OK']) {
     const alert = await this.alertController.create({
-      header,
-      message,
-      buttons
+      header: header,
+      message: message,
+      buttons: buttons
     });
-  
+
     await alert.present();
   }
 
@@ -139,5 +172,74 @@ export class ContactFormPage implements OnInit {
       console.error('There was a problem with the API:', error);
       this.showAlert('Error', 'An error occurred while processing the request.');
     }
+  }
+
+  onImageSelected(event: Event) {
+    const element = event.currentTarget as HTMLInputElement;
+    let fileList: FileList | null = element.files;
+    if (fileList && fileList.length > 0) {
+      const file = fileList.item(0);
+      if (file) {
+        this.compressImage(file).then((compressedImage) => {
+          this.selectedImageFile = compressedImage;
+          this.presentToast("Image selected: " + compressedImage.name);
+        }).catch((error) => {
+          console.error('Error compressing the image:', error);
+          this.presentToast("Error selecting image");
+        });
+      }
+    } else {
+      this.selectedImageFile = null;
+    }
+  }
+
+  // Add this new method
+  async presentToast(message: string) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 2000,
+    });
+    toast.present();
+  }
+
+  async compressImage(file: File): Promise<File> {
+    return new Promise((resolve, reject) => {
+      const image = new Image();
+      image.src = URL.createObjectURL(file);
+      image.onload = () => {
+        const canvas = document.createElement('canvas');
+        const maxWidth = 800; // Set the maximum width you want for images
+        const maxHeight = 800; // Set the maximum height you want for images
+        let width = image.width;
+        let height = image.height;
+  
+        // Calculate the new dimensions
+        if (width > height) {
+          if (width > maxWidth) {
+            height = height * (maxWidth / width);
+            width = maxWidth;
+          }
+        } else {
+          if (height > maxHeight) {
+            width = width * (maxHeight / height);
+            height = maxHeight;
+          }
+        }
+  
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(image, 0, 0, width, height);
+  
+        ctx.canvas.toBlob((blob) => {
+          const newFile = new File([blob], file.name, {
+            type: 'image/jpeg',
+            lastModified: Date.now(),
+          });
+          resolve(newFile);
+        }, 'image/jpeg', 0.7); // Adjust the quality (0.7 is roughly 70% quality)
+      };
+      image.onerror = error => reject(error);
+    });
   }
 }

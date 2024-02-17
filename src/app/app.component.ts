@@ -16,6 +16,11 @@ export class AppComponent {
 
   public walletPages = [
     {
+      title: 'Control Centre',
+      url: '/gridTiles',
+      icon: 'list'
+    },
+    {
       title: 'Peeps',
       url: '/basicList',
       icon: 'list'
@@ -25,11 +30,8 @@ export class AppComponent {
       url: '/contactForm',
       icon: 'list'
     },
-    {
-      title: 'Dashboard',
-      url: '/dashboard',
-      icon: 'list'
-    },
+    
+    
 
   ];
 

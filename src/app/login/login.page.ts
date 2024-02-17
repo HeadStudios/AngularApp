@@ -22,7 +22,7 @@ export class LoginPage implements OnInit {
   ngOnInit() {
     const user = localStorage.getItem('user');
     if (user) {
-      this.router.navigate(['/iconList']);
+      this.router.navigate(['/gridTiles']);
     }
   }
 

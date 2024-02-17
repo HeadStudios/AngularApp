@@ -3,39 +3,40 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Grid Tiles</ion-title>
+    <ion-title>Command Centre</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-grid class="is-grid is-grid-tiles is-grid-bordered ion-no-padding">
     <ion-row>
+      <ion-col size="6" class="ion-text-center is-tile ion-no-padding">
+        <ion-item class="ion-text-center" routerLink="/contactForm" lines="none" detail="false">
+          <ion-label class="ion-no-margin">
+            <ion-icon name="person"></ion-icon>
+            <h6 class="is-tile-text">
+              Add Contact
+            </h6>
+            <p class="is-tile-text">
+              Add a new member to your gang
+            </p>
+          </ion-label>
+        </ion-item>
+      </ion-col>
       <ion-col size="6" class="is-tile ion-no-padding">
-        <ion-item class="ion-text-center" routerLink="/grid-tiles" lines="none" detail="false">
+        <ion-item class="ion-text-center" routerLink="/iconList" lines="none" detail="false">
           <ion-label class="ion-no-margin">
             <ion-icon name="file-tray"></ion-icon>
             <h6 class="is-tile-text">
-              Mailbox
+              Feed Files
             </h6>
             <p class="is-tile-text">
-              Every large design company whether it’s a multi-national.
+              Get a list of all the most recent cases
             </p>
           </ion-label>
         </ion-item>
       </ion-col>
-      <ion-col size="6" class="ion-text-center is-tile ion-no-padding">
-        <ion-item class="ion-text-center" routerLink="/grid-tiles" lines="none" detail="false">
-          <ion-label class="ion-no-margin">
-            <ion-icon name="card"></ion-icon>
-            <h6 class="is-tile-text">
-              Money
-            </h6>
-            <p class="is-tile-text">
-              When I was just starting 6th grade I got my first job.
-            </p>
-          </ion-label>
-        </ion-item>
-      </ion-col>
+      
     </ion-row>
     <ion-row>
       <ion-col size="6" class="ion-text-center is-tile ion-no-padding">
@@ -52,14 +53,14 @@
         </ion-item>
       </ion-col>
       <ion-col size="6" class="ion-text-center is-tile ion-no-padding">
-        <ion-item class="ion-text-center" routerLink="/grid-tiles" lines="none" detail="false">
+        <ion-item class="ion-text-center" routerLink="/basicList" lines="none" detail="false">
           <ion-label class="ion-no-margin">
             <ion-icon name="person"></ion-icon>
             <h6 class="is-tile-text">
               Profiles
             </h6>
             <p class="is-tile-text">
-              Gas prices are soaring! This has resulted.
+              All the profiles
             </p>
           </ion-label>
         </ion-item>
