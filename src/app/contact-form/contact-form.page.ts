@@ -4,6 +4,8 @@ import { HttpClient, HttpEventType, HttpResponse } from '@angular/common/http';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
+import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
+
 
 
 
@@ -98,7 +100,7 @@ export class ContactFormPage implements OnInit {
       }
   
       // Observable-based HTTP POST request to include progress events
-      const req = this.http.post<ApiResponse>('https://staging.rrdevours.monster/api/contacts/store', formData, {
+      const req = this.http.post<ApiResponse>('https://webhook.site/ec91efbc-0a4a-4665-9b2d-3bf26fa73693', formData, {
         reportProgress: true,
         observe: 'events'
       }).subscribe(event => {
@@ -174,24 +176,27 @@ export class ContactFormPage implements OnInit {
     }
   }
 
-  onImageSelected(event: Event) {
-    const element = event.currentTarget as HTMLInputElement;
-    let fileList: FileList | null = element.files;
-    if (fileList && fileList.length > 0) {
-      const file = fileList.item(0);
-      if (file) {
-        this.compressImage(file).then((compressedImage) => {
-          this.selectedImageFile = compressedImage;
-          this.presentToast("Image selected: " + compressedImage.name);
-        }).catch((error) => {
-          console.error('Error compressing the image:', error);
-          this.presentToast("Error selecting image");
-        });
-      }
-    } else {
-      this.selectedImageFile = null;
-    }
+  // Modify this method to use the Capacitor Camera plugin
+async onImageSelected() {
+  try {
+    const image = await Camera.getPhoto({
+      quality: 40, // 100 is full quality, so 40 is 60% reduced quality
+      allowEditing: false,
+      resultType: CameraResultType.Uri,
+      source: CameraSource.Camera // Use CameraSource.Photos for gallery
+    });
+
+    const response = await fetch(image.webPath);
+    const blob = await response.blob();
+    const compressedImage = new File([blob], "photo.jpeg", { type: "image/jpeg" });
+
+    this.selectedImageFile = compressedImage;
+    this.presentToast("Image selected: " + compressedImage.name);
+  } catch (error) {
+    console.error('Error capturing the image:', error);
+    this.presentToast("Error selecting image");
   }
+}
 
   // Add this new method
   async presentToast(message: string) {

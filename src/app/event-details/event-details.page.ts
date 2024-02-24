@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Sanitizer } from "@angular/core";
 import { Capacitor } from "@capacitor/core";
 import { ActivatedRoute } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
@@ -7,6 +7,8 @@ import { ToastController } from "@ionic/angular";
 import { ImagePicker } from "@ionic-native/image-picker/ngx";
 import { FileEntry, File as IonicFile } from "@ionic-native/file/ngx";
 import { Filesystem, Directory } from '@capacitor/filesystem'; 
+import { DomSanitizer } from '@angular/platform-browser';
+
 
 
 @Component({
@@ -32,6 +34,7 @@ export class EventDetailsPage implements OnInit {
 
 
   constructor(
+    private sanitizer: DomSanitizer,
     private imagePicker: ImagePicker,
     private http: HttpClient,
     private route: ActivatedRoute,
@@ -306,5 +309,9 @@ export class EventDetailsPage implements OnInit {
     } else {
       this.presentToast("No video selected");
     }
+  }
+
+  transformNewlines(text: string) {
+    return this.sanitizer.bypassSecurityTrustHtml(text.replace(/\n/g, '<br>'));
   }
 }

@@ -106,19 +106,22 @@ export class SpeakerDetailsPage implements OnInit {
 
   async openAddInjusticeModal() {
     const modal = await this.modalController.create({
-    component: AddInjusticeModalComponent,
-    componentProps: {
-      contactId: this.contactId  // Pass the current contactId
+      component: AddInjusticeModalComponent,
+      componentProps: {
+        contactId: this.contactId  // Pass the current contactId as a prop
+      }
+    });
+  
+    await modal.present();
+  
+    const { data } = await modal.onDidDismiss();
+    if (data && data.injusticeId) {
+      // If there is an injusticeId, navigate to the injustice details page
+      this.goToInjusticeDetails(data.injusticeId);
+    } else {
+      // Optionally handle the case where no injusticeId is returned
+      this.fetchContactDetails(this.contactId); // Refetch injustices if needed
     }
-  });
-
-  modal.onDidDismiss().then((dataReturned) => {
-    if (dataReturned.data === true) { // Check if injustice was added
-      this.fetchContactDetails(this.contactId); // Refetch injustices
-    }
-  });
-
-  return await modal.present();
   }
 
   addInjustice(injusticeData: any) {

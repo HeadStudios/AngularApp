@@ -40,14 +40,14 @@
     </ion-row>
     <ion-row>
       <ion-col size="6" class="ion-text-center is-tile ion-no-padding">
-        <ion-item class="ion-text-center" routerLink="/grid-tiles" lines="none" detail="false">
+        <ion-item class="ion-text-center" (click)="openAddInjustice()" lines="none" detail="false">
           <ion-label class="ion-no-margin">
-            <ion-icon name="stats-chart"></ion-icon>
+            <ion-icon name="add-circle"></ion-icon>
             <h6 class="is-tile-text">
-              Statistics
+              Add Injustice
             </h6>
             <p class="is-tile-text">
-              If you haven’t found relief for migraine, you’re not alone.
+              Report a new case of injustice
             </p>
           </ion-label>
         </ion-item>
@@ -96,3 +96,17 @@
     </ion-row>
   </ion-grid>
 </ion-content>
+<style>
+  .is-tile ion-item {
+  cursor: pointer;
+}
+
+/* Or, for a global effect, in your global styles.scss */
+ion-item {
+  cursor: pointer;
+}
+.is-tile ion-item:hover {
+  background-color: #f2f2f2 !important; /* Use !important sparingly */
+}
+
+</style>

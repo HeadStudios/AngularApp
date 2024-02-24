@@ -43,17 +43,16 @@ export class AddInjusticeModalComponent {
     this.presentToast(injusticeStr).then(() => {
       // Post injustice object to the server
       const apiUrl = 'https://staging.rrdevours.monster/api/injustices';
-      this.http.post(apiUrl, injusticeData).subscribe(
-        response => {
-          this.presentToast('Injustice added successfully');
-          this.injusticeAdded.emit(true);
-          this.modalController.dismiss();
-          // You can close the modal or handle the response further here
-        },
-        error => {
-          this.presentToast('Error adding injustice: ' + error.message);
-        }
-      );
+  this.http.post(apiUrl, injusticeData).subscribe(
+    (response: any) => { // Ensure your response is typed correctly to access its properties
+      this.presentToast('Injustice added successfully');
+      // Emitting the ID of the newly added injustice
+      this.modalController.dismiss({ injusticeId: response.id });
+    },
+    error => {
+      this.presentToast('Error adding injustice: ' + error.message);
+    }
+  );
     });
   }
 }

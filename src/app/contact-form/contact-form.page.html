@@ -7,7 +7,7 @@
         </ion-button>
       </ion-menu-toggle>
     </ion-buttons>
-    <ion-title>Add Contact Hot Reloada</ion-title>
+    <ion-title>Add Contact</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -18,7 +18,7 @@
       <ion-item>
         <ion-label position="stacked">Profile Photo (optional)</ion-label>
         <input type="file" (change)="onImageSelected($event)" accept="image/*" hidden #photoInput>
-        <ion-button (click)="photoInput.click()">Select Photo</ion-button>
+        <ion-button (click)="onImageSelected()">Select Photo</ion-button>
       </ion-item>
       
       <!-- Name -->

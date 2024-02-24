@@ -31,8 +31,7 @@
       <ion-label>Notes</ion-label>
     </ion-list-header>
     <ion-item *ngFor="let note of notes">
-      <ion-label>
-        <h2>{{ note.text }}</h2>
+      <ion-label [innerHTML]="transformNewlines(note.text)">
         <p>Created by: {{ note.created_by_name }} on {{ note.created_at | date }}</p>
       </ion-label>
     </ion-item>
@@ -138,5 +137,8 @@
   overflow: hidden;
   word-wrap: break-word;
   line-height: 1.4;
+}
+.preserve-line-breaks {
+  white-space: pre-wrap;
 }
 </style>
