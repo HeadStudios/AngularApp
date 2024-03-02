@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Add Task</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="submitTask(title.value, description.value, dueDate.value)">
+    <ion-item>
+      <ion-label position="floating">Title</ion-label>
+      <ion-input type="text" #title required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Description</ion-label>
+      <ion-textarea #description required></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Due Date</ion-label>
+      <ion-datetime #dueDate displayFormat="MMM DD, YYYY" pickerFormat="MMM DD, YYYY" required></ion-datetime>
+    </ion-item>
+    <ion-button type="submit" expand="full">Submit</ion-button>
+  </form>
+</ion-content>

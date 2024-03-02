@@ -3,11 +3,12 @@ import { Capacitor } from "@capacitor/core";
 import { ActivatedRoute } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
 import { environment } from "../../environments/environment";
-import { ToastController } from "@ionic/angular";
+import { ToastController, ModalController } from "@ionic/angular"; // Add ModalController here
 import { ImagePicker } from "@ionic-native/image-picker/ngx";
 import { FileEntry, File as IonicFile } from "@ionic-native/file/ngx";
 import { Filesystem, Directory } from '@capacitor/filesystem'; 
 import { DomSanitizer } from '@angular/platform-browser';
+import { AddTaskModalComponent } from '../add-task-modal/add-task-modal.component'; // Add this line
 
 
 
@@ -39,7 +40,8 @@ export class EventDetailsPage implements OnInit {
     private http: HttpClient,
     private route: ActivatedRoute,
     private toastController: ToastController,
-    private file: IonicFile
+    private file: IonicFile,
+    private modalController: ModalController
   ) {}
 
   ngOnInit() {
@@ -313,5 +315,22 @@ export class EventDetailsPage implements OnInit {
 
   transformNewlines(text: string) {
     return this.sanitizer.bypassSecurityTrustHtml(text.replace(/\n/g, '<br>'));
+  }
+
+  async openAddTaskModal() {
+    const modal = await this.modalController.create({
+      component: AddTaskModalComponent,
+      componentProps: {
+        injusticeId: this.injusticeId // This should be the current Injustice ID
+      }
+    });
+  
+    await modal.present();
+  
+    const { data } = await modal.onDidDismiss();
+    if (data?.taskAdded) {
+      console.log(data);
+      console.log("Do you see anything?");
+    }
   }
 }
