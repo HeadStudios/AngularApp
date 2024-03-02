@@ -4,7 +4,7 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>
-      <img src="assets/imgs/logo-dark.png" />
+      
     </ion-title>
     <ion-buttons slot="end">
       <!--<ion-button>
@@ -18,10 +18,9 @@
 </ion-header>
 
 <ion-content>
-  <ion-slides pager="true" [options]="slideOpts" class="is-slider-page">
-    <ion-slide class="ion-padding-bottom">
+  <div class="centered-content">
       <!-- Display image if it's an image file -->
-      <img *ngIf="!isVideo && mediaUrl" [src]="mediaUrl"/>
+      <img *ngIf="!isVideo && !isDocument && mediaUrl" [src]="mediaUrl"/>
 
       <!-- Display video player if it's an mp4 file -->
       <video *ngIf="isVideo" width="320" height="240" controls>
@@ -53,6 +52,24 @@
           </ion-col>
         </ion-row>
       </ion-grid>
-    </ion-slide>
-  </ion-slides>
+    </div>
 </ion-content>
+<style>
+  .centered-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+</style>

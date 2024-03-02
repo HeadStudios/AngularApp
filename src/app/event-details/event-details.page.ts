@@ -99,8 +99,8 @@ export class EventDetailsPage implements OnInit {
     this.http
       .get(`https://rrdevours.monster/api/injustices/${this.injusticeId}`)
       .subscribe(
-        (data) => {
-          this.injusticeDetails = data;
+        (data: any) => { // Use `any` type here
+          this.injusticeDetails = { ...data, tasks: data.tasks || [] };
         },
         (error) => {
           console.error("Error fetching injustice details!", error);

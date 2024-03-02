@@ -31,8 +31,11 @@
       <ion-label>Notes</ion-label>
     </ion-list-header>
     <ion-item *ngFor="let note of notes">
-      <ion-label [innerHTML]="transformNewlines(note.text)">
-        <p>Created by: {{ note.created_by_name }} on {{ note.created_at | date }}</p>
+      <ion-label>
+        <span [innerHTML]="transformNewlines(note.text)"></span>
+        <div class="note-details">
+          Created by: {{ note.created_by_name }} on {{ note.created_at | date:'medium' }}
+        </div>
       </ion-label>
     </ion-item>
   </ion-list>
@@ -106,6 +109,26 @@
 </ion-list>
 
   </div>
+
+  <div class="ion-padding">
+    <ion-list>
+      <ion-list-header>
+        <ion-label>Tasks</ion-label>
+      </ion-list-header>
+      <ion-item *ngFor="let task of injusticeDetails.tasks">
+        <ion-label class="task-content">
+          <h2>{{ task.task_name || 'No Name' }}</h2>
+          <p class="task-description">{{ task.description || 'No Description' }}</p>
+          <div class="task-details">
+            <p class="due-date">Due Date: {{ task.due_date | date: 'mediumDate' }}</p>
+            <div class="status-icon" [class.completed]="task.status">
+              <ion-icon name="checkmark" *ngIf="task.status"></ion-icon>
+            </div>
+          </div>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
   
   <!-- File Upload Section -->
   <ion-item>
@@ -140,5 +163,46 @@
 }
 .preserve-line-breaks {
   white-space: pre-wrap;
+}
+.note-details {
+  margin-top: 8px; /* Adjust the space between the note text and creation info */
+  font-size: smaller; /* Optionally adjust the font size */
+}
+
+.task-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.task-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #ccc; // Stylized separation
+  padding-top: 8px; // Space between separation line and content
+}
+
+.status-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  border: 2px solid green;
+  border-radius: 50%; // Circle shape
+
+  &.completed {
+    ion-icon {
+      color: green;
+    }
+  }
+}
+
+.task-description {
+  margin-bottom: 16px; // Space between description and due date
+}
+
+.due-date {
+  font-style: italic;
 }
 </style>

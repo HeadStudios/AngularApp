@@ -93,7 +93,7 @@ export class ContactFormPage implements OnInit {
       // Observable-based HTTP POST request to include progress events
       this.http
         .post<ApiResponse>(
-          "https://webhook.site/ec91efbc-0a4a-4665-9b2d-3bf26fa73693",
+          "https://staging.rrdevours.monster/api/contacts/store",
           formData,
           {
             reportProgress: true,
