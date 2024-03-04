@@ -27,6 +27,20 @@
     </ion-item>
 
     <ion-list-header>
+      <ion-label>Latest Tasks</ion-label>
+    </ion-list-header>
+    
+    <ion-item *ngFor="let task of latestTasks" button (click)="goToInjusticeDetails(task.injustice_id)">
+      <ion-icon name="checkmark-circle-outline" slot="start"></ion-icon>
+      <ion-label>
+        <h2>{{ task.task_name }}</h2>
+        <p>{{ task.task_description }}</p>
+        <p>Injustice: {{ task.injustice_title }}</p>
+        <p>Contact: {{ task.contact_name }}</p>
+      </ion-label>
+    </ion-item>
+
+    <ion-list-header>
       <ion-label>Recent Injustice Notes</ion-label>
     </ion-list-header>
     

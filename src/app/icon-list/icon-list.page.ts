@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class IconListPage implements OnInit {
   recentNotes: any[] = [];
   latestInjustices: any[] = [];
+  latestTasks: any[] = []; // Add this line
   private apiUrl = 'https://staging.rrdevours.monster/api'; // API base URL
 
   constructor(private http: HttpClient, private router: Router) {}
@@ -25,6 +26,15 @@ export class IconListPage implements OnInit {
       }
     );
 
+    this.getLatestTasks().subscribe(
+      data => {
+        this.latestTasks = data;
+      },
+      error => {
+        console.error('Error fetching latest tasks', error);
+      }
+    );
+
     this.getLatestInjustices().subscribe(
       data => {
         this.latestInjustices = data;
@@ -35,7 +45,10 @@ export class IconListPage implements OnInit {
     );
   }
 
-  
+  // Add this method
+  getLatestTasks() {
+    return this.http.get<any[]>(`${this.apiUrl}/tasks/latest`);
+  }
 
   getRecentNotes() {
     return this.http.get<any[]>(`${this.apiUrl}/recent-notes`);

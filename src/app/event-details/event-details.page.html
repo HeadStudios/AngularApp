@@ -121,8 +121,9 @@
           <p class="task-description">{{ task.description || 'No Description' }}</p>
           <div class="task-details">
             <p class="due-date">Due Date: {{ task.due_date | date: 'mediumDate' }}</p>
-            <div class="status-icon" [class.completed]="task.status">
-              <ion-icon name="checkmark" *ngIf="task.status"></ion-icon>
+            <div class="status-icon" [class.completed]="task.status" (click)="toggleTaskStatus(task)">
+              <ion-icon name="checkmark-circle-outline" *ngIf="task.status"></ion-icon>
+              <ion-icon name="ellipse-outline" *ngIf="!task.status"></ion-icon>
             </div>
           </div>
         </ion-label>

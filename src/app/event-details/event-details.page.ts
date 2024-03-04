@@ -333,4 +333,19 @@ export class EventDetailsPage implements OnInit {
       console.log("Do you see anything?");
     }
   }
+
+  toggleTaskStatus(task) {
+    const newStatus = task.status ? 0 : 1; // Toggle the status
+    this.http.patch(`https://rrdevours.monster/api/tasks/${task.id}/status`, { status: newStatus })
+      .subscribe({
+        next: (response) => {
+          task.status = newStatus; // Update the local task status on success
+          this.presentToast('Task status updated successfully.');
+        },
+        error: (error) => {
+          console.error('Error updating task status!', error);
+          this.presentToast('Error updating task status.');
+        }
+      });
+  }
 }
