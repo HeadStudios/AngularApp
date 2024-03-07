@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ModalController } from '@ionic/angular';
+import { ModalController, Platform } from '@ionic/angular';
 import { AddInjusticeModalComponent } from '../add-injustice-modal/add-injustice-modal.component';
-import { PushNotifications, Token, PushNotificationSchema, ActionPerformed } from '@capacitor/push-notifications';
-import { Platform } from '@ionic/angular';
+import OneSignal from 'onesignal-cordova-plugin';
 
 @Component({
   selector: 'app-grid-tiles',
@@ -18,44 +17,28 @@ export class GridTilesPage implements OnInit {
 
   ngOnInit() {
     this.platform.ready().then(() => {
-      this.registerNotifications();
+      this.initializeOneSignal();
     });
   }
 
-  async registerNotifications() {
-    const permStatus = await PushNotifications.requestPermissions();
+  initializeOneSignal() {
+    // Remove this method to stop OneSignal Debugging
+    OneSignal.Debug.setLogLevel(6);
+    
+    // Replace YOUR_ONESIGNAL_APP_ID with your OneSignal App ID
+    OneSignal.initialize("YOUR_ONESIGNAL_APP_ID");
 
-    if (permStatus.receive === 'granted') {
-      await PushNotifications.register();
+    OneSignal.Notifications.addEventListener('click', async (e) => {
+      let clickData = await e.notification;
+      console.log("Notification Clicked : " + clickData);
+      // Update UI or perform actions based on notification click
+      this.notificationMessage = `Clicked: ${JSON.stringify(clickData)}`;
+    });
 
-      PushNotifications.addListener('registration',
-        (token: Token) => {
-          alert('Push registration success, token: ' + token.value);
-        }
-      );
-
-      PushNotifications.addListener('registrationError',
-        (error: any) => {
-          alert('Error on registration: ' + JSON.stringify(error));
-        }
-      );
-
-      PushNotifications.addListener('pushNotificationReceived',
-        (notification: PushNotificationSchema) => {
-          alert('Push received: ' + JSON.stringify(notification));
-          this.notificationMessage = notification.body; // Optionally update UI
-        }
-      );
-
-      PushNotifications.addListener('pushNotificationActionPerformed',
-        (notification: ActionPerformed) => {
-          alert('Push action performed: ' + JSON.stringify(notification));
-        }
-      );
-
-    } else {
-      console.error('User denied permissions!');
-    }
+    OneSignal.Notifications.requestPermission(true).then((success: Boolean) => {
+      console.log("Notification permission granted " + success);
+      // You might want to update the UI or internal state to reflect this
+    });
   }
 
   async openAddInjustice() {
