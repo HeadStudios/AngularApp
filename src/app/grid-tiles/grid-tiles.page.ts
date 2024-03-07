@@ -19,39 +19,44 @@ export class GridTilesPage implements OnInit {
 
   ngOnInit() {
     this.platform.ready().then(() => {
-      this.initializePushNotifications();
+    
+      this.addListeners();
+      this.registerNotifications();
+
     });
   }
 
-  initializePushNotifications() {
-    PushNotifications.requestPermissions().then(result => {
-      if (result.receive === 'granted') {
-        PushNotifications.register();
-      } else {
-        // Handle user denying permissions
-        console.log('User denied permissions to receive push notifications');
-      }
+  async addListeners() {
+    await PushNotifications.addListener('registration', token => {
+      console.log(`Push registration success, token: ${token.value}`);
     });
-  
-    PushNotifications.addListener('registration', 
-      (token) => {
-        console.log(`Push registration success, token: ${token.value}`);
-        // You can also optionally send the token to your server here if you wish to send push notifications from there
-      }
-    );
-  
-    PushNotifications.addListener('pushNotificationReceived', 
-      (notification) => {
-        this.notificationMessage = notification.body;
-        console.log('Push received: ', notification);
-      }
-    );
-  
-    PushNotifications.addListener('pushNotificationActionPerformed', 
-      (notification) => {
-        console.log('Push action performed: ', notification);
-      }
-    );
+
+    await PushNotifications.addListener('registrationError', err => {
+      console.error('Registration error: ', err.error);
+    });
+
+    await PushNotifications.addListener('pushNotificationReceived', notification => {
+      console.log('Push notification received: ', notification);
+      this.notificationMessage = notification.body;
+    });
+
+    await PushNotifications.addListener('pushNotificationActionPerformed', notification => {
+      console.log('Push notification action performed', notification.actionId, notification.inputValue);
+    });
+  }
+
+  async registerNotifications() {
+    let permStatus = await PushNotifications.checkPermissions();
+
+    if (permStatus.receive === 'prompt') {
+      permStatus = await PushNotifications.requestPermissions();
+    }
+
+    if (permStatus.receive !== 'granted') {
+      console.error('User denied permissions!');
+    } else {
+      await PushNotifications.register();
+    }
   }
 
   async openAddInjustice() {

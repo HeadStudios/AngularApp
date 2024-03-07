@@ -39,8 +39,8 @@ export class AddTaskModalComponent {
 
     console.log("submitTask taskData", taskData);
 
-    //const url = `https://rrdevours.monster/api/injustices/${injusticeId}/tasks`;
-    const url = `https://webhook.site/ec91efbc-0a4a-4665-9b2d-3bf26fa73693`;
+    const url = `https://rrdevours.monster/api/injustices/${this.injusticeId}/tasks`;
+    //const url = `https://webhook.site/ec91efbc-0a4a-4665-9b2d-3bf26fa73693`;
 
     this.http.post(url, taskData).subscribe({
       next: (response) => {

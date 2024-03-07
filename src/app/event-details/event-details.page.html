@@ -13,6 +13,10 @@
     <ion-icon name="copy"></ion-icon> Copy
   </ion-button>
 </div>
+<ion-item>
+  <ion-label>Status Active</ion-label>
+  <ion-checkbox [(ngModel)]="injusticeDetails.status" (ionChange)="toggleInjusticeStatus()"></ion-checkbox>
+</ion-item> 
 <ion-content>
   <div class="ion-padding-horizontal">
     <h2>{{ injusticeDetails.title }}</h2>
@@ -21,8 +25,13 @@
     </p>
     <p>
       {{ injusticeDetails.description }}
-    </p> 
+    </p>
+    
   </div>
+
+  <ion-button *ngIf="contactId" (click)="viewContactDetails()">
+    View Contact Details
+  </ion-button>
 
   <!-- Notes Section -->
 <div class="ion-padding">

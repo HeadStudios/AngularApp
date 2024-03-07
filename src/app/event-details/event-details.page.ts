@@ -9,6 +9,7 @@ import { FileEntry, File as IonicFile } from "@ionic-native/file/ngx";
 import { Filesystem, Directory } from '@capacitor/filesystem'; 
 import { DomSanitizer } from '@angular/platform-browser';
 import { AddTaskModalComponent } from '../add-task-modal/add-task-modal.component'; // Add this line
+import { Router } from '@angular/router';
 
 
 
@@ -20,6 +21,7 @@ import { AddTaskModalComponent } from '../add-task-modal/add-task-modal.componen
 export class EventDetailsPage implements OnInit {
   injusticeId: number;
   injusticeDetails: any = {};
+  contactId?: number;
   awsBaseUrl = environment.awsBaseUrl;
   selectedFiles: FileList;
   notes: any[] = [];
@@ -41,7 +43,8 @@ export class EventDetailsPage implements OnInit {
     private route: ActivatedRoute,
     private toastController: ToastController,
     private file: IonicFile,
-    private modalController: ModalController
+    private modalController: ModalController,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -103,6 +106,7 @@ export class EventDetailsPage implements OnInit {
       .subscribe(
         (data: any) => { // Use `any` type here
           this.injusticeDetails = { ...data, tasks: data.tasks || [] };
+          this.contactId = data.contact_id;
         },
         (error) => {
           console.error("Error fetching injustice details!", error);
@@ -345,6 +349,29 @@ export class EventDetailsPage implements OnInit {
         error: (error) => {
           console.error('Error updating task status!', error);
           this.presentToast('Error updating task status.');
+        }
+      });
+  }
+
+  // Add this method to handle navigation
+  viewContactDetails() {
+    if (this.contactId) {
+      this.router.navigate(['/speaker-details', { id: this.contactId }]);
+    }
+  }
+
+  toggleInjusticeStatus() { 
+    // Update the URL format to match your specified pattern
+    this.http.patch(`https://rrdevours.monster/api/injustices/${this.injusticeId}/status`, { status: this.injusticeDetails.status })
+      .subscribe({
+        next: (response: any) => {
+          // Assuming the response includes the updated status, you might want to update your local state as well
+          this.injusticeDetails.status = response.status;
+          this.presentToast('Injustice status updated successfully.');
+        },
+        error: (error) => {
+          console.error('Error updating injustice status!', error);
+          this.presentToast('Error updating injustice status.');
         }
       });
   }
