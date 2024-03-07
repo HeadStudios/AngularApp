@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router'; // Import Router from @angular/router
-import { ModalController } from '@ionic/angular'; // Import ModalController from @ionic/angular
+import { Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
 import { AddInjusticeModalComponent } from '../add-injustice-modal/add-injustice-modal.component';
-import { PushNotifications } from '@capacitor/push-notifications'; // Import PushNotifications
+import { PushNotifications, Token, PushNotificationSchema, ActionPerformed } from '@capacitor/push-notifications';
 import { Platform } from '@ionic/angular';
-
 
 @Component({
   selector: 'app-grid-tiles',
@@ -19,56 +18,54 @@ export class GridTilesPage implements OnInit {
 
   ngOnInit() {
     this.platform.ready().then(() => {
-    
-      this.addListeners();
       this.registerNotifications();
-
-    });
-  }
-
-  async addListeners() {
-    await PushNotifications.addListener('registration', token => {
-      console.log(`Push registration success, token: ${token.value}`);
-    });
-
-    await PushNotifications.addListener('registrationError', err => {
-      console.error('Registration error: ', err.error);
-    });
-
-    await PushNotifications.addListener('pushNotificationReceived', notification => {
-      console.log('Push notification received: ', notification);
-      this.notificationMessage = notification.body;
-    });
-
-    await PushNotifications.addListener('pushNotificationActionPerformed', notification => {
-      console.log('Push notification action performed', notification.actionId, notification.inputValue);
     });
   }
 
   async registerNotifications() {
-    let permStatus = await PushNotifications.checkPermissions();
+    const permStatus = await PushNotifications.requestPermissions();
 
-    if (permStatus.receive === 'prompt') {
-      permStatus = await PushNotifications.requestPermissions();
-    }
-
-    if (permStatus.receive !== 'granted') {
-      console.error('User denied permissions!');
-    } else {
+    if (permStatus.receive === 'granted') {
       await PushNotifications.register();
+
+      PushNotifications.addListener('registration',
+        (token: Token) => {
+          alert('Push registration success, token: ' + token.value);
+        }
+      );
+
+      PushNotifications.addListener('registrationError',
+        (error: any) => {
+          alert('Error on registration: ' + JSON.stringify(error));
+        }
+      );
+
+      PushNotifications.addListener('pushNotificationReceived',
+        (notification: PushNotificationSchema) => {
+          alert('Push received: ' + JSON.stringify(notification));
+          this.notificationMessage = notification.body; // Optionally update UI
+        }
+      );
+
+      PushNotifications.addListener('pushNotificationActionPerformed',
+        (notification: ActionPerformed) => {
+          alert('Push action performed: ' + JSON.stringify(notification));
+        }
+      );
+
+    } else {
+      console.error('User denied permissions!');
     }
   }
 
   async openAddInjustice() {
     const modal = await this.modalController.create({
       component: AddInjusticeModalComponent,
-      componentProps: {
-        contactId: 4074 
-      }
+      componentProps: { contactId: 4074 }
     });
-  
+
     await modal.present();
-  
+
     const { data } = await modal.onDidDismiss();
     if (data && data.injusticeId) {
       this.goToInjusticeDetails(data.injusticeId);
