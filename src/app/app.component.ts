@@ -30,6 +30,21 @@ export class AppComponent {
       url: '/contactForm',
       icon: 'list'
     },
+    {
+      title: 'Feed',
+      url: '/iconList',
+      icon: 'list'
+    },
+    {
+      title: 'Sliding List',
+      url: '/slidingList',
+      icon: 'list'
+    },
+    {
+      title: 'Sliding List',
+      url: '/altSlidingList',
+      icon: 'list'
+    }
     
     
 
@@ -575,7 +590,7 @@ export class AppComponent {
     }
   ];
 
-  public ionicListPages = [
+  //public ionicListPages = [
     /*
     {
       title: 'Avatar List',
@@ -593,11 +608,7 @@ export class AppComponent {
       url: '/headersList',
       icon: 'list'
     },*/
-    {
-      title: 'Icon List',
-      url: '/iconList',
-      icon: 'list'
-    }
+   
     /*{
       title: 'Inset List',
       url: '/insetList',
@@ -623,7 +634,7 @@ export class AppComponent {
       url: '/altThumbnailList',
       icon: 'list'
     }*/
-  ];
+  //];
 
   /* public walletPages = [
     {

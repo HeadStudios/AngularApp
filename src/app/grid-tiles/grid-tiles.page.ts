@@ -23,10 +23,10 @@ export class GridTilesPage implements OnInit {
 
   initializeOneSignal() {
     // Remove this method to stop OneSignal Debugging
-    OneSignal.Debug.setLogLevel(6);
+    //OneSignal.Debug.setLogLevel(6);
     
     // Replace YOUR_ONESIGNAL_APP_ID with your OneSignal App ID
-    OneSignal.initialize("YOUR_ONESIGNAL_APP_ID");
+    OneSignal.initialize("9b4c7fc8-5490-440f-9d6c-5bf708ea28d9");
 
     OneSignal.Notifications.addEventListener('click', async (e) => {
       let clickData = await e.notification;

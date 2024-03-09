@@ -120,26 +120,62 @@
   </div>
 
   <div class="ion-padding">
-    <ion-list>
-      <ion-list-header>
-        <ion-label>Tasks</ion-label>
-      </ion-list-header>
-      <ion-item *ngFor="let task of injusticeDetails.tasks">
-        <ion-label class="task-content">
+   
+    
+    <ion-item-sliding *ngFor="let task of injusticeDetails.tasks" #itemSliding>
+      <ion-item>
+        <div class="status-icon" [class.completed]="task.status" (click)="toggleTaskStatus(task, itemSliding)">
+          <ion-icon name="checkmark-circle-outline" *ngIf="task.status"></ion-icon>
+          <ion-icon name="ellipse-outline" *ngIf="!task.status"></ion-icon>
+        </div>
+        <ion-label>
           <h2>{{ task.task_name || 'No Name' }}</h2>
-          <p class="task-description">{{ task.description || 'No Description' }}</p>
-          <div class="task-details">
-            <p class="due-date">Due Date: {{ task.due_date | date: 'mediumDate' }}</p>
-            <div class="status-icon" [class.completed]="task.status" (click)="toggleTaskStatus(task)">
-              <ion-icon name="checkmark-circle-outline" *ngIf="task.status"></ion-icon>
-              <ion-icon name="ellipse-outline" *ngIf="!task.status"></ion-icon>
-            </div>
-          </div>
+          <p>{{ task.description || 'No Description' }}</p>
+          <p>{{ task.due_date | date: 'mediumDate' }}</p>
         </ion-label>
       </ion-item>
-    </ion-list>
+      <ion-item-options side="end">
+        <ion-item-option color="light" (click)="toggleTaskStatus(task, itemSliding)">
+          <ion-icon ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+          Mark Complete
+        </ion-item-option>
+        <ion-item-option color="secondary" (click)="deleteTask(task)">
+          <ion-icon name="call"></ion-icon>
+          Delete
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+
+
+    
     <ion-button expand="block" (click)="openAddTaskModal()">Add Task</ion-button>
   </div>
+
+  <ion-item-sliding>
+      <ion-item>
+        <ion-avatar slot="start">
+          <img src="assets/imgs/venkman.jpg">
+        </ion-avatar>
+        <ion-label>
+          <h2>Venkman</h2>
+          <p>Back off man, I'm a scientist.</p>
+        </ion-label>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option color="light">
+          <ion-icon ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+          More
+        </ion-item-option>
+        <ion-item-option color="primary">
+          <ion-icon name="chatbox-ellipses"></ion-icon>
+          Text
+        </ion-item-option>
+        <ion-item-option color="secondary">
+          <ion-icon name="call"></ion-icon>
+          Call
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
   
   <!-- File Upload Section -->
   <ion-item>
