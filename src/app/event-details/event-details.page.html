@@ -39,9 +39,9 @@
     <ion-list-header>
       <ion-label>Notes</ion-label>
     </ion-list-header>
-    <ion-item *ngFor="let note of notes">
+    <ion-item *ngFor="let note of notes; let i = index">
       <ion-label>
-        <span [innerHTML]="transformNewlines(note.text)"></span>
+        <span [class.text-wrap]="expandedNoteId === i" (click)="toggleNoteExpansion(i)" [innerHTML]="transformNewlines(note.text)"></span>
         <div class="note-details">
           Created by: {{ note.created_by_name }} on {{ note.created_at | date:'medium' }}
         </div>
@@ -208,9 +208,16 @@
   word-wrap: break-word;
   line-height: 1.4;
 }
+
 .preserve-line-breaks {
   white-space: pre-wrap;
 }
+
+.text-wrap {
+    word-break: break-all;
+    white-space: normal;
+  }
+
 .note-details {
   margin-top: 8px; /* Adjust the space between the note text and creation info */
   font-size: smaller; /* Optionally adjust the font size */
@@ -225,8 +232,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 1px solid #ccc; // Stylized separation
-  padding-top: 8px; // Space between separation line and content
+  border-top: 1px solid #ccc; /* Stylized separation */
+  padding-top: 8px; /* Space between separation line and content */
 }
 
 .status-icon {
@@ -236,7 +243,7 @@
   width: 24px;
   height: 24px;
   border: 2px solid green;
-  border-radius: 50%; // Circle shape
+  border-radius: 50%; /* Circle shape */
 
   &.completed {
     ion-icon {
@@ -246,7 +253,7 @@
 }
 
 .task-description {
-  margin-bottom: 16px; // Space between description and due date
+  margin-bottom: 16px; /* Space between description and due date */
 }
 
 .due-date {
