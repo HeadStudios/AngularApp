@@ -378,10 +378,22 @@ export class EventDetailsPage implements OnInit {
     }
   }
 
-  deleteTask(taskToDelete) {
-    this.injusticeDetails.tasks = this.injusticeDetails.tasks.filter(task => task.id !== taskToDelete.id);
-    this.presentToast('Task deleted successfully.');
-  }
+  deleteTask(taskToDelete, itemSliding: IonItemSliding) {
+    // Replace 'your-api-url' with 'https://rrdevours.monster/api/tasks'
+    this.http.delete(`https://rrdevours.monster/api/tasks/${taskToDelete.id}`).subscribe({
+        next: (response) => {
+            // Successfully deleted the task from the backend, now remove it from the UI
+            this.injusticeDetails.tasks = this.injusticeDetails.tasks.filter(task => task.id !== taskToDelete.id);
+            this.presentToast('Task deleted successfully.');
+            itemSliding.close(); // Ensure the sliding item is closed
+        },
+        error: (error) => {
+            console.error('Error deleting task!', error);
+            this.presentToast('Error deleting task.');
+            itemSliding.close(); // Ensure the sliding item is closed even if there's an error
+        }
+    });
+}
 
   toggleInjusticeStatus() { 
     // Update the URL format to match your specified pattern

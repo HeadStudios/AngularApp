@@ -34,16 +34,6 @@ export class AppComponent {
       title: 'Feed',
       url: '/iconList',
       icon: 'list'
-    },
-    {
-      title: 'Sliding List',
-      url: '/slidingList',
-      icon: 'list'
-    },
-    {
-      title: 'Sliding List',
-      url: '/altSlidingList',
-      icon: 'list'
     }
     
     
