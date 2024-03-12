@@ -13,6 +13,10 @@
     <ion-icon name="copy"></ion-icon> Copy
   </ion-button>
 </div>
+<ion-item>
+  <ion-label>Status Active</ion-label>
+  <ion-checkbox [(ngModel)]="injusticeDetails.status" (ionChange)="toggleInjusticeStatus()"></ion-checkbox>
+</ion-item> 
 <ion-content>
   <div class="ion-padding-horizontal">
     <h2>{{ injusticeDetails.title }}</h2>
@@ -21,8 +25,13 @@
     </p>
     <p>
       {{ injusticeDetails.description }}
-    </p> 
+    </p>
+    
   </div>
+
+  <ion-button *ngIf="contactId" (click)="viewContactDetails()">
+    View Contact Details
+  </ion-button>
 
   <!-- Notes Section -->
 <div class="ion-padding">
@@ -111,26 +120,36 @@
   </div>
 
   <div class="ion-padding">
-    <ion-list>
-      <ion-list-header>
-        <ion-label>Tasks</ion-label>
-      </ion-list-header>
-      <ion-item *ngFor="let task of injusticeDetails.tasks">
-        <ion-label class="task-content">
+   
+    
+    <ion-item-sliding *ngFor="let task of injusticeDetails.tasks" #itemSliding>
+      <ion-item>
+        <div class="status-icon" [class.completed]="task.status" (click)="toggleTaskStatus(task, itemSliding)">
+          <ion-icon name="checkmark-circle-outline" *ngIf="task.status"></ion-icon>
+          <ion-icon name="ellipse-outline" *ngIf="!task.status"></ion-icon>
+        </div>
+        <ion-label>
           <h2>{{ task.task_name || 'No Name' }}</h2>
-          <p class="task-description">{{ task.description || 'No Description' }}</p>
-          <div class="task-details">
-            <p class="due-date">Due Date: {{ task.due_date | date: 'mediumDate' }}</p>
-            <div class="status-icon" [class.completed]="task.status">
-              <ion-icon name="checkmark" *ngIf="task.status"></ion-icon>
-            </div>
-          </div>
+          <p>{{ task.description || 'No Description' }}</p>
+          <p>{{ task.due_date | date: 'mediumDate' }}</p>
         </ion-label>
       </ion-item>
-    </ion-list>
+      <ion-item-options side="end">
+        <ion-item-option color="light" (click)="toggleTaskStatus(task, itemSliding)">
+          <ion-icon ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+          Mark Complete
+        </ion-item-option>
+        <ion-item-option color="secondary" (click)="deleteTask(task, itemSliding)">
+          <ion-icon name="trash"></ion-icon>
+          Delete
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+
+
+    
     <ion-button expand="block" (click)="openAddTaskModal()">Add Task</ion-button>
   </div>
-  
   <!-- File Upload Section -->
   <ion-item>
     <ion-label position="stacked">Custom File Name</ion-label>

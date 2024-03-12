@@ -9,6 +9,9 @@ import { FileEntry, File as IonicFile } from "@ionic-native/file/ngx";
 import { Filesystem, Directory } from '@capacitor/filesystem'; 
 import { DomSanitizer } from '@angular/platform-browser';
 import { AddTaskModalComponent } from '../add-task-modal/add-task-modal.component'; // Add this line
+import { Router } from '@angular/router';
+import { IonItemSliding } from '@ionic/angular'; // Make sure IonItemSliding is imported
+
 
 
 
@@ -20,6 +23,7 @@ import { AddTaskModalComponent } from '../add-task-modal/add-task-modal.componen
 export class EventDetailsPage implements OnInit {
   injusticeId: number;
   injusticeDetails: any = {};
+  contactId?: number;
   awsBaseUrl = environment.awsBaseUrl;
   selectedFiles: FileList;
   notes: any[] = [];
@@ -29,6 +33,8 @@ export class EventDetailsPage implements OnInit {
   public injusticeUrl: string;
   customFileUploadName: string = '';
   customVideoName: string = '';
+  // Add a property to track the currently expanded note
+  expandedNoteId: number | null = null;
 
 
 
@@ -41,7 +47,8 @@ export class EventDetailsPage implements OnInit {
     private route: ActivatedRoute,
     private toastController: ToastController,
     private file: IonicFile,
-    private modalController: ModalController
+    private modalController: ModalController,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -103,6 +110,7 @@ export class EventDetailsPage implements OnInit {
       .subscribe(
         (data: any) => { // Use `any` type here
           this.injusticeDetails = { ...data, tasks: data.tasks || [] };
+          this.contactId = data.contact_id;
         },
         (error) => {
           console.error("Error fetching injustice details!", error);
@@ -127,26 +135,28 @@ export class EventDetailsPage implements OnInit {
 
   addNote() {
     if (!this.newNoteText.trim()) return;
-
+  
     const user = JSON.parse(localStorage.getItem("user") || "{}");
     const userId = user.id; // Make sure this is the correct property for the user's ID
-
+  
     const newNote = {
       text: this.newNoteText,
       notable_id: this.injusticeId,
-      notable_type: "App\\Models\\Injustice", // Make sure this matches your backend model
+      notable_type: "App\\Models\\Injustice",
       system: 0,
       created_by: userId,
     };
-
+  
     this.http
       .post(
         `https://staging.rrdevours.monster/api/injustices/${this.injusticeId}/notes`,
         newNote
       )
       .subscribe(
-        (response) => {
-          this.notes.push(newNote); // Add the new note to the list
+        (response: any) => {
+          // Assuming the response includes the complete new note object
+          const completeNote = response.note; // Use the note object from the response
+          this.notes.push(completeNote); // Add the complete note to the notes array
           this.newNoteText = ""; // Clear the input field
           this.presentToast("Note added successfully");
         },
@@ -329,8 +339,75 @@ export class EventDetailsPage implements OnInit {
   
     const { data } = await modal.onDidDismiss();
     if (data?.taskAdded) {
-      console.log(data);
-      console.log("Do you see anything?");
+      this.fetchInjusticeDetails();
     }
+  }
+
+  // Add a method to toggle the expansion of a note
+  toggleNoteExpansion(noteId: number) {
+    if (this.expandedNoteId === noteId) {
+      // If the note is already expanded, collapse it
+      this.expandedNoteId = null;
+    } else {
+      // Expand the clicked note
+      this.expandedNoteId = noteId;
+    }
+  }
+
+  toggleTaskStatus(task, itemSliding: IonItemSliding) {
+    const newStatus = task.status ? 0 : 1; // Toggle the status
+    this.http.patch(`https://rrdevours.monster/api/tasks/${task.id}/status`, { status: newStatus })
+      .subscribe({
+        next: (response) => {
+          task.status = newStatus; // Update the local task status on success
+          this.presentToast('Task status updated successfully.');
+          itemSliding.close(); // Close the sliding item
+        },
+        error: (error) => {
+          console.error('Error updating task status!', error);
+          this.presentToast('Error updating task status.');
+          itemSliding.close(); // Ensure the sliding item is closed even if there's an error
+        }
+      });
+  }
+
+  // Add this method to handle navigation
+  viewContactDetails() {
+    if (this.contactId) {
+      this.router.navigate(['/speaker-details', { id: this.contactId }]);
+    }
+  }
+
+  deleteTask(taskToDelete, itemSliding: IonItemSliding) {
+    // Replace 'your-api-url' with 'https://rrdevours.monster/api/tasks'
+    this.http.delete(`https://rrdevours.monster/api/tasks/${taskToDelete.id}`).subscribe({
+        next: (response) => {
+            // Successfully deleted the task from the backend, now remove it from the UI
+            this.injusticeDetails.tasks = this.injusticeDetails.tasks.filter(task => task.id !== taskToDelete.id);
+            this.presentToast('Task deleted successfully.');
+            itemSliding.close(); // Ensure the sliding item is closed
+        },
+        error: (error) => {
+            console.error('Error deleting task!', error);
+            this.presentToast('Error deleting task.');
+            itemSliding.close(); // Ensure the sliding item is closed even if there's an error
+        }
+    });
+}
+
+  toggleInjusticeStatus() { 
+    // Update the URL format to match your specified pattern
+    this.http.patch(`https://rrdevours.monster/api/injustices/${this.injusticeId}/status`, { status: this.injusticeDetails.status })
+      .subscribe({
+        next: (response: any) => {
+          // Assuming the response includes the updated status, you might want to update your local state as well
+          this.injusticeDetails.status = response.status;
+          this.presentToast('Injustice status updated successfully.');
+        },
+        error: (error) => {
+          console.error('Error updating injustice status!', error);
+          this.presentToast('Error updating injustice status.');
+        }
+      });
   }
 }

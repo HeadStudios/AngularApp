@@ -72,7 +72,16 @@
     </ion-item-divider>
     <ion-item *ngFor="let injustice of injustices" button (click)="goToInjusticeDetails(injustice.id)" detail="false" class="is-list-square-has-square">
       <ion-thumbnail slot="start">
-        <div><ion-icon name="alert-circle"></ion-icon></div>
+        <!-- Display a checkmark icon if status is 1 (complete) -->
+        <div *ngIf="injustice.status === 1; else notCompleted">
+          <ion-icon name="checkmark-circle"></ion-icon>
+        </div>
+        <!-- Display an alert icon if status is not 1 -->
+        <ng-template #notCompleted>
+          <div>
+            <ion-icon name="alert-circle"></ion-icon>
+          </div>
+        </ng-template>
       </ion-thumbnail>
       <ion-label>
         <p class="is-list-square-title">{{ injustice.title }}</p>
