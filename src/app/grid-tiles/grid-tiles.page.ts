@@ -1,50 +1,67 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { ModalController, Platform } from '@ionic/angular';
-import { AddInjusticeModalComponent } from '../add-injustice-modal/add-injustice-modal.component';
-import OneSignal from 'onesignal-cordova-plugin';
+import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+import { Platform, ModalController } from "@ionic/angular";
+import { PushNotifications } from "@capacitor/push-notifications";
+
+import { AddInjusticeModalComponent } from "../add-injustice-modal/add-injustice-modal.component";
 
 @Component({
-  selector: 'app-grid-tiles',
-  templateUrl: './grid-tiles.page.html',
-  styleUrls: ['./grid-tiles.page.scss'],
+  selector: "app-grid-tiles",
+  templateUrl: "./grid-tiles.page.html",
+  styleUrls: ["./grid-tiles.page.scss"],
 })
 export class GridTilesPage implements OnInit {
+  notificationMessage: string = "";
 
-  notificationMessage: string = '';
-
-  constructor(private router: Router, private modalController: ModalController, private platform: Platform) { }
+  constructor(
+    private router: Router,
+    private modalController: ModalController,
+    private platform: Platform
+  ) {}
 
   ngOnInit() {
     this.platform.ready().then(() => {
-      this.initializeOneSignal();
+      this.initializePushNotifications();
     });
   }
 
-  initializeOneSignal() {
-    // Remove this method to stop OneSignal Debugging
-    //OneSignal.Debug.setLogLevel(6);
-    
-    // Replace YOUR_ONESIGNAL_APP_ID with your OneSignal App ID
-    OneSignal.initialize("9b4c7fc8-5490-440f-9d6c-5bf708ea28d9");
-
-    OneSignal.Notifications.addEventListener('click', async (e) => {
-      let clickData = await e.notification;
-      console.log("Notification Clicked : " + clickData);
-      // Update UI or perform actions based on notification click
-      this.notificationMessage = `Clicked: ${JSON.stringify(clickData)}`;
+  initializePushNotifications() {
+    PushNotifications.requestPermissions().then((result) => {
+      if (result.receive === "granted") {
+        PushNotifications.register();
+      } else {
+        // Handle user denying permissions
+        console.log("User denied permissions to receive push notifications");
+      }
     });
 
-    OneSignal.Notifications.requestPermission(true).then((success: Boolean) => {
-      console.log("Notification permission granted " + success);
-      // You might want to update the UI or internal state to reflect this
+    PushNotifications.addListener("registration", (token) => {
+      console.log(`Push registration success, token: ${token.value}`);
+      // You can also optionally send the token to your server here if you wish to send push notifications from there
     });
+
+    PushNotifications.addListener(
+      "pushNotificationReceived",
+      (notification) => {
+        this.notificationMessage = notification.body;
+        console.log("Push received: ", notification);
+      }
+    );
+
+    PushNotifications.addListener(
+      "pushNotificationActionPerformed",
+      (notification) => {
+        console.log("Push action performed: ", notification);
+      }
+    );
   }
 
   async openAddInjustice() {
     const modal = await this.modalController.create({
       component: AddInjusticeModalComponent,
-      componentProps: { contactId: 4074 }
+      componentProps: {
+        contactId: 4074,
+      },
     });
 
     await modal.present();
@@ -56,7 +73,6 @@ export class GridTilesPage implements OnInit {
   }
 
   goToInjusticeDetails(injusticeId: number) {
-    this.router.navigate(['/eventDetails', injusticeId]);
+    this.router.navigate(["/eventDetails", injusticeId]);
   }
-
 }
