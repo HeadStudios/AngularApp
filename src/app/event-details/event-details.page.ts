@@ -35,6 +35,8 @@ export class EventDetailsPage implements OnInit {
   customVideoName: string = '';
   // Add a property to track the currently expanded note
   expandedNoteId: number | null = null;
+  expandedNoteIds: number[] = [];
+
 
 
 
@@ -345,13 +347,14 @@ export class EventDetailsPage implements OnInit {
 
   // Add a method to toggle the expansion of a note
   toggleNoteExpansion(noteId: number) {
-    if (this.expandedNoteId === noteId) {
-      // If the note is already expanded, collapse it
-      this.expandedNoteId = null;
-    } else {
-      // Expand the clicked note
-      this.expandedNoteId = noteId;
+    // Check if the noteId is not already in the expandedNoteIds array
+    if (!this.expandedNoteIds.includes(noteId)) {
+      // Add the noteId to the expandedNoteIds array if it's not already present
+      // This ensures the note stays expanded once clicked
+      this.expandedNoteIds.push(noteId);
     }
+    // Note: The functionality to remove an ID from expandedNoteIds (to collapse a note) is intentionally omitted
+    // This means once a note is expanded, it cannot be collapsed by clicking on it again
   }
 
   toggleTaskStatus(task, itemSliding: IonItemSliding) {

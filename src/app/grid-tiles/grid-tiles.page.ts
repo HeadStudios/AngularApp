@@ -22,6 +22,7 @@ export class GridTilesPage implements OnInit {
   }
 
   initializeOneSignal() {
+    console.log("What is going on? Where is the code and the token?");
     // Remove this method to stop OneSignal Debugging
     //OneSignal.Debug.setLogLevel(6);
     

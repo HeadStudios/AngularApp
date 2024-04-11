@@ -41,7 +41,7 @@
     </ion-list-header>
     <ion-item *ngFor="let note of notes; let i = index">
       <ion-label>
-        <span [class.text-wrap]="expandedNoteId === i" (click)="toggleNoteExpansion(i)" [innerHTML]="transformNewlines(note.text)"></span>
+        <span [class.text-wrap]="expandedNoteIds.includes(i)" (click)="toggleNoteExpansion(i)" [innerHTML]="transformNewlines(note.text)"></span>
         <div class="note-details">
           Created by: {{ note.created_by_name }} on {{ note.created_at | date:'medium' }}
         </div>
