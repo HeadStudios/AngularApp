@@ -1,0 +1,18 @@
+<!-- search-organization-modal.component.html -->
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Search Organizations</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar [(ngModel)]="searchTerm" (ionChange)="onSearchChanged()"></ion-searchbar>
+  <ion-list>
+    <ion-item *ngFor="let organization of organizations" (click)="selectOrganization(organization.id)">
+      {{ organization.name }}
+    </ion-item>
+  </ion-list>
+</ion-content>

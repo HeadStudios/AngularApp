@@ -11,6 +11,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { AddTaskModalComponent } from '../add-task-modal/add-task-modal.component'; // Add this line
 import { Router } from '@angular/router';
 import { IonItemSliding } from '@ionic/angular'; // Make sure IonItemSliding is imported
+import { SearchOrganizationModalComponent } from '../search-organization-modal/search-organization-modal.component';
 
 
 
@@ -36,6 +37,7 @@ export class EventDetailsPage implements OnInit {
   // Add a property to track the currently expanded note
   expandedNoteId: number | null = null;
   expandedNoteIds: number[] = [];
+  public editingDescription: boolean = false;
 
 
 
@@ -410,6 +412,65 @@ export class EventDetailsPage implements OnInit {
         error: (error) => {
           console.error('Error updating injustice status!', error);
           this.presentToast('Error updating injustice status.');
+        }
+      });
+  }
+
+  async openSearchOrganizationModal() {
+    const modal = await this.modalController.create({
+      component: SearchOrganizationModalComponent
+    });
+    await modal.present();
+  
+    const { data } = await modal.onDidDismiss();
+    if (data?.organizationId) {
+      // Optionally handle the organization ID, such as attaching it to the current injustice
+      console.log('Selected Organization ID:', data.organizationId);
+      // You can call a function here to attach the organization to the injustice
+      this.attachOrganization(data.organizationId);
+    }
+  }
+
+  attachOrganization(organizationId: number) {
+    // Call your API to attach the organization to the current injustice
+    this.http.post(`https://rrdevours.monster/api/injustices/${this.injusticeId}/attach-organization`, { organization_id: organizationId })
+      .subscribe({
+        next: (response) => {
+          console.log('Organization attached successfully');
+          this.presentToast('Organization attached successfully');
+          // Refresh or update your page data if necessary
+        },
+        error: (error) => {
+          console.error('Error attaching organization:', error);
+          this.presentToast('Error attaching organization');
+        }
+      });
+  }
+
+  
+
+toggleEditDescription(): void {
+  this.editingDescription = !this.editingDescription;
+}
+
+submitDescription(newDescription: string): void {
+  if (!newDescription) return;
+  this.updateInjusticeDescription(newDescription);
+  this.toggleEditDescription(); // Turn off edit mode after submission
+}
+
+  // Existing method, ensure it handles updates appropriately
+  updateInjusticeDescription(newDescription: string) {
+    const url = `https://rrdevours.monster/api/injustices/${this.injusticeId}/update-description`;
+    this.http.put(url, { description: newDescription })
+      .subscribe({
+        next: (response) => {
+          this.injusticeDetails.description = newDescription;
+          this.presentToast('Description updated successfully.');
+        },
+        error: (error) => {
+          console.error('Error updating description!', error);
+          this.presentToast('Error updating description.');
         }
       });
   }

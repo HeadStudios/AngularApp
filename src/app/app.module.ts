@@ -15,10 +15,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { FormsModule } from '@angular/forms';
 
+import { SearchOrganizationModalComponent } from './search-organization-modal/search-organization-modal.component';
+
 
 
 @NgModule({
-  declarations: [AppComponent, PopoverMenuComponent],
+  declarations: [AppComponent, PopoverMenuComponent, SearchOrganizationModalComponent],
   entryComponents: [PopoverMenuComponent],
   imports: [
     BrowserModule,

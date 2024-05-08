@@ -23,9 +23,26 @@
     <p>
       <ion-icon name="calendar"></ion-icon> <!-- Your date information here -->
     </p>
-    <p>
-      {{ injusticeDetails.description }}
-    </p>
+    <ion-item>
+      <div style="display: flex; width: 100%; align-items: center;">
+        <ng-container *ngIf="!editingDescription">
+          <p style="flex: 1;">{{ injusticeDetails.description }}</p>
+          <ion-buttons slot="end">
+            <ion-button fill="clear" (click)="toggleEditDescription()">
+              <ion-icon name="pencil" slot="icon-only"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ng-container>
+        <ng-container *ngIf="editingDescription">
+          <ion-textarea [(ngModel)]="injusticeDetails.description" rows="2" style="flex: 1;"></ion-textarea>
+          <ion-buttons slot="end">
+            <ion-button color="primary" fill="solid" (click)="submitDescription(injusticeDetails.description)">
+              Save
+            </ion-button>
+          </ion-buttons>
+        </ng-container>
+      </div>
+    </ion-item>
     
   </div>
 
@@ -170,6 +187,7 @@
 </ion-item>
 <input type="file" accept="video/*" (change)="onVideoSelected($event)" hidden #videoInput>
 <ion-button (click)="videoInput.click()">Select Video</ion-button>
+<ion-button (click)="openSearchOrganizationModal()">Attach Organization</ion-button>
 
 </ion-content>
 

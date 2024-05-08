@@ -2,3 +2,18 @@
   padding-left: 0;
   padding-right: 0;
 }
+
+ion-item {
+  --padding-end: 0;
+  --padding-start: 0;
+  ion-buttons {
+    margin-end: 0;
+  }
+  ion-textarea {
+    margin-right: 8px; /* Provides spacing between the textarea and the button */
+  }
+  ion-button {
+    margin-top: 0; /* Aligns the button vertically with the textarea */
+    border-radius: 10px; /* Optional: To ensure the button is rounded */
+  }
+}
