@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 import { ChangeDetectorRef } from '@angular/core';
+import { environment } from '../../environments/environment';
 
 
 
@@ -18,6 +19,7 @@ export class BasicListPage implements OnInit {
   items: any[] = []; 
   filteredItems: any[] = []; // This will hold the filtered items
   searchQuery: string = '';
+  private apiUrl = environment.apiUrl;
 
   constructor(private http: HttpClient, private router: Router, private menuCtrl: MenuController, private changeDetectorRef: ChangeDetectorRef) { }
 
@@ -28,7 +30,7 @@ export class BasicListPage implements OnInit {
   }
 
   fetchContacts() {
-    this.http.get<any[]>('https://rrdevours.monster/api/contacts').subscribe(
+    this.http.get<any[]>(`${this.apiUrl}/contacts`).subscribe(
       data => {
         this.items = data; // Assuming the response is an array
         this.filterItems();
