@@ -29,6 +29,7 @@
     "@capacitor/keyboard": "5.0.6",
     "@capacitor/push-notifications": "^5.1.1",
     "@capacitor/status-bar": "5.0.6",
+    "@capawesome-team/capacitor-file-opener": "^6.0.0",
     "@ionic-native/core": "^5.36.0",
     "@ionic-native/file": "^5.36.0",
     "@ionic-native/image-picker": "^5.36.0",

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { HttpClient } from '@angular/common/http'; // Ensure HttpClient is imported
-
+import { HttpClient } from '@angular/common/http';
+import { FileOpener } from '@capawesome-team/capacitor-file-opener';
 
 @Component({
   selector: 'app-product-details-fourth',
@@ -13,9 +13,9 @@ export class ProductDetailsFourthPage implements OnInit {
   mediaUrl: string;
   isVideo: boolean = false;
   isDocument: boolean = false;
-  fileName: string; // To store file name
-  fileSize: string; // To store file size
-  fileExtension: string; // To store file extension
+  fileName: string;
+  fileSize: string;
+  fileExtension: string;
 
   constructor(private route: ActivatedRoute, private http: HttpClient) { }
 
@@ -39,13 +39,10 @@ export class ProductDetailsFourthPage implements OnInit {
   getFileSize(url: string): void {
     this.http.head(url, { observe: 'response' }).toPromise()
       .then(response => {
-        // The 'Content-Length' header contains the file size in bytes
         const fileSizeBytes = response.headers.get('Content-Length');
         if (fileSizeBytes) {
-          // If you want to convert it to a more readable format (e.g., KB, MB)
           this.fileSize = this.formatFileSize(fileSizeBytes);
         } else {
-          // In case 'Content-Length' is not available
           this.fileSize = 'Unknown size';
         }
       })
@@ -63,4 +60,14 @@ export class ProductDetailsFourthPage implements OnInit {
     return (size / (1024 * 1024)).toFixed(2) + ' MB';
   }
 
+  async openDocument() {
+    try {
+      await FileOpener.openFile({
+        path: this.mediaUrl,
+        mimeType: 'application/pdf'
+      });
+    } catch (error) {
+      console.error('Error opening file:', error);
+    }
+  }
 }

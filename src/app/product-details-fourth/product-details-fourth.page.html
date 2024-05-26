@@ -3,73 +3,60 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>
-      
-    </ion-title>
-    <ion-buttons slot="end">
-      <!--<ion-button>
-        <ion-icon slot="icon-only" name="cart"></ion-icon>
-      </ion-button>
-      <ion-button>
-        <ion-icon slot="icon-only" name="search"></ion-icon>
-      </ion-button>-->
-    </ion-buttons>
+    <ion-title></ion-title>
+    <ion-buttons slot="end"></ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div class="centered-content">
-      <!-- Display image if it's an image file -->
-      <img *ngIf="!isVideo && !isDocument && mediaUrl" [src]="mediaUrl"/>
+    <img *ngIf="!isVideo && !isDocument && mediaUrl" [src]="mediaUrl"/>
 
-      <!-- Display video player if it's an mp4 file -->
-      <video *ngIf="isVideo" width="320" height="240" controls>
-        <source [src]="mediaUrl" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-      <!-- Display document link if it's a document file -->
-<div *ngIf="isDocument">
-  <h2>Document</h2>
-  <ion-button href="{{ mediaUrl }}" target="_blank">Open Document</ion-button>
-</div>
-      <ion-grid class="ion-no-padding ion-margin-top">
-        <ion-row class="ion-align-items-stretch ion-padding-horizontal ion-padding-bottom">
-          <ion-col size="9" class="ion-text-left">
-            <h3 class="ion-no-margin">File Name: {{ fileName }}</h3>
-          </ion-col>
-          <ion-col size="3" class="ion-text-right">
-            <div class="is-price ion-no-padding">
-              <!--<span>$29.99</span>-->
-            </div>
-          </ion-col>
-        </ion-row>
-        <ion-row class="ion-padding-horizontal">
-          <ion-col size="6" class="ion-text-left">
-            <h5 class="ion-no-margin">{{ fileSize }}</h5>
-          </ion-col>
-          <ion-col size="6" class="ion-text-right">
-            <!--<ion-badge color="success" class="ion-margin-horizontal">New</ion-badge>-->
-          </ion-col>
-        </ion-row>
-      </ion-grid>
+    <video *ngIf="isVideo" width="320" height="240" controls>
+      <source [src]="mediaUrl" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    <div *ngIf="isDocument">
+      <h2>Document</h2>
+      <ion-button (click)="openDocument()">Open Document</ion-button>
     </div>
+
+    <ion-grid class="ion-no-padding ion-margin-top">
+      <ion-row class="ion-align-items-stretch ion-padding-horizontal ion-padding-bottom">
+        <ion-col size="9" class="ion-text-left">
+          <h3 class="ion-no-margin">File Name: {{ fileName }}</h3>
+        </ion-col>
+        <ion-col size="3" class="ion-text-right">
+          <div class="is-price ion-no-padding"></div>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-padding-horizontal">
+        <ion-col size="6" class="ion-text-left">
+          <h5 class="ion-no-margin">{{ fileSize }}</h5>
+        </ion-col>
+        <ion-col size="6" class="ion-text-right"></ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 </ion-content>
+
 <style>
   .centered-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
 
-video {
-  max-width: 100%;
-  height: auto;
-}
+  video {
+    max-width: 100%;
+    height: auto;
+  }
 
-img {
-  max-width: 100%;
-  height: auto;
-}
+  img {
+    max-width: 100%;
+    height: auto;
+  }
 </style>
