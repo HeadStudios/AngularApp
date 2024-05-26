@@ -8,6 +8,14 @@
   "plugins": {
     "PushNotifications": {
       "presentationOptions": ["badge", "sound", "alert"]
+    },
+    "SplashScreen": {
+      "launchShowDuration": 2000,
+      "backgroundColor": "#ffffffff",
+      "androidSpinnerStyle": "large",
+      "iosSpinnerStyle": "small",
+      "splashFullScreen": true,
+      "splashImmersive": true
     }
   },
   "cordova": {
@@ -19,7 +27,7 @@
       "FadeSplashScreenDuration": "300",
       "SplashShowOnlyFirstTime": "false",
       "SplashScreen": "screen",
-      "SplashScreenDelay": "3000"
+      "SplashScreenDelay": "1000"
     }
   }
 }
